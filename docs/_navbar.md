@@ -1,5 +1,5 @@
 * [中文](/)
-* [git](/git)
+* [git](/git/)
 
 * [sublime](/sublime/)
 

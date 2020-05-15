@@ -1,8 +1,10 @@
-# Myblogs
+# Hasaki
 
 
-> 我要开始装逼了
+> I will not forget who I am.
+>
+> I will follow this path until the end.
 
+[GitHub](https://github.com/oldmanadvancing/docsify-cli.git)
+[Start](README.md)
 
-[CSDN](https://blog.csdn.net/m0_37965018)
-[滚动鼠标](#introduction)
