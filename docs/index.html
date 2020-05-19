@@ -12,12 +12,30 @@
   <div id="app">Please wait...</div>
   <script>
     window.$docsify = {
-      name: '',
-      repo: '',
+      name: 'oldmanadvancing',
+      repo: 'https://github.com/oldmanadvancing/docsify-cli.git',
       loadNavbar: true,
       loadSidebar: true,
-      coverpage: true
+      coverpage: true,
+	  autoHeader: true,
+	  maxLevel: 4,
+      subMaxLevel: 2,
+	  alias: {
+        '/.*/_navbar.md': '/_navbar.md',
+		'/main/.*/_sidebar.md': '/_sidebar.md',
+      },
+	  search: {
+        placeholder: '搜索',
+        noData: '找不到结果!',
+        depth: 3
+      },
     }
   </script>
-  <script src="//unpkg.com/docsify/lib/docsify.min.js" data-repo="https://github.com/oldmanadvancing/docsify-cli.git"></script>
+  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-java.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-sql.js"></script>
+  <script src="//unpkg.com/docsify-copy-code"></script>
 </html>
