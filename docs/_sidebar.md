@@ -8,6 +8,11 @@
 + Java8新特性
   - [Lambda](main/java8/lambda.md)
   - [Stream](main/java8/stream.md)
+  - [函数式接口](main/java8/函数式接口.md)
 + 小程序
   - [小程序开发流程](main/miniprogram/小程序开发流程.md)
   - [微信小程序自定义拍照的笔记](main/miniprogram/微信小程序自定义拍照的笔记.md)
+
++ springcloud
+  + [搭建demo](main/springcloud/SpringCloud搭建demo.md)
+
