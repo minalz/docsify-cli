@@ -1,6 +1,6 @@
 # windows10安装docsify遇到的问题
 
-#### 1.node安装好之后，出现问题
+## 1.node安装好之后，出现问题
 
 ![image-20200516091429543](images/image-20200516091429543.png)
 
@@ -30,7 +30,7 @@ C:\Windows\System32\cmd.exe
 
 https://blog.csdn.net/github_39506988/article/details/89920475
 
-#### 2.完美解决
+## 2.完美解决
 
 方法一：
 
