@@ -1,5 +1,7 @@
 # SourceTree使用
 
+## 1. windows安装教程:
+
 参考链接：
 
 + 一：
@@ -31,3 +33,10 @@
 + 七：
 
   https://jingyan.baidu.com/article/1612d500984546e20e1eeefc.html
+
+## 2. Mac安装教程
+
+参考链接:
+
+https://www.jianshu.com/p/b8d0547a8449
+
