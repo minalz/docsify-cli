@@ -40,3 +40,4 @@
 
 https://www.jianshu.com/p/b8d0547a8449
 
+注意:Mac的系统版本和SourceTree的版本有对应关系,如果系统版本比较旧,可能需要用稍微旧一点的SourceTree版本
