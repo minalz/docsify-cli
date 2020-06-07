@@ -1,6 +1,5 @@
 - Soft
 
-  - [Git指令](soft/git_operation.md)
   - [SourceTree使用](soft/sourceTree.md)
   - [其他软件安装](soft/env_install.md)
   

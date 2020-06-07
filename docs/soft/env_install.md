@@ -1,10 +1,10 @@
 # 软件
 
-## 1. navicate破解
+## 1. Navicate破解
 
 参考链接：http://www.downcc.com/soft/322714.html
 
-## 2. idea破解
+## 2. Idea破解
 
 参考链接：https://shimo.im/docs/52dekJN4tiUAaBgv/read?from=groupmessage&isappinstalled=0
 
@@ -18,7 +18,7 @@
 
   现在破解jar的下载链接已经没了
 
-## 3.mysql安装
+## 3.Mysql安装
 
 参考链接:
 
@@ -58,7 +58,7 @@ http://www.yulu618.com/article/detail/post-2080.html
 
 https://www.jianshu.com/p/9c8db3620be9
 
-## 7.docsify安装教程
+## 7.Docsify安装教程
 
 https://www.cnblogs.com/jackson0714/p/docsify01.html
 
