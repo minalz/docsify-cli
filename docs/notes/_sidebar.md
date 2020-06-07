@@ -1,6 +1,7 @@
 + Notes
 
   - [JVM](notes/jvm.md)
+  - [Git指令](notes/git_operation.md)
   - [Idea使用技巧](notes/idea_skills.md)
   - [MAC使用技巧](notes/mac_skills.md)
   - [面试题](notes/interviews.md)
