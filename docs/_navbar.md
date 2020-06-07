@@ -1,6 +1,5 @@
-* [中文](/)
-* [git](/git/)
+* [Doing](/)
 
-* [sublime](/sublime/)
+* [Notes](/notes/)
 
-+ [notes](/notes/)
+* [Soft](/soft/)

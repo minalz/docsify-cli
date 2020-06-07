@@ -1,4 +1,3 @@
-# 学习笔记
+# Study Notes
 
-> 关于学习过程中的一些笔记
-
+> Some notes during the learning process
