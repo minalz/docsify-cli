@@ -55,3 +55,9 @@ https://blog.csdn.net/Capgras/article/details/100540501
 + windows安装git参考链接：
 
   https://www.cnblogs.com/Dcl-Snow/p/10476004.html
+  
+## 强行推送到仓库
+如果一只出现这个错误：
+Push rejected: Push to origin/master was rejected
++ git push -u origin master -f
+
