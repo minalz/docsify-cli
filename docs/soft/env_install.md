@@ -181,3 +181,7 @@ https://www.cnblogs.com/keystone/p/12516552.html
 ## 14.面试题
 
 ​	https://www.jianshu.com/p/d6e9b1c211dd
+
+## 15.Redis安装
+
+https://www.jianshu.com/p/bb7c19c5fc47
