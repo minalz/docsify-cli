@@ -183,5 +183,49 @@ https://www.cnblogs.com/keystone/p/12516552.html
 ​	https://www.jianshu.com/p/d6e9b1c211dd
 
 ## 15.Redis安装
-
+> Mac
 https://www.jianshu.com/p/bb7c19c5fc47
+
+> windows  redis 设置开机自启动
+
++ 参考链接：https://www.cnblogs.com/feigao/p/11157607.html
+
++ 还需要设置一下环境变量
+
++ 需要配置一下密码
+
+  如果不配置密码，服务设置了密码，还是会连接出错
+
+  参考链接：https://www.cnblogs.com/GuoJunwen/p/9238624.html
+
++ 常用的redis服务命令。
+
+  卸载服务：
+
+  ```c
+  redis-server --service-uninstall
+  ```
+
+  开启服务
+
+  ```c
+  redis-server --service-start
+  ```
+
+  停止服务：
+
+  ```c
+  redis-server --service-stop
+  ```
+
++ 操作步骤
+
+  ```c
+  127.0.0.1:6379> config get requirepass
+  (error) NOAUTH Authentication required.
+  127.0.0.1:6379> auth 123456
+  OK
+  127.0.0.1:6379> config get requirepass
+  1) "requirepass"
+  2) "123456"
+  ```
