@@ -35,6 +35,8 @@
   https://jingyan.baidu.com/article/1612d500984546e20e1eeefc.html
   
 + SourceTree安装完找不到图标了
+
+  文件管理器输入下面的路径就可以找到了
   
   ```html
 
