@@ -33,6 +33,14 @@
 + 七：
 
   https://jingyan.baidu.com/article/1612d500984546e20e1eeefc.html
+  
++ SourceTree安装完找不到图标了
+  
+  ```html
+
+  C:\Users\%username%\AppData\Local\SourceTree
+
+  ```
 
 ## 2. Mac安装教程
 
