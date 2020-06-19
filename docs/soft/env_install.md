@@ -17,6 +17,10 @@
   https://zhile.io/2018/08/17/jetbrains-license-server-crack.html
 
   现在破解jar的下载链接已经没了
+  
++ 激活方式
+
+​		code 或者 license server ： [http://fls.jetbrains-agent.com](
 
 ## 3.Mysql安装
 
