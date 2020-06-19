@@ -29,23 +29,23 @@ SQL查询后的字段类型是Number类型，需要进行转换，SQL查询后�
 
   + 复制文件
 
-    ```
-    scp local_file remote_username@remote_ip:remote_folder
-    ```
-
-    
-
-  + 复制目录
-
-    ```
-    scp -r local_folder remote_ip:remote_folder
-    ```
-
-    
-
+  ```shell
+  scp local_file remote_username@remote_ip:remote_folder
+  ```
+  
+  
+  
+    + 复制目录
+  
+  ```shell
+  scp -r local_folder remote_ip:remote_folder
+  ```
+  
+  
+  
 + 从远程服务器复制到本地服务器
 
-  ```
+  ```shell
   scp remote_username@remote_ip: remote_file local_folder
   ```
 
