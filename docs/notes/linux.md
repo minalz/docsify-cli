@@ -1,25 +1,6 @@
-# summary
+# Linux 命令
 
-## 1.页面设置body滚动条出不来
-
-因为是iframe框架，`scrolling="yes"`,需要在layout.js中进行设置才能成功
-
-## 2.MySQL->Oracle分页有问题
-
-分析：
-
-+ MySQL分页正常，Oracle命令未正确结束，只要设置query.setFirstResult和MaxResult就报错
-
-+ proxxy.xml 数据库连接正常
-+ config.properties 修改Jpa的对应的数据库类型
-
-解决方案：
-
-SQL查询后的字段类型是Number类型，需要进行转换，SQL查询后的count也是如此，需要进行转换数据类型
-
-去掉SQL语句中的单引号('')，因为Oracle中单引号会对后面的字符进行转义
-
-3.传输文件
+## 1.传输文件
 
 + scp [参数] [原路径] [目标路径]
 
@@ -67,7 +48,7 @@ SQL查询后的字段类型是Number类型，需要进行转换，SQL查询后�
 
   
 
-4.常用vim命令
+## 2.常用vim命令
 
 + `:$`
 
@@ -95,7 +76,7 @@ SQL查询后的字段类型是Number类型，需要进行转换，SQL查询后�
 
   更换模式
 
-5.端口被占用
+## 3.端口被占用
 
 ```
 netstat -anlp/anpt | grep port

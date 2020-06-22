@@ -10,7 +10,7 @@
   - [小程序开发流程](notes/miniprogram/小程序开发流程.md)
   - [微信小程序自定义拍照的笔记](notes/miniprogram/微信小程序自定义拍照的笔记.md)
 + Work
-  - [Linux相关命令](notes/summary.md)
+  - [Linux命令](notes/linux.md)
   - [201809笔记](notes/201809笔记.md)
   - [201810笔记](notes/201810笔记.md)
   

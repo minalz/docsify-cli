@@ -51,3 +51,22 @@ https://www.jianshu.com/p/bd2bfb553915
 - DCL（Data Control Language）数据库控制语言：
 
   是用来设置或更改数据库用户或角色权限的语句，包括（grant,deny,revoke等）语句。这个比较少用到。
+
+## 5.页面设置body滚动条出不来
+
+因为是iframe框架，`scrolling="yes"`,需要在layout.js中进行设置才能成功
+
+## 6.MySQL->Oracle分页有问题
+
+分析：
+
++ MySQL分页正常，Oracle命令未正确结束，只要设置query.setFirstResult和MaxResult就报错
+
++ proxxy.xml 数据库连接正常
++ config.properties 修改Jpa的对应的数据库类型
+
+解决方案：
+
+SQL查询后的字段类型是Number类型，需要进行转换，SQL查询后的count也是如此，需要进行转换数据类型
+
+去掉SQL语句中的单引号('')，因为Oracle中单引号会对后面的字符进行转义
