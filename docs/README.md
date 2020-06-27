@@ -15,10 +15,10 @@
 > ### 技术能力
 
 1. 对JVM、MySQL、Redis、多线程的原理有所了解
-2. 熟悉主流开发框架和工具如: SpringCloud、SpringBoot、Zookeeper、Dubbo、RabbitMq、Beetl等
-3. 了解Kafka、Mycat、Nginx、SpringCloud Alibaba
+2. 熟悉主流开发框架和工具如: SSH、SSM、SpringCloud、SpringBoot、Zookeeper、Kafka、RabbitMq、Beetl等
+3. 了解Dubbo、Mycat、Nginx、SpringCloud Alibaba等
 4. 能够搭建和开发独立的功能模块,可以部署服务器环境和项目,有操作云服务器的经验
-5. 熟悉前端技术,如HTML/CSS/JS,小程序,有一年电商经验
+5. 熟悉如HTML/CSS/JS,小程序等前端技术
 6. 个人博客: https://minalz.github.io/docsify-cli
 
 > ### 工作经历
@@ -152,7 +152,7 @@ SpringCloud+Eureka+Feign+Hystrix+Config+Bus+RabbitMq+MyBatisPlus+Redis+MongoDB+M
 
 **所属公司：**	上海积锐智能科技有限公司
 
-**软件架构：**	Strust + Spring + Hibernate + Bus+ Redis+MongoDB+ExtJs+MySQL
+**软件架构：**	Strust+Spring+Hibernate+RMI+Bus+Redis+MongoDB+ExtJs+MySQL
 
 **项目描述：**	
 
