@@ -52,7 +52,7 @@
 
 **所属公司：**	  上海积锐智能科技有限公司
 
-**软件架构：**	   SpringBoot+MyBatisPlus+RabbitMq+Redis+MongoDB+MySQL
+**软件架构：**	  SpringBoot+MyBatisPlus+RabbitMq+Redis+MongoDB+MySQL
 
 **项目描述：**	
 
@@ -86,9 +86,7 @@
 
 **所属公司：**	上海积锐智能科技有限公司
 
-**软件架构：**
-
-SpringCloud+Eureka+Feign+Hystrix+Config+Bus+RabbitMq+MyBatisPlus+Redis+MongoDB+MySQL+Beetl
+**软件架构：**    SpringCloud+Eureka+Feign+Hystrix+Config+Bus+RabbitMq+MyBatisPlus+Redis+MongoDB+MySQL+Beetl
 
 **服务模块:**  
 
@@ -106,8 +104,6 @@ SpringCloud+Eureka+Feign+Hystrix+Config+Bus+RabbitMq+MyBatisPlus+Redis+MongoDB+M
 
 5. 包括计价系统,参数上传系统,基础运营系统等多系统的整合
 
-6. 项目正在做衍进,准备切换到SrpingCloud Alibaba
-
 **责任描述：**	
 
 1. 实现国际化以及时间的格式化
@@ -117,6 +113,8 @@ SpringCloud+Eureka+Feign+Hystrix+Config+Bus+RabbitMq+MyBatisPlus+Redis+MongoDB+M
 3. 单点登录,以使得多系统可以联通
 
 4. 通过redis来实现报警的实时显示
+
+5. 项目正在做衍进,准备切换到SrpingCloud Alibaba
 
 #### **2018/3-2018/12	稽查管理、出租车和网约车投屏系统**
 
@@ -170,11 +168,9 @@ SpringCloud+Eureka+Feign+Hystrix+Config+Bus+RabbitMq+MyBatisPlus+Redis+MongoDB+M
 
 #### **2016/6-2017/6	肤美人网上商城**
 
-**所属公司**：	安徽柯斯达信息科技有限公司
+**所属公司：**	安徽柯斯达信息科技有限公司
 
-**软件架构：**	
-
-Springmvc + Spring + Mybatis + Dubbo + FastDFS + Redis + solr+Kafka+Nginx+Freemarker+Mycat
+**软件架构：**	Springmvc+Spring+Mybatis+Zookeeper+Dubbo+FastDFS+Redis+Solr+Kafka+Nginx+Freemarker+Mycat
 
 **项目描述：**
 

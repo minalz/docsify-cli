@@ -1,3 +1,4 @@
-+ 个人简历
-  - [简历](main/resume.md)
++ 首页
+  - [简介](main/resume.md)
+  - [简历](README.md)
 
