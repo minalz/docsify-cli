@@ -18,7 +18,7 @@
 2. 熟悉主流开发框架和工具如: SSH、SSM、SpringCloud、SpringBoot、Zookeeper、Kafka、RabbitMq、Beetl等
 3. 了解Dubbo、Mycat、Nginx、SpringCloud Alibaba等
 4. 能够搭建和开发独立的功能模块,可以部署服务器环境和项目,有操作云服务器的经验
-5. 熟悉如HTML/CSS/JS,小程序等前端技术
+5. 熟悉如HTML/CSS/JS,小程序等前端技术,有一年电商经验
 6. 个人博客: https://minalz.github.io/docsify-cli
 
 > ### 工作经历
