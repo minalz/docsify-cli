@@ -14,3 +14,13 @@ https://www.jianshu.com/p/3e1b5fe48952
 
 `sudo chmod 775 /etc/profile`
 
+## 4.应用已经删除了，但是应用台还是有这个图标，不过是灰色的
+
+输入如下命令:
+
+sqlite3 $(find /private/var/folders \( -name com.apple.dock.launchpad -a -user $USER \) 2> /dev/null)/db/db "DELETE FROM apps WHERE title='Mousecape';" && killall Dock
+
+参考链接：
+https://blog.csdn.net/weixin_44091178/article/details/103330882
+
+
