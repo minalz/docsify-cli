@@ -314,4 +314,10 @@ https://www.jianshu.com/p/bb7c19c5fc47
     rm -rf /root/download/redis-4.0.4 //删除redis解压文件夹
     ```
 
+  + 使用指定密码连接指定 ip 和指定端口
+
+    ```shell
+    ./src/redis-cli -h 指定ip -p 指定端口 -a 指定密码
+    ```
+
     
