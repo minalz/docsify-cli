@@ -188,6 +188,7 @@ https://www.cnblogs.com/keystone/p/12516552.html
 
 ## 15.Redis安装
 > Mac
+
 https://www.jianshu.com/p/bb7c19c5fc47
 
 > windows  redis 设置开机自启动
@@ -234,3 +235,83 @@ https://www.jianshu.com/p/bb7c19c5fc47
   2) "123456"
   ```
 https://www.jianshu.com/p/bb7c19c5fc47 
+
+> Linux
+
++ 获取redis资源
+
+  ```shell
+  wget http://download.redis.io/releases/redis-4.0.8.tar.gz
+  ```
+
+  
+
++ 解压
+
+  ```shell
+  tar xzvf redis-4.0.8.tar.gz
+  ```
+
+  
+
++ 安装
+
+  ```shell
+  cd redis-4.0.8
+  make
+  cd src
+  make install PREFIX=/usr/local/redis
+  ```
+
+  
+
++ 移动配置文件到安装目录下
+
+  ```shell
+  cd ../
+  mkdir /usr/local/redis/etc
+  mv redis.conf /usr/local/redis/etc
+  ```
+
+  
+
++ 配置redis为后台启动
+
+  ```shell
+  vi /usr/local/redis/etc/redis.conf //将**daemonize no** 改成daemonize yes
+  ```
+
+  
+
++ 将redis加入到开机启动
+
+  ```shell
+  vi /etc/rc.local //在里面添加内容：/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf (意思就是开机调用这段开启redis的命令)
+  ```
+
+  
+
++ 开启redis
+
+  ```shell
+  /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf
+  ```
+
+ 
+
++ 常用命令
+
+  ```shell
+  redis-server /usr/local/redis/etc/redis.conf //启动redis
+  pkill redis //停止redis
+  ```
+
+  + 卸载redis：
+
+    ```shell
+    rm -rf /usr/local/redis //删除安装目录
+    rm -rf /usr/bin/redis-* //删除所有redis相关命令脚本
+    rm -rf /root/download/redis-4.0.4 //删除redis解压文件夹
+    ```
+
+    
