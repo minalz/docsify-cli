@@ -1,5 +1,7 @@
 # Spring AOP + Redis解决重复提交的问题
 
+用户在点击操作的时候，可能会连续点击多次，虽然前端可以通过设置按钮的disable的属性来控制按钮不可连续点击，但是如果别人拿到请求进行模拟，依然会出现问题，项目是用JWT进行认证的，所以用的token+url来作为key，value无所谓，因为用不到value
+
 ## 1.自定义注解
 
 ```java
@@ -172,26 +174,26 @@ public final class RedisUtil {
 /**
  * 接口返回封装对象
  */
-public class ResponseData22 implements Serializable {
+public class ResponseData implements Serializable {
 
     private static final long serialVersionUID = 1L;
     public String code = "200"; // 200:成功 01:失败
     public String msg = "OK";
 
-    public ResponseData22() {
+    public ResponseData() {
     }
 
-    public ResponseData22(String type, String message) {
+    public ResponseData(String type, String message) {
         this.code = type;
         this.msg = message;
     }
 
-    public static ResponseData22 oferror(String message){
-        return new ResponseData22("01",message);
+    public static ResponseData oferror(String message){
+        return new ResponseData("01",message);
     }
 
-    public static ResponseData22 ofok(){
-        return new ResponseData22("200","OK");
+    public static ResponseData ofok(){
+        return new ResponseData("200","OK");
     }
 
 }
