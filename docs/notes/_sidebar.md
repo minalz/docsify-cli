@@ -10,7 +10,6 @@
 + Work
   - [Linux命令](notes/linux.md)
   - [Spring AOP+Redis解决重复提交的问题](notes/repeat_submit.md)
-  - [Linux安装docsify](notes/docsify_install.md)
   - [201809笔记](notes/201809笔记.md)
   - [201810笔记](notes/201810笔记.md)
   
