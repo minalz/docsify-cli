@@ -1,4 +1,4 @@
-# Linux安装Docsify文档工具
+# Linux安装Docsify文档博客
 
 ## 1.1 安装
 
