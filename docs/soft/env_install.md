@@ -182,11 +182,7 @@ https://www.jianshu.com/p/bd2bfb553915
 
 https://www.cnblogs.com/keystone/p/12516552.html
 
-## 14.面试题
-
-​	https://www.jianshu.com/p/d6e9b1c211dd
-
-## 15.Redis安装
+## 14.Redis安装
 > Mac
 
 https://www.jianshu.com/p/bb7c19c5fc47
