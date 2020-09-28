@@ -1,6 +1,8 @@
 + Notes
 
   - [JVM](notes/jvm.md)
+  - [JVM内存图解](notes/jvm_memory.md)
+  - [进制转换](notes/base_conversion.md)
   - [Git指令](notes/git_operation.md)
   - [Idea使用技巧](notes/idea_skills.md)
   - [MAC使用技巧](notes/mac_skills.md)

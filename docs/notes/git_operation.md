@@ -8,7 +8,7 @@ https://blog.csdn.net/Capgras/article/details/100540501
 
 + git init     //初始化git
 
-+ git add .     //添加文件到本地仓库( .为添加整个文件夹，也可以换成某个文件)
++ git add      //添加文件到本地仓库( .为添加整个文件夹，也可以换成某个文件)
 
 - git commit -m "xxx"      //增加更新记录
 
@@ -57,7 +57,7 @@ https://blog.csdn.net/Capgras/article/details/100540501
   https://www.cnblogs.com/Dcl-Snow/p/10476004.html
   
 ## 强行推送到仓库
-如果一只出现这个错误：
+如果一直出现这个错误：
 Push rejected: Push to origin/master was rejected
 + git push -u origin master -f
 
