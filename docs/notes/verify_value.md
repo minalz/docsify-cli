@@ -41,7 +41,7 @@ false
  * @return
  */
 public static boolean verifyInteger(String val){
-    String regex = "^[1-9]\\d*$";
+    String regex = "^[+\-]?[1-9]\d*$";
     Pattern INTEGER_PATTERN = Pattern.compile(regex);
     boolean matches = INTEGER_PATTERN.matcher(val).matches();
     return matches;
@@ -52,15 +52,15 @@ public static boolean verifyInteger(String val){
 
 ```java
 public static void main(String[] args) {
-    System.out.println(verifyInteger("+2.22"));
-    System.out.println(verifyInteger("-2.22"));
-    System.out.println(verifyInteger("2.22d"));
+    System.out.println(verifyInteger("+2"));
+    System.out.println(verifyInteger("-2"));
+    System.out.println(verifyInteger("2d"));
     System.out.println(verifyInteger("2"));
     System.out.println(verifyInteger("aa"));
 }
 
-false
-false
+true
+true
 false
 true
 false
