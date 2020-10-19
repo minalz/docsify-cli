@@ -41,7 +41,7 @@ false
  * @return
  */
 public static boolean verifyInteger(String val){
-    String regex = "^[+\-]?[1-9]\d*$";
+    String regex = "^[+\-]?[0-9]\d*$";
     Pattern INTEGER_PATTERN = Pattern.compile(regex);
     boolean matches = INTEGER_PATTERN.matcher(val).matches();
     return matches;
