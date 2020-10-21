@@ -1,6 +1,6 @@
 # 单例模式
 
-## 饿汉式
+## 1.饿汉式
 
 ```java
 public class Singleton {
@@ -20,7 +20,7 @@ public class Singleton {
 }
 ```
 
-## 懒汉式
+## 2.懒汉式
 
 ```java
 public class Singleton {
@@ -43,7 +43,7 @@ public class Singleton {
 }
 ```
 
-## 懒汉式+同步方法
+## 3.懒汉式+同步方法
 
 ```java
 public class Singleton {
@@ -66,7 +66,7 @@ public class Singleton {
 }
 ```
 
-## Double-Check
+## 4.Double-Check
 
 ```java
 public class Singleton {
@@ -94,7 +94,7 @@ public class Singleton {
 }
 ```
 
-## Volatile+Double-Check
+## 5.Volatile+Double-Check
 
 ```java
 public class Singleton {
@@ -122,7 +122,7 @@ public class Singleton {
 }
 ```
 
-## Holder方式
+## 6.Holder方式
 
 ```java
 public class Singleton {
@@ -144,7 +144,7 @@ public class Singleton {
 }
 ```
 
-## 枚举方式
+## 7.枚举方式
 
 ```java
 public enum Singleton {
