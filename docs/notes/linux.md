@@ -14,9 +14,7 @@
   scp local_file remote_username@remote_ip:remote_folder
   ```
   
-  
-  
-    + 复制目录
+  + 复制目录  
   
   ```shell
   scp -r local_folder remote_ip:remote_folder
