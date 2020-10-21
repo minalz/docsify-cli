@@ -1,5 +1,3 @@
-# String数组转List的三种方式
-
 ## 1.通过Arrays.asList()方法
 
 数组转成list后，不能对list进行增删，只能查改，否则会抛异常
