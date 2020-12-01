@@ -13,6 +13,7 @@
   - [Linux命令](notes/linux.md)
   - [Spring AOP+Redis解决重复提交的问题](notes/repeat_submit.md)
   - [Java发送邮件](notes/send_email.md)
+  - [FTP上传文件](notes/FTP上传文件.md)
   - [校验值为什么类型的](notes/verify_value.md)
   - [String数组转List的三种方式](notes/String数组转List的三种方式.md)
   - [201809笔记](notes/201809笔记.md)
