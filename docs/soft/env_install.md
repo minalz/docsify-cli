@@ -316,4 +316,52 @@ https://www.jianshu.com/p/bb7c19c5fc47
     ./src/redis-cli -h 指定ip -p 指定端口 -a 指定密码
     ```
 
-    
+## Mac安装item2
+
+参考链接:https://zhuanlan.zhihu.com/p/37195261
+
+## Mac千万不要随便修改用户,会导致管理员账号和密码丢失
+
+参考链接:https://discussionschinese.apple.com/thread/140108050
+
+## Mac ZSH隐藏命令行前面的用户名和主机名
+
+修改`vim ~/.zshrc`文件,在文件底部增加
+
++ 隐藏用户名和主机名
+
+  ```bash
+  Copyprompt_context() {}
+  ```
+
++ 只保留用户名，隐藏主机名
+
+  ```bash
+  Copyprompt_context() {
+    if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+      prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+    fi
+  }
+  ```
+
++ 只保留主机名，隐藏用户名
+
+  ```bash
+  Copyprompt_context() {
+    if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+      prompt_segment black default "%(!.%{%F{yellow}%}.)$HOST"
+    fi
+  }
+  ```
+
+修改后记得执行 `source ~/.zshrc`
+
+## homebrew安装
+
+  https://www.cnblogs.com/haojile/p/13193805.html
+
+
+
+## Mac连接Linux服务器
+
+ssh -p 28726 root@107.182.23.xxx
