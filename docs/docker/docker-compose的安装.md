@@ -1,30 +1,30 @@
 # Docker-compose的安装
 
-## 1. 官方链接：
+## 1.官方链接
 
 https://docs.docker.com/compose/install/
 
-## 2.官方源：
+## 2.下载源
 
-不推荐使用官方源，因为国内速度会特别慢
-
-```sh
-sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-```
-
-如果上面指令安装了，最好是删除后再换源下载：
-
-```sh
-sudo rm /usr/local/bin/docker-compose
-```
-
-换个源：
+非官方源(推荐)：
 
 ```sh
 sudo curl -L "https://get.daocloud.io/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" > /usr/local/bin/docker-compose
 ```
 
 几乎秒下载完
+
+官方源(不推荐,因为国内速度会特别慢)
+
+```sh
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+卸载：
+
+```sh
+sudo rm /usr/local/bin/docker-compose
+```
 
 赋权：
 
@@ -58,7 +58,9 @@ docker-compose version 1.27.4, build 40524192
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
-## 3.如果还是提示不识别，那么安装以下扩展源试试
+## 3.其它
+
+如果还是提示不识别，那么安装以下扩展源试试
 
 + 安装扩展源
 
@@ -71,6 +73,3 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
   ```sh
   sudo yum install python-pip
   ```
-
-  
-
