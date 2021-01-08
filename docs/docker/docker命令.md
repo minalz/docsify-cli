@@ -62,4 +62,16 @@
     docker stop/start container
     ```
 
+11. 如何从docker容器中下载文件
+
+    ```shell
+    docker cp container_created:path <path>
+    ```
+
+12. 如何将文件从本机上传到docker容器
+
+    ```shell
+    docker cp container_created:path <path>
+    ```
+
     
