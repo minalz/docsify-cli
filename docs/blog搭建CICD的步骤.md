@@ -193,7 +193,7 @@ node {
 
 > (1)在github上配置jenkins的webhook地址
 >
-> http://你的ip:9090/github-webhook
+> http://你的ip:9090/docsify-cli
 
 > (2)生成Personal access tokens
 >
