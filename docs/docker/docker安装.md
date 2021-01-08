@@ -49,7 +49,7 @@ sudo systemctl start docker
 
 使用自己的阿里云账号登录，查看菜单栏左下角，发现有一个镜像加速器:
 
-参考链接：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors]
+参考链接：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
 
 ## 7.测试docker安装是否成功
 
