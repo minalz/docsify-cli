@@ -226,7 +226,7 @@ node {
 
 进行测试
 
-![image-20210108234207164](images/image-20210108234207164.png)
+![image-20210109011429739](images/image-20210109011429739.png)
 
 一定要在配置pipeline中配置这个,否则无法出发push
 
@@ -348,4 +348,4 @@ chmod +x docsify-*
 
 #### 4.3.3.6 访问blog地址
 
-yourIp:300011244432
+yourIp:3000
