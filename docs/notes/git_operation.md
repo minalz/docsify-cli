@@ -51,7 +51,7 @@ https://blog.csdn.net/Capgras/article/details/100540501
 + git chechout aaa 切换分支aaa
 + git branck aaa 创建aaa分支
 + git chechout -b aaa 本地创建 aaa分支，同时切换到aaa分支。只有提交的时候才会在服务端上创建一个分支
-
++ git checkout . 本地所有修改的。没有提交的，都返回到原来的状态
 + windows安装git参考链接：
 
   https://www.cnblogs.com/Dcl-Snow/p/10476004.html
