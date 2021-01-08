@@ -348,4 +348,4 @@ chmod +x docsify-*
 
 #### 4.3.3.6 访问blog地址
 
-yourIp:30001122
+yourIp:30001122/
