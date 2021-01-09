@@ -295,8 +295,7 @@ echo "Dockerfile created successfully!"
 # 定义镜像名称
 imageNameAndTag="registry.cn-hangzhou.aliyuncs.com/first-repo/docsify-cli:v1.0"
 
-# 删除正在运行的container 如果先删除images 会导致image名称被删掉 但是数据还是在的 需要等成功上传到镜像仓库后才能删除 所以需要分两步
-
+# 删除正在运行的container
 # 先判断旧的container(docsify-cli)是否存在 如果存在 也需要进行删除 否则无法启动的
 if [[ "$(docker ps -as | grep docsify-cli 2> /dev/null)" != "" ]]; then
   echo "存在运行中的container容器，需要删除"
