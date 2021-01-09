@@ -276,6 +276,7 @@ wq
 #### 4.5.2 docsify-docker-build.sh
 
 ```shell
+echo "==========开始Build=========="
 # 进入到docsify-cli目录
 cd ../docsify-cli/docs
 
@@ -294,8 +295,16 @@ echo "Dockerfile created successfully!"
 # 定义镜像名称
 imageNameAndTag="registry.cn-hangzhou.aliyuncs.com/first-repo/docsify-cli:v1.0"
 
-# 删除旧的images和正在运行的container 但是不能直接先删除container 需要等成功上传到镜像仓库后才能删除 所以需要分两步
-# 先判断是否存在旧的images 存在 先删除images
+# 删除正在运行的container 如果先删除images 会导致image名称被删掉 但是数据还是在的 需要等成功上传到镜像仓库后才能删除 所以需要分两步
+
+# 先判断旧的container(docsify-cli)是否存在 如果存在 也需要进行删除 否则无法启动的
+if [[ "$(docker ps -as | grep docsify-cli 2> /dev/null)" != "" ]]; then
+  echo "存在运行中的container容器，需要删除"
+  docker rm -f docsify-cli
+  echo "删除container成功"
+fi
+
+# 先删除旧的images
 if [[ "$(docker images -q ${imageNameAndTag} 2> /dev/null)" != "" ]]; then
   echo "存在旧的image镜像，需要删除"
   docker rmi -f ${imageNameAndTag}
@@ -304,14 +313,13 @@ fi
 
 # 基于指定目录下的Dockerfile构建镜像
 docker build -t ${imageNameAndTag} .
+echo "==========结束Build=========="
 ```
 
 ####  4.3.3.3 docsify-docker-push.sh
 
 ```shell
-# 进入到docsify-cli目录
-cd ../docsify-cli/docs
-
+echo "==========开始Push=========="
 # 定义镜像名称
 imageNameAndTag="registry.cn-hangzhou.aliyuncs.com/first-repo/docsify-cli:v1.0"
 
@@ -320,24 +328,30 @@ cat /root/.jenkins/workspace/scripts/pwd.txt | docker login -u kawayi125 registr
 
 # push镜像
 docker push ${imageNameAndTag}
-
-# 再判断container是否存在 如果存在 也需要进行删除 否则无法启动的
-if [[ "$(docker images -q ${imageNameAndTag} 2> /dev/null)" != "" ]]; then
-  echo "存在运行中的container容器，需要删除"
-  docker rm -f docsify-cli
-  echo "删除container成功"
-fi
-
+echo "==========结束Push=========="
 ```
 
 ####  4.3.3.4 docsify-docker-run.sh
 
 ```shell
+echo "==========开始Push=========="
+# 定义镜像名称
+imageNameAndTag="registry.cn-hangzhou.aliyuncs.com/first-repo/docsify-cli:v1.0"
+
+# 登录阿里云镜像仓库
+cat /root/.jenkins/workspace/scripts/pwd.txt | docker login -u youraliaccount registry.cn-hangzhou.aliyuncs.com --password-stdin
+
+# push镜像
+docker push ${imageNameAndTag}
+echo "==========结束Push=========="
+[root@VM-0-3-centos scripts]# cat docsify-docker-run.sh 
+echo "==========开始Run=========="
 # 定义镜像名称
 imageNameAndTag="registry.cn-hangzhou.aliyuncs.com/first-repo/docsify-cli:v1.0"
 
 # 运行镜像
-docker run -d --name docsify-cli -p 3000:3000 ${imageNameAndTag}
+docker run -d --name docsify-cli -p 80:3000 ${imageNameAndTag}
+echo "==========结束Run=========="
 ```
 
 #### 4.3.3.5 给脚本赋权
@@ -348,4 +362,4 @@ chmod +x docsify-*
 
 #### 4.3.3.6 访问blog地址
 
-yourIp:3000
+yourIp:port
