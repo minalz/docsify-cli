@@ -1,4 +1,4 @@
-# docker nginx 安装
+# Docker Nginx 安装
 
 ## 1.创建文件,然后volume进行挂载
 
@@ -74,7 +74,7 @@ http {
 }
 ```
 
-2.启动命令
+## 2.启动命令
 
 ```shell
 docker run -d --name docsify-nginx -p 80:80 -p 443:443 -v /tmp/nginx/cert:/etc/nginx/cert -v /tmp/nginx/nginx.conf:/etc/nginx/nginx.conf nginx
