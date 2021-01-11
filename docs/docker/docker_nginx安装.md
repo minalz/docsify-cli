@@ -80,7 +80,7 @@ http {
         ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;  #使用此加密套件。
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;   #使用该协议进行配置。
         ssl_prefer_server_ciphers on;
-        error_page 497 https://$server_name:9090;
+        error_page 497 http://yourIp1:9090;
 
         location / {
             proxy_pass http://yourIp1:9090;
@@ -101,6 +101,6 @@ http {
 ## 2.启动命令
 
 ```shell
-docker run -d --name docsify-nginx -p 80:80 -p 443:443 -p 9020:9090 -v /tmp/nginx/cert:/etc/nginx/cert -v /tmp/nginx/nginx.conf:/etc/nginx/nginx.conf nginx
+docker run -d --name docsify-nginx -p 80:80 -p 443:443 -p 9020:9020 -v /tmp/nginx/cert:/etc/nginx/cert -v /tmp/nginx/nginx.conf:/etc/nginx/nginx.conf nginx
 ```
 
