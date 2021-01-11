@@ -44,18 +44,18 @@ http {
   
     server {
         listen 80;
-        server_name minalz.cn;
+        server_name yourdomainname;
         # Http访问也会转成Https的访问
         rewrite ^(.*) https://$server_name$1 permanent;
     }
     # 以下属性中以ssl开头的属性代表与证书配置有关，其他属性请根据自己的需要进行配置。
     server {
         listen 443 ssl;   #SSL协议访问端口号为443。此处如未添加ssl，可能会造成Nginx无法启动。
-        server_name minalz.cn;  #将localhost修改为您证书绑定的域名，例如：www.example.com。
+        server_name yourdomainname;  #将localhost修改为您证书绑定的域名，例如：www.example.com。
         root html;
         index index.html index.htm;
-        ssl_certificate /etc/nginx/cert/minalz.cn_bundle.crt;   #将domain name.pem替换成您证书的文件名。
-        ssl_certificate_key /etc/nginx/cert/minalz.cn.key;   #将domain name.key替换成您证书的密钥文件名。
+        ssl_certificate /etc/nginx/cert/domain.name_bundle.crt;   #将domain name.pem替换成您证书的文件名。
+        ssl_certificate_key /etc/nginx/cert/domain.name.key;   #将domain name.key替换成您证书的密钥文件名。
         ssl_session_timeout 5m;
         ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;  #使用此加密套件。
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;   #使用该协议进行配置。
@@ -63,6 +63,30 @@ http {
 
         location / {
             proxy_pass http://balance;
+        }
+
+    }
+    
+    # jenkins 也改成支持https
+    # 以下属性中以ssl开头的属性代表与证书配置有关，其他属性请根据自己的需要进行配置。
+    server {
+        listen 9090 ssl;   #SSL协议访问端口号为443。此处如未添加ssl，可能会造成Nginx无法启动。
+        server_name yourdomainname;  #将localhost修改为您证书绑定的域名，例如：www.example.com。
+        root html;
+        index index.html index.htm;
+        ssl_certificate /etc/nginx/cert/domain.name_bundle.crt;   #将domain name.pem替换成您证书的文件名。
+        ssl_certificate_key /etc/nginx/cert/domain.name.key;   #将domain name.key替换成您证书的密钥文件名。
+        ssl_session_timeout 5m;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;  #使用此加密套件。
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;   #使用该协议进行配置。
+        ssl_prefer_server_ciphers on;
+        error_page 497 https://$server_name:9090;
+
+        location / {
+            proxy_pass http://yourIp1:9090;
+            # 显示具体负载的机器的ip,X-Route-Ip随便命名
+            # add_header X-Route-Ip $upstream_addr;
+            # add_header X-Route-Status $upstream_status;
         }
 
     }
@@ -77,6 +101,6 @@ http {
 ## 2.启动命令
 
 ```shell
-docker run -d --name docsify-nginx -p 80:80 -p 443:443 -v /tmp/nginx/cert:/etc/nginx/cert -v /tmp/nginx/nginx.conf:/etc/nginx/nginx.conf nginx
+docker run -d --name docsify-nginx -p 80:80 -p 443:443 -p 9020:9090 -v /tmp/nginx/cert:/etc/nginx/cert -v /tmp/nginx/nginx.conf:/etc/nginx/nginx.conf nginx
 ```
 
