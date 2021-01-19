@@ -7,3 +7,5 @@
 * [Soft](/soft/)
 
 * [Docker](/docker/)
+
+* [Algorithm](/algorithm/)

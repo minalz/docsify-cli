@@ -1,4 +1,4 @@
-# Knowledge of Docker only
+# Knowledge of Docker
 
 > Only Docker
 
