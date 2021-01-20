@@ -4,6 +4,6 @@
   
 + Stack
 
-  - [栈的练习](algorithm/list/栈的练习.md)
+  - [栈的练习](algorithm/stack/栈的练习.md)
   
 
