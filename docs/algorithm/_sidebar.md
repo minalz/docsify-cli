@@ -4,6 +4,7 @@
   - [2.反转链表I](algorithm/linearList/反转链表I.md)
   - [4.反转链表I](algorithm/linearList/移除链表元素.md)
   - [5.奇偶链表](algorithm/linearList/奇偶链表.md)
+  - [6.回文链表](algorithm/linearList/回文链表.md)
   
 + Stack
 
