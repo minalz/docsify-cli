@@ -2,6 +2,7 @@
 
   - [1.链表设计实现](algorithm/linearList/链表设计实现.md)
   - [2.反转链表I](algorithm/linearList/反转链表I.md)
+  - [4.反转链表I](algorithm/linearList/移除链表元素.md)
   
 + Stack
 
