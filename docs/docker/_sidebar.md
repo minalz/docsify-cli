@@ -8,6 +8,7 @@
   - [Docker搭建MySQL](docker/docker搭建MySQL.md)
   - [Docker命令](docker/docker命令.md)
   - [Docker Nginx安装](docker/docker_nginx安装.md)
+  - [docker-compose搭建SonarQube](docker/docker-compose搭建sonarqube.md)
 
 
   
