@@ -316,15 +316,15 @@ https://www.jianshu.com/p/bb7c19c5fc47
     ./src/redis-cli -h 指定ip -p 指定端口 -a 指定密码
     ```
 
-## Mac安装item2
+## 15.Mac安装item2
 
 参考链接:https://zhuanlan.zhihu.com/p/37195261
 
-## Mac千万不要随便修改用户,会导致管理员账号和密码丢失
+## 16.Mac千万不要随便修改用户,会导致管理员账号和密码丢失
 
 参考链接:https://discussionschinese.apple.com/thread/140108050
 
-## Mac ZSH隐藏命令行前面的用户名和主机名
+## 17.Mac ZSH隐藏命令行前面的用户名和主机名
 
 修改`vim ~/.zshrc`文件,在文件底部增加
 
@@ -356,12 +356,14 @@ https://www.jianshu.com/p/bb7c19c5fc47
 
 修改后记得执行 `source ~/.zshrc`
 
-## homebrew安装
+## 18.homebrew安装
 
   https://www.cnblogs.com/haojile/p/13193805.html
 
+## 19.Mac连接Linux服务器
 
+  ssh -p 28726 root@107.182.23.xxx
 
-## Mac连接Linux服务器
+## 20.vue环境安装
 
-ssh -p 28726 root@107.182.23.xxx
+  https://jingyan.baidu.com/article/5225f26bbb430fe6fa0908ce.html
