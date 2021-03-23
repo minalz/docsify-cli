@@ -264,7 +264,7 @@ node {
 
 ### 4.5.2 创建脚本
 
-### 4.5.1 下载的代码在`/root/.jenkins/workspace/`
+#### 4.5.2.1 下载的代码在`/root/.jenkins/workspace/`
 
 ```shell
 cd /root/.jenkins/workspace/
@@ -273,7 +273,7 @@ vi pwd.txt 然后输入docker hub的密码 我这里是用的阿里云的镜像�
 wq
 ```
 
-#### 4.5.2 docsify-docker-build.sh
+#### 4.5.2.2 docsify-docker-build.sh
 
 ```shell
 echo "==========开始Build=========="
@@ -315,7 +315,7 @@ docker build -t ${imageNameAndTag} .
 echo "==========结束Build=========="
 ```
 
-####  4.3.3.3 docsify-docker-push.sh
+####  4.5.2.3 docsify-docker-push.sh
 
 ```shell
 echo "==========开始Push=========="
@@ -330,7 +330,7 @@ docker push ${imageNameAndTag}
 echo "==========结束Push=========="
 ```
 
-####  4.3.3.4 docsify-docker-run.sh
+####  4.5.2.4 docsify-docker-run.sh
 
 ```shell
 echo "==========开始Push=========="
@@ -353,12 +353,12 @@ docker run -d --name docsify-cli -p 80:3000 ${imageNameAndTag}
 echo "==========结束Run=========="
 ```
 
-#### 4.3.3.5 给脚本赋权
+#### 4.5.2.5 给脚本赋权
 
 ```shell
 chmod +x docsify-*
 ```
 
-#### 4.3.3.6 访问blog地址
+#### 4.5.2.6 访问blog地址
 
 yourIp:port
