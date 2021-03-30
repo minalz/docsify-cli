@@ -1,4 +1,4 @@
-# MINALZ.ZHOU
+# MINALZ
 
 
 > Good good study,Day day up
