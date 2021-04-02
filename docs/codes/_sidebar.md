@@ -6,5 +6,6 @@
   - [Ribbon](codes/springcloud/ribbon.md)
 + 设计模式
   - [设计原则](codes/gof/principles.md)
+  - [Spring中的设计模式](codes/gof/spring.md)
   - [单例模式](codes/gof/singleton.md)
 
