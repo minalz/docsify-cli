@@ -2,11 +2,8 @@
 
 博客搭建方式为:
 
-GitHub: Docker + Docsify + jenkins 并且已经实现了CICD
+Docker + Docsify + jenkins 并且已经实现了CICD
 
-2021/04/24
-
-GitHub切换为Gitee,因为访问太慢了,经常导致webhook触发失败
 
 ## Codes(代码片段)
 

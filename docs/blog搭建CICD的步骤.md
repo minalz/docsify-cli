@@ -1,4 +1,4 @@
-# Docker + Docsify + jenkins搭建CICD的步骤(Github版本)
+# Docker + Docsify + jenkins搭建CICD的步骤
 
 ## 1.需要安装java环境
 
