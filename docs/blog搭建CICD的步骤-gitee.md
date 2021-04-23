@@ -1,4 +1,8 @@
-# Docker + Docsify + jenkins搭建CICD的步骤(Github版本)
+# Docker + Docsify + jenkins搭建CICD的步骤(Gitee版本)
+
+注:由于国内访问Github太慢了,导致webhook也经常超时,经常触发不了,所以改成了Gitee,速度超快
+
+前面的准备都是一样的,主要是jenkins和Gitee的配置
 
 ## 1.需要安装java环境
 
@@ -177,60 +181,19 @@ password: admin01
 ```shell
 node {
     
-   // 拉取git上的代码
+   // 拉取Gitee上的代码
    stage('Preparation') {
-      git 'https://github.com/minalz/docsify-cli.git'
+      git 'https://gitee.com/minalz/docsify-cli.git'
    }
   
 }
 ```
 
-#### 4.4.2 git push触发jenkins自动构建
+#### 4.4.2 Jenkins安装Gitee
 
-`最好的话`:当用户进行git commit/push提交代码到github时，能够通知**jenkins自动构建**
+[官方文档很详细](https://gitee.com/help/articles/4193#article-header3)
 
-`注意`:jenkins的ip一定要是github能够访问到的地址
-
-> (1)在github上配置jenkins的webhook地址
-
-http://你的ip:9090/github-webhook
-
-> (2)生成Personal access tokens
-
-Jenkins访问github需要授权，所以在github上生成token交给jenkins使用，即`Personal access tokens`
-
-github的Settings[个人信息右上角]-->Developer settings-->Personal access tokens-->Generate new token
-
-最后保存好该token，比如:**72f048b514e95d6fe36f86d84374f2dcce402b43
-
-![image-20210108233620327](images/image-20210108233620327.png)
-
-> (3)jenkins安装插件
-
-```
-01 安装github plugin插件:[系统管理]->[插件管理]->[可选插件]
-02 安装gitlab插件和gitlab hook插件:[系统管理]->[插件管理]->[可选插件]
-```
-
-> (4)配置GitHub Server
-
-[系统管理]->[系统配置]->[找到github服务器]->[添加github服务器]
-
-添加github服务器
-
-![image-20210108234043017](images/image-20210108234043017.png)
-
-添加凭据
-
-![image-20210108233925869](images/image-20210108233925869.png)
-
-进行测试
-
-![image-20210109011429739](images/image-20210109011429739.png)
-
-一定要在配置pipeline中配置这个,否则无法出发push
-
-![image-20210108234422729](images/image-20210108234422729.png)
+https://gitee.com/help/articles/4193#article-header3
 
 ### 4.5 编写脚本
 

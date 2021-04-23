@@ -2,6 +2,8 @@
 
 [本文转载自博客园](https://www.cnblogs.com/markLogZhu/p/11398028.html)
 
+https://www.cnblogs.com/markLogZhu/p/11398028.html
+
 ## 一、mysqldump 简介
 
 `mysqldump` 是 `MySQL` 自带的逻辑备份工具。
