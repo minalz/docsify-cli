@@ -255,6 +255,8 @@ unlock tables;
 # 查看主库状态 获取binlog文件和pos位置
 show master status;
 7.回到从库
+# 重新创建一个binlog文件
+reset master;
 # 重新设置同步 master_log_file和master_log_pos 就是第6步查到的binlog文件和pos位置
 change master to master_log_file='binlog.000013',master_log_pos=5056,master_host='主masterIP',master_user='用户名',master_password='密码',master_port=3306;
 # 开启从库
