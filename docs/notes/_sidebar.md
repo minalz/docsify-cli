@@ -18,6 +18,7 @@
   - [String数组转List的三种方式](notes/String数组转List的三种方式.md)
   - [主从同步(GTID)失败](notes/主从同步(GTID)失败.md)
   - [MySQL之mysqldump的使用](notes/MySQL之mysqldump的使用.md)
+  - [MySQL修改用户密码](notes/mysql修改用户密码.md)
   - [201809笔记](notes/201809笔记.md)
   - [201810笔记](notes/201810笔记.md)
   
