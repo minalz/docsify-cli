@@ -80,10 +80,19 @@ mysqldump -uroot -p test --ignore-table=test.t1 --ignore-table=test.t2 > /backup
 ### 3.1 系统行命令
 
 ```mysql
-mysqladmin -uroot -p create db_name 
+# -f 是忽略错误继续执行
+mysqladmin -uroot -p -f create db_name 
 mysql -uroot -p  db_name < /backup/mysqldump/db_name.db
 
 注：在导入备份数据库前，db_name如果没有，是需要创建的； 而且与db_name.db中数据库名是一样的才可以导入。
+```
+
+```tex
+有一个新的问题就是，如果有视图和函数的话，视图中又涉及到了函数，那么备份的时候忽略错误也是不行的，可以通过navicate先将函数或者视图给备份一下
+
+操作：DB(主) -> 选择一个函数进行复制 -> DB(从) -> 粘贴到函数下，会跳出来一个弹框，你可以勾选你想要复制过来的所有表、视图或函数
+
+我只是复制了所有的视图和函数，表还是通过命令来执行的，因为我不清楚把表全部拷贝过去，GTID是否也会更新成功
 ```
 
 ### 3.2 soure 方法
