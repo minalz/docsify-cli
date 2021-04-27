@@ -80,6 +80,15 @@ docker pull tomcat
 docker run -d --name my-tomcat -p 9090:8080 tomcat
 ```
 
+```sh
+# 如果浏览器访问时404,那是因为tomcat是9以上,容器中有一个webapp是空的,还有一个webapp.dist
+docker exec -it my-tomcat bash
+cp -r webapps.dist/* ./webapps
+rm -rf webapps.dist/
+# 再次访问就成功了
+```
+
+
 ## 9.测试创建MySQL
 
 ```sh
