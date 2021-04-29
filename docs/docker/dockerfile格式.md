@@ -4,8 +4,8 @@
 
 ```dockerfile
 FROM openjdk:8 
-MAINTAINER itcrazy2016 
-LABEL name="dockerfile-demo" version="1.0" author="itcrazy2016" 
+MAINTAINER 作者名称 
+LABEL name="dockerfile-demo" version="1.0" author="作者名称" 
 COPY dockerfile-demo-0.0.1-SNAPSHOT.jar dockerfile-image.jar 
 CMD ["java","-jar","dockerfile-image.jar"]
 ```
