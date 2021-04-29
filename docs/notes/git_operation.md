@@ -4,7 +4,7 @@
 
 https://blog.csdn.net/Capgras/article/details/100540501
 
-## git第一次提交:
+## 1.git第一次提交:
 
 + git init     //初始化git
 
@@ -16,7 +16,7 @@ https://blog.csdn.net/Capgras/article/details/100540501
 
 - git push -f origin master     //如果是第一次提交的话，直接提交
 
-## git提交更新操作:
+## 2.git提交更新操作:
 
 - git add style.css     或者    git add .
 
@@ -25,7 +25,7 @@ https://blog.csdn.net/Capgras/article/details/100540501
 - git remote add origin https://github.com/oldmanadvancing/docsify-cli.git
 - git push -u origin master
 
-## git拉取更新操作：
+## 3.git拉取更新操作：
 
 正规流程
 
@@ -56,8 +56,33 @@ https://blog.csdn.net/Capgras/article/details/100540501
 
   https://www.cnblogs.com/Dcl-Snow/p/10476004.html
   
-## 强行推送到仓库
+## 4.强行推送到仓库
 如果一直出现这个错误：
 Push rejected: Push to origin/master was rejected
 + git push -u origin master -f
+
+## 5.切换远程仓库地址
+
+### 5.1 查看远程仓库地址
+
+```bash
+git remote -v
+```
+
+### 5.2 切换远程仓库地址(我用的这个)
+
+```bash
+git remote rm origin
+git remote add origin 你的新远程仓库地址
+```
+
+### 5.3 通过命令直接修改远程仓库地址(没测试)
+
+```bash
+git remote 查看所有远程仓库
+git remote xxx 查看指定远程仓库地址
+git remote set-url origin 你新的远程仓库地址
+```
+
+
 
