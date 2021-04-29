@@ -67,7 +67,7 @@ http {
 
     }
     
-    # jenkins 也改成支持https
+    # 如果想要多个应用都用Nginx来进行转发,比如jenkins 也可以改成支持https
     # 以下属性中以ssl开头的属性代表与证书配置有关，其他属性请根据自己的需要进行配置。
     server {
         listen 9090 ssl;   #SSL协议访问端口号为443。此处如未添加ssl，可能会造成Nginx无法启动。
@@ -91,6 +91,7 @@ http {
 
     }
 
+	# 这个可以配置负载均衡,如果有多个应用,默认是轮询
     upstream balance{ 
         server yourIp1:3000;
         server yourIp2:3000;
