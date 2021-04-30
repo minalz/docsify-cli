@@ -23,11 +23,11 @@ docker volume inspect
 
 > (4)名字不好看，name太长，修改一下
 
-`-v mysql01_volume:/var/lib/mysql`表示给上述的volume起一个能识别的名字
-
 ```sh
 docker run -d --name mysql01 -v mysql01_volume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456	mysql:5.7
 ```
+
+`-v mysql01_volume:/var/lib/mysql`表示给上述的volume起一个能识别的名字
 
 > (5)查看volume
 
@@ -85,6 +85,8 @@ docker run -d --name tomcat01 -p 9090:8080 -v
 
 ```sh
 centos：cd /tmp/test
+# 进入tomcat容器
+docker exec -it tomcat01 bash
 tomcat容器：cd /usr/local/tomcat/webapps/test
 ```
 
