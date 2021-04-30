@@ -77,15 +77,15 @@
 
 13. docker login 脚本登陆的方式
 
-    + 明文登录 不安全
+    > 明文登录 不安全
 
-      ```shell
-      cat pwd.txt | docker login -u [镜像库账户名] [镜像库] --password-stdin
-      ```
+    ```shell
+    cat pwd.txt | docker login -u [镜像库账户名] [镜像库] --password-stdin
+    ```
 
-    + 通过 STDIN 输入密码 查看指令是看不到密码的
+    > 通过 STDIN 输入密码 查看指令是看不到密码的
 
-      ```shell
-      cat pwd.txt | docker login -u [镜像库账户名] [镜像库] --password-stdin
-      ```
+    ```shell
+    cat pwd.txt | docker login -u [镜像库账户名] [镜像库] --password-stdin
+    ```
 
