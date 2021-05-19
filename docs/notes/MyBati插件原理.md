@@ -59,3 +59,23 @@
 1.在Spring的配置文件中配置了一个SqlSessionFactoryBean，它实现了三个接口：InitializingBean、FactoryBean、ApplicationListener
 
 2.通过定义一个实现了InitializingBean接口的SqlSessionFactoryBean类，里面有一个afterPropertiesSet()方法会在bean的属性值设置完的时候被调用。Spring在启动初始化这个Bean的时候，完成了解析和工厂类的创建工作。
+
+3.实现了FactoryBean接口,让用户可以自定义示例话FactoryBean的逻辑
+
+4.实现了ApplicationListener接口让SqlSessionFactoryBean有能力监控应用发出的一些事件通知,比如这里监听ContextRefreshedEvent(上下文监听事件),会在Spring容器加载完之后执行,这里做的事情是检查ms是否加载完毕
+
+```java
+if (this.failFast && event instanceof ContextRefreshedEvent) {
+  this.sqlSessionFactory.getConfiguration().getMappedStatementNames();
+}
+```
+
+5.SqlSessionFactoryBean用到的Spring扩展点总结
+
+| 接口                | 方法                 | 作用                            |
+| ------------------- | -------------------- | ------------------------------- |
+| FactoryBean         | getObject()          | 返回由FactoryBean创建的Bean实例 |
+| InitializingBean    | afterPropertiesSet() | bean属性初始化完成后添加操作    |
+| ApplicationListener | onApplicationEvent() | 对应用的时间进行监听            |
+
+
