@@ -78,4 +78,14 @@ if (this.failFast && event instanceof ContextRefreshedEvent) {
 | InitializingBean    | afterPropertiesSet() | bean属性初始化完成后添加操作    |
 | ApplicationListener | onApplicationEvent() | 对应用的时间进行监听            |
 
+## 五.创建会话SqlSession
 
+1.提供了SqlSession的替代品SqlSessionTemplate，里面有一个实现了InvocationHandler的内部SqlSessionInterceptor，本质是对SqlSession的代理
+
+2.提供了获取SqlSessionTemplate的抽象类SqlSessionDaoSupport
+
+3.扫描Mapper接口，注册到容器中的是MapperFactoryBean，它继承了SqlSessionDaoSupport，可以获得SqlSessionTemplate
+
+4.把Mapper注入使用的时候，调用的是getObject()方法，它实际上是调用了SqlSessionTemplate的getMapper()方法，注入了一个JDK动态代理对象
+
+5.执行Mapper接口的任意方法，会走到出发管理类MapperProxy，进入SQL处理流程
