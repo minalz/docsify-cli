@@ -98,7 +98,7 @@ if (this.failFast && event instanceof ContextRefreshedEvent) {
 | MapperFactoryBean             | 代理对象,继承了SqlSessionDaoSupport用来获取SqlSessionTemplate |
 | SqlSessionHolder              | 控制SqlSession和事务                                         |
 
-六.涉及到的设计模式
+## 六.涉及到的设计模式
 
 | 设计模式   | 类                                                           |
 | ---------- | ------------------------------------------------------------ |
