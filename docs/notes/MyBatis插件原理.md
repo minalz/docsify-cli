@@ -1,4 +1,4 @@
-# MyBati插件原理 
+# MyBatis插件原理 
 
 ## 一.编写拦截器：三个步骤
 
@@ -50,9 +50,9 @@
 
 | 作用         | 描述                                                         | 实现方式                                                     |
 | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 水平分表     | 一张费用表按月度拆分成12张表。fee_202101-202112。当查询条件出现月度(tran_month)时，把select语句中的逻辑表名修改为对应的月份表 | 对query update方法进行拦截，在接口上添加注解，通过反射获取接口注解，根据注解上配置的参数进行分表，修改原SQL，例如id取模，按月分表 |
-| 数据脱敏     | 手机号和身份证在数据库完整存储。但是返回给用户，屏蔽手机号的中间四位。屏蔽身份证号中的出生日期。 | query--对结果集脱敏                                          |
-| 菜单权限控制 | 不同的用户登录，查询菜单权限表时获得不同的结果，在前端展示不同的菜单 | 对query方法进行拦截，在方法上添加注解，根据权限配置，以及用户登录信息，在SQL加上权限过滤条件 |
+| 水平分表     | 一张费用表按月度拆分成12张表。<br />fee_202101-202112。<br />当查询条件出现月度(tran_month)时，把select语句中的逻辑表名修改为对应的月份表 | 对query update方法进行拦截，<br />在接口上添加注解，通过反射获取接口注解，<br />根据注解上配置的参数进行分表，<br />修改原SQL，例如id取模，按月分表 |
+| 数据脱敏     | 手机号和身份证在数据库完整存储。<br />但是返回给用户，屏蔽手机号的中间四位。<br />屏蔽身份证号中的出生日期。 | query--对结果集脱敏                                          |
+| 菜单权限控制 | 不同的用户登录，<br />查询菜单权限表时获得不同的结果，在前端展示不同的菜单 | 对query方法进行拦截，在方法上添加注解，<br />根据权限配置，以及用户登录信息，在SQL加上权限过滤条件 |
 
 ## 四.Spring如何集成MyBatis的
 
@@ -89,3 +89,25 @@ if (this.failFast && event instanceof ContextRefreshedEvent) {
 4.把Mapper注入使用的时候，调用的是getObject()方法，它实际上是调用了SqlSessionTemplate的getMapper()方法，注入了一个JDK动态代理对象
 
 5.执行Mapper接口的任意方法，会走到出发管理类MapperProxy，进入SQL处理流程
+
+| 对象                          | 生命周期                                                     |
+| ----------------------------- | ------------------------------------------------------------ |
+| SqlSessionTemplate            | Spring中SqlSession的替代品,是线程安全的                      |
+| SqlSessionDaoSupport          | 用于获取SqlSessionTemplate                                   |
+| SqlSessionInterceptor(内部类) | 代理对象,用来代理DefaultSqlSession,在SqlSessionTemplate中使用 |
+| MapperFactoryBean             | 代理对象,继承了SqlSessionDaoSupport用来获取SqlSessionTemplate |
+| SqlSessionHolder              | 控制SqlSession和事务                                         |
+
+六.涉及到的设计模式
+
+| 设计模式   | 类                                                           |
+| ---------- | ------------------------------------------------------------ |
+| 工厂模式   | SqlSessionFactory、ObjectFactory、MapperProxyFactory         |
+| 建造者     | XMLConfigbuilder、XMLMapperBuilder、XMLStatementBuilder      |
+| 单例模式   | SqlSessionFactory、Configuration、ErrorContext               |
+| 代理模式   | 绑定: MapperProxy  <br />延迟加载: ProxyFactory  <br />插件: Plugin  <br />Spring继承MyBatis: SqlSessionTemplate的内部SqlSessionInterceptor  <br />MyBatis自带连接池:  PooledConnection  <br />日志打印: ConnectionLogger、StatementLogger |
+| 适配器模式 | Log,对于Log4J、JDK logging 这些没有直接实现slf4j接口的日志组件,需要适配器 |
+| 模板方法   | BaseExecutor、SimpleExecutor、BatchExecutor、ReuseExecutor   |
+| 装饰器模式 | LogginCache、LruCache对PerpetualCache <br />CachingExecutor对其他Executor |
+| 责任链模式 | Interceptor、InterceptorChain                                |
+
