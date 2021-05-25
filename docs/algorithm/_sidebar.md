@@ -15,3 +15,5 @@
 + Tree
   - [1.二叉树的序列化与反序列化](algorithm/tree/二叉树的序列化与反序列化.md)
   - [2.二叉树的前序遍历](algorithm/tree/二叉树的前序遍历.md)
+  - [3.二叉树的中序遍历](algorithm/tree/二叉树的中序遍历.md)
+  - [4.二叉树的后序遍历](algorithm/tree/二叉树的后序遍历.md)
