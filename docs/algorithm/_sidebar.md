@@ -7,11 +7,11 @@
   - [6.回文链表](algorithm/linearList/回文链表.md)
   
 + Stack
-
   - [1.栈的练习](algorithm/stack/栈的练习.md)
   
 + BinarySearch
-
   - [1.二分查找法](algorithm/binarySearch/二分查找法.md)
   
-
++ Tree
+  - [1.二叉树的序列化与反序列化](algorithm/tree/二叉树的序列化与反序列化.md)
+  - [2.二叉树的前序遍历](algorithm/tree/二叉树的前序遍历.md)
