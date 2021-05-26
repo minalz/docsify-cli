@@ -1,5 +1,3 @@
-# 反转链表
-
 ```java
 public class ListNode {
     int val;
