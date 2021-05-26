@@ -17,3 +17,4 @@
   - [2.二叉树的前序遍历](algorithm/tree/二叉树的前序遍历.md)
   - [3.二叉树的中序遍历](algorithm/tree/二叉树的中序遍历.md)
   - [4.二叉树的后序遍历](algorithm/tree/二叉树的后序遍历.md)
+  - [5.二叉树的其他算法题](algorithm/tree/二叉树的其他算法题.md)
