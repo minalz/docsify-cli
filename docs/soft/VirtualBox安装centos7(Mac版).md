@@ -147,7 +147,7 @@ sudo /Library/Application\ Support/VirtualBox/LaunchDaemons/VirtualBoxStartup.sh
 
 ## 5.虚拟机克隆
 
-相同的虚拟机克隆后,IP地址没有变化,需要进行修改,修改only-host的那个网卡信息
+### 5.1 相同的虚拟机克隆后,IP地址没有变化,需要进行修改,修改only-host的那个网卡信息
 
 ```sh
 vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
@@ -159,5 +159,20 @@ wq
 # 重启网卡
 service network restart
 # 查看网卡信息,IP变了
+```
+
+### 5.2 克隆的Linux系统中重启网卡失败“Bringing up interface eth0: Device eth0 does not seem to be present“
+
+参考链接: https://blog.csdn.net/cnds123321/article/details/116356027
+
+```
+注：系统版本CentOS6.3
+执行echo "" > /etc/udev/rules.d/70-persistent-net.rules命令将该文件清空
+接着cp /etc/udev/rules.d/70-persistent-net.rules /etc/udev/rules.d/70-persistent-net.rules.bak备份该文件，防止后面出错不能还原。
+然后执行rm -rf /etc/udev/rules.d/70-persistent-net.rules删除该文件
+再执行vi /etc/sysconfig/network-scripts/ifcfg-eth0命令打开文件，并删除UUID和HWADDR这两行
+保存该文件并退出，执行reboot命令，重启系统
+再次重启网卡服务service network restart命令就可以启动成功了
+最后输入ipconfig命令查看IP地址成功
 ```
 
