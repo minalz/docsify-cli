@@ -28,6 +28,8 @@
   - [3.无重复字符的最长子串](algorithm/hash/无重复字符的最长子串.md)
 
 + Bfs
-  - [1.岛屿数量](岛屿数量.md)
-  - [2.岛屿的周长](岛屿的周长.md)
+  - [1.岛屿数量](algorithm/bfs/岛屿数量.md)
+  - [2.岛屿的周长](algorithm/bfs/岛屿的周长.md)
 
++ Dfs
+  - [1.全排列](algorithm/dfs/全排列.md)
