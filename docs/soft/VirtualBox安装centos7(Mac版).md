@@ -4,17 +4,17 @@
 
 ## 1.准备条件
 
-　　VirtualBox(6.1.4)、centos7 镜像(此文使用的是CentOS-7-x86_64-Minimal-1908.iso) 
+VirtualBox(6.1.4)、centos7 镜像(此文使用的是CentOS-7-x86_64-Minimal-1908.iso) 
 
-　　本文是 Mac 环境下的安装.(之所以选择 6.1.4 版本的 VirtualBox,是因为低版本不兼容.这个会有一个问题,会在最后补充中说明)
+本文是 Mac 环境下的安装.(之所以选择 6.1.4 版本的 VirtualBox,是因为低版本不兼容.这个会有一个问题,会在最后补充中说明)
 
-　　1.1 VirtualBox 下载地址
+1.1 VirtualBox 下载地址
 
-　　　　https://www.virtualbox.org/wiki/Downloads
+https://www.virtualbox.org/wiki/Downloads
 
-　　1.2 Centos 7 镜像下载地址()
+1.2 Centos 7 镜像下载地址()
 
-　　　　http://isoredirect.centos.org/centos/7/isos/x86_64/
+http://isoredirect.centos.org/centos/7/isos/x86_64/
 
 ## 2安装
 
@@ -22,21 +22,21 @@
 
 ![img](images/974873-20200224140557089-1607215199.png)
 
-　　![img](images/974873-20200224140707084-337668872.png)
+![img](images/974873-20200224140707084-337668872.png)
 
- 　　![img](images/974873-20200224141502554-562592588.png)
+![img](images/974873-20200224141502554-562592588.png)
 
- ![img](images/974873-20200224142335124-1983259468.png)
+![img](images/974873-20200224142335124-1983259468.png)
 
 ### 2.2 开始安装
 
 ![img](images/974873-20200224142615759-1912231763.png)
 
-  ![img](images/974873-20200224142634192-1059826798.png)
+![img](images/974873-20200224142634192-1059826798.png)
 
- ![img](images/974873-20200224142748236-594176110.png)
+![img](images/974873-20200224142748236-594176110.png)
 
- ![img](images/974873-20200224143020236-500707882.png)
+![img](images/974873-20200224143020236-500707882.png)
 
  
 
@@ -44,7 +44,7 @@
 
 这里可以设置 root 密码,也可以创建用户,根据自己需求.![img](images/974873-20200224143659886-278513646.png)
 
- 等待安装完成重启。
+等待安装完成重启。
 
 ### 2.3 修改配置
 
@@ -123,13 +123,14 @@ sed -i 's/^ *SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 
 ## 4.补充
 
-## 4.1 Mac 的 VirtulBox6.X 版本的 host-only 配置没有了,怎么配置?![img](images/974873-20200224151346537-942249565.png)
+## 4.1 Mac 的 VirtulBox6.X 版本的 host-only 配置没有了,怎么配置?!
+[img](images/974873-20200224151346537-942249565.png)
 
-　　现在需要这么来设置: 
+现在需要这么来设置: 
 
-　　![img](images/974873-20200224151010757-1597394246.png)
+![img](images/974873-20200224151010757-1597394246.png)
 
- ![img](images/974873-20200224151147152-1477825400.png)
+![img](images/974873-20200224151147152-1477825400.png)
 
 以下是非转载的
 
