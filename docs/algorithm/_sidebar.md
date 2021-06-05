@@ -48,3 +48,5 @@
   - [2.不同路径I](algorithm/dp/不同路径I.md)
   - [3.不同路径II](algorithm/dp/不同路径II.md)
   - [4.最长公共子序列](algorithm/dp/最长公共子序列.md)
+  - [5.单词拆分](algorithm/dp/单词拆分.md)
+  - [6.分割回文串II](algorithm/dp/分割回文串II.md)
