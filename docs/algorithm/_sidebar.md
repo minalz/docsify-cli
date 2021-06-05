@@ -42,3 +42,8 @@
 
 + Trie 前缀树
   - [3.实现Trie(前缀树)](algorithm/trie/实现Trie(前缀树).md)
+
++ Dp 动态规划
+  - [1.爬楼梯](algorithm/dp/爬楼梯.md)
+  - [2.不同路径I](algorithm/dp/不同路径I.md)
+  - [3.不同路径II](algorithm/dp/不同路径II.md)
