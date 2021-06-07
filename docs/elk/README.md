@@ -1,9 +1,3 @@
 # Elk
 
 > Such as ElasticSearch、Kibana、Logstash、filebeat
-
-> 正在学习中...
-
-> 正在学习中...
-
-> 正在学习中...
