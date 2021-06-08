@@ -1,7 +1,7 @@
 + LinearList 线性表
   - [1.链表设计实现](algorithm/linearList/链表设计实现.md)
   - [2.反转链表I](algorithm/linearList/反转链表I.md)
-  - [4.反转链表I](algorithm/linearList/移除链表元素.md)
+  - [4.移除链表元素](algorithm/linearList/移除链表元素.md)
   - [5.奇偶链表](algorithm/linearList/奇偶链表.md)
   - [6.回文链表](algorithm/linearList/回文链表.md)
   
@@ -11,6 +11,13 @@
 + BinarySearch 二分查找法
   - [1.二分查找法](algorithm/binarySearch/二分查找法.md)
   
++ Sort 排序算法
+  - [1.冒泡排序](algorithm/sort/冒泡排序.md)
+  - [2.插入排序](algorithm/sort/插入排序.md)
+  - [3.选择排序](algorithm/sort/选择排序.md)
+  - [4.快速排序](algorithm/sort/快速排序.md)
+  - [5.归并排序](algorithm/sort/归并排序.md)
+
 + Tree 树
   - [1.二叉树的序列化与反序列化](algorithm/tree/二叉树的序列化与反序列化.md)
   - [2.二叉树的前序遍历](algorithm/tree/二叉树的前序遍历.md)
