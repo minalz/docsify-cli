@@ -1,3 +1,6 @@
++ LRU 缓存机制 最近最少使用
+  - [1.LRU缓存机制](algorithm/lru/LRU缓存机制.md)
+
 + LinearList 线性表
   - [1.链表设计实现](algorithm/linearList/链表设计实现.md)
   - [2.反转链表I](algorithm/linearList/反转链表I.md)
