@@ -4,6 +4,7 @@
   - [进制转换](notes/base_conversion.md)
   - [Git指令](notes/git_operation.md)
   - [Kafka常用命令](notes/Kafka常用命令.md)
+  - [Kafka选举机制](notes/Kafka选举机制.md)
   - [Idea使用技巧](notes/idea_skills.md)
   - [MAC使用技巧](notes/mac_skills.md)
   - [MyBatis插件原理](notes/MyBatis插件原理.md)
