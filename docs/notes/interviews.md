@@ -9,7 +9,6 @@
 
 
 1. 抽象类和接口的区别，哪个能实例化
-
 2. MySQL的事务和隔离级别
 3. Spring的事务传播行为
 4. Spring的两大特性，IOC AOP 详细解释一下
@@ -19,17 +18,17 @@
 8. Java中有哪些锁，他们的区别是什么
 9. ArrayList、Vector、LinkedList区别
 10. hashMap、hashTable区别，数据结构的区别是什么
-   11. 哪些Map是安全的，ConcurrentHashMap
-   12. JVM的垃圾回收算法，如何监控的
-   13. 类加载机制，双亲委派模型，如何打破
-   14. SpringMVC的执行流程
-   15. IO与NIO的区别
-   16. Redis中RDB和AOF的区别
-   17. 分布式问题 问了cloud，k8s, docker，因为不会，没有具体问题了
-   18. 数据库连接池用过哪些
-   19. Callable和Runnable的区别
-   20. Map中的扩容因子变化会导致什么
-   21. MySQL和Oracle分页，有什么不同
+11. 哪些Map是安全的，ConcurrentHashMap
+12. JVM的垃圾回收算法，如何监控的
+13. 类加载机制，双亲委派模型，如何打破
+14. SpringMVC的执行流程
+15. IO与NIO的区别
+16. Redis中RDB和AOF的区别
+17. 分布式问题 问了cloud，k8s, docker，因为不会，没有具体问题了
+18. 数据库连接池用过哪些
+19. Callable和Runnable的区别
+20. Map中的扩容因子变化会导致什么
+21. MySQL和Oracle分页，有什么不同
 
 
 
@@ -59,18 +58,6 @@
 16. cookie和session的区别
 17. 用过中间件吗 如何保证数据不丢失
 18. 缓存雪崩 穿透有什么好的解决方案
-
-
-
-HR:
-
-1. 为什么离职
-2. 什么时候出来面试的
-3. 当前有没有offer
-4. 后面还有几家需要面试的
-5. 如果给你发offer了，后面有了更好的offer，你还会来吗--这个问题就是神经病问的
-6. 能不能加班，义务的那种--钱给够就可以
-
 
 
 1. 注解的实现方式
