@@ -3,11 +3,11 @@
   - [JVM内存图解](notes/jvm_memory.md)
   - [进制转换](notes/base_conversion.md)
   - [Git指令](notes/git_operation.md)
-  - [Kafka常用命令](notes/Kafka常用命令.md)
-  - [Kafka选举机制](notes/Kafka选举机制.md)
   - [Idea使用技巧](notes/idea_skills.md)
   - [MAC使用技巧](notes/mac_skills.md)
   - [MyBatis插件原理](notes/MyBatis插件原理.md)
+  - [Kafka常用命令](notes/Kafka常用命令.md)
+  - [Kafka选举机制](notes/Kafka选举机制.md)
   
 + 小程序
   - [小程序开发流程](notes/miniprogram/小程序开发流程.md)
