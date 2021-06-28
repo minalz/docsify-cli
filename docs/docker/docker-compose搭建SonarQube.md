@@ -96,7 +96,7 @@ https://github.com/xuhuisheng/sonar-l10n-zh/releases/tag/sonar-l10n-zh-plugin-1.
 
 ## 6.添加Java语言插件
 
-![image-20210628223609504](/Users/zhouwei/Library/Application Support/typora-user-images/image-20210628223609504.png)
+![image-20210628223609504](images/image-20210628223609504.png)
 
 ## 7.由于我们要扫描Java的应用,所以需要下载规则插件来校验
 
@@ -112,29 +112,29 @@ https://github.com/rhinoceros/sonar-p3c-pmd/releases/tag/pmd-3.2.0-beta-with-p3c
 
 ### 8.1 创建新的语言配置
 
-![image-20210628225929981](/Users/zhouwei/Library/Application Support/typora-user-images/image-20210628225929981.png)
+![image-20210628225929981](images/image-20210628225929981.png)
 
 ### 8.2 激活配置
 
-![image-20210628230845387](/Users/zhouwei/Library/Application Support/typora-user-images/image-20210628230845387.png)
+![image-20210628230845387](images/image-20210628230845387.png)
 
-![image-20210628231013978](/Users/zhouwei/Library/Application Support/typora-user-images/image-20210628231013978.png)
+![image-20210628231013978](images/image-20210628231013978.png)
 
-![image-20210628231105326](/Users/zhouwei/Library/Application Support/typora-user-images/image-20210628231105326.png)
+![image-20210628231105326](images/image-20210628231105326.png)
 
 9.项目连接到SonarQube服务器中
 
 9.1 maven直接连接
 
-![image-20210628231413773](/Users/zhouwei/Library/Application Support/typora-user-images/image-20210628231413773.png)
+![image-20210628231413773](images/image-20210628231413773.png)
 
 点击设置后,会跳转到创建令牌页面
 
-![image-20210628231536044](/Users/zhouwei/Library/Application Support/typora-user-images/image-20210628231536044.png)
+![image-20210628231536044](images/image-20210628231536044.png)
 
 输入一个token名字,随后获取到一个token密钥
 
-![image-20210628231634951](/Users/zhouwei/Library/Application Support/typora-user-images/image-20210628231634951.png)
+![image-20210628231634951](images/image-20210628231634951.png)
 
 使用如下的命令可以进行连接SonarQube,校验代码了
 
@@ -208,15 +208,56 @@ sonar:sonar \
 </profiles>
 ```
 
+执行:
+
+![image-20210628234923434](images/image-20210628234923434.png)
+
 ### 9.3 sonar-scanner的方式
+
+这种方式要单独安装服务,不太方便,每次还需要更改配置什么的,不方便,所以不具体讲了,附了参考链接
 
 #### 9.3.1 需要单独安装一个sonar-scanner的服务
 
 #### 9.3.2 在项目根目录下设置sonar-project.properties的配置
 
+#### 9.3.3 参考链接
 
+```http
+https://blog.csdn.net/wxmiy/article/details/89740578
+```
 
-## 6.docker-compose其他命令
+## 10.前几步执行完毕,都没有问题,说明扫描成功了,回到SonarQube的UI界面
+
+看到如下信息,说明成功了,我们点击项目进去看详细信息
+
+![image-20210628234404860](images/image-20210628234404860.png)
+
+![image-20210628234611550](images/image-20210628234611550.png)
+
+因为我这是demo,所以没什么问题,点异味进去看一下,是什么规则不规范
+
+![image-20210628234705928](images/image-20210628234705928.png)
+
+我们看第二个,说少了@author的注释信息
+
+我们代码中改一下,加上去一段试试,再次扫描
+
+```java
+/**
+ *
+ * 接口控制器
+ * @author minalz
+ * @date 2021/06/328
+ */
+```
+
+刚才的问题解决了
+
+![image-20210628235028458](images/image-20210628235028458.png)
+
+因为这是比较少的,分配人员修改还是比较方便,但是当一个项目有数十万行代码,每次提交大量功能的时候,这时候就不怎么方便了,所以需要集成jenkins来进行操作了
+
+## 11.docker-compose其他命令
 
 ```sh
 docker-compose stop # 停止所有容器
