@@ -65,3 +65,4 @@ SCM provider autodetection failed. Please use "sonar.scm.provider" to define SCM
 
 ## 执行没有报错,回到sonar UI
 查看对应的项目
+
