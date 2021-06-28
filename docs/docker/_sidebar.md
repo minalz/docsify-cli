@@ -9,7 +9,7 @@
   - [Docker数据持久化](docker/docker数据持久化.md)
 
 + SonarQube
+  - [jenkins安装](soft/jenkins安装.md)
   - [Docker-compose搭建SonarQube](docker/docker-compose搭建SonarQube.md)
-  - [SonarQube配置](docker/sonarQube配置.md)
 
   

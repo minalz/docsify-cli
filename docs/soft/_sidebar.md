@@ -2,6 +2,7 @@
 
   - [SourceTree使用](soft/sourceTree.md)
   - [VirtualBox安装centos7(Mac版)](soft/VirtualBox安装centos7(Mac版).md)
+  - [jenkins安装](soft/jenkins安装.md)
   - [其他软件安装](soft/env_install.md)
   
 - 安装docsify遇到的一些问题
