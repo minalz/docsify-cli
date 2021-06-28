@@ -53,13 +53,13 @@ password: admin01
 ## 4.jenkins安装链接参考
 
 ```http
-https://www.jb51.net/article/196239.htm
+https://www.cnblogs.com/cjsblog/p/10740840.html
 ```
 
 ## 5.jenkins和SonarQube集成
 
 ```http
-https://www.jb51.net/article/196239.htm
+https://blog.csdn.net/weixin_39172380/article/details/109580285
 ```
 
 ## 6.注意事项
