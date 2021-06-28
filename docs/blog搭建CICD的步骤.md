@@ -129,7 +129,7 @@ wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
 ### 4.2 启动
 
 ```java
-nohup java -Dhudson.util.ProcessTree.disable=true -jar jenkins.war --httpPort=9090 &
+nohup java -Dhudson.util.ProcessTree.disable=true -jar jenkins.war --httpPort=9090 >/dev/null 2>&1 &
   
 查看日志:
 tail -f nohup.out
