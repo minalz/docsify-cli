@@ -59,7 +59,7 @@ https://www.cnblogs.com/cjsblog/p/10740840.html
 ## 5.jenkins和SonarQube集成
 
 ```http
-https://blog.csdn.net/weixin_39172380/article/details/109580285
+https://www.cnblogs.com/cjsblog/p/10740840.html
 ```
 
 ## 6.注意事项
