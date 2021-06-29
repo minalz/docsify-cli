@@ -214,11 +214,50 @@ sonar:sonar \
 
 ### 9.3 sonar-scanner的方式
 
-这种方式要单独安装服务,不太方便,每次还需要更改配置什么的,不方便,所以不具体讲了,附了参考链接
+适用于其他语言,java不一定要用这,maven完美支持sonar的插件
+
+```http
+# 历史版本下载地址
+https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/
+```
 
 #### 9.3.1 需要单独安装一个sonar-scanner的服务
 
+```sh
+# Mac版本:
+# 安装
+brew install sonar-scanner
+# 设置环境变量
+vi ~/.bash_profile
+export SONAR_RUNNER_HOME=/usr/local/Cellar/sonar-scanner/4.5.0.2216/bin
+# 验证安装是否成功
+sonar-scanner -v
+
+# windows版本原理是差不多的
+```
+
 #### 9.3.2 在项目根目录下设置sonar-project.properties的配置
+
+文件位置: `/usr/local/Cellar/sonar-scanner/4.5.0.2216/libexec/conf`
+
+```properties
+#Configure here general information about the environment, such as SonarQube server connection details for example
+#No information about specific project should appear here
+
+#----- Default SonarQube server
+sonar.host.url=http://localhost:9000
+
+sonar.jdbc.username=admin
+
+sonar.jdbc.password=admin
+
+#----- Default source code encoding
+sonar.sourceEncoding=UTF-8
+```
+
+得到的结果如下图:
+
+![image-20210630000229926](images/image-20210630000229926.png)
 
 #### 9.3.3 参考链接
 
