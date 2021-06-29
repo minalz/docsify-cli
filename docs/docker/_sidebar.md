@@ -10,6 +10,7 @@
 
 + SonarQube
   - [Docker-Compose搭建SonarQube](docker/docker-compose搭建SonarQube.md)
+  - [SonarQube扫描前端代码](docker/SonarQube扫描前端代码.md)
   - [Jenkins安装](soft/jenkins安装.md)
 
   
