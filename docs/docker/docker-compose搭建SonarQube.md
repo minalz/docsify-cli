@@ -1,5 +1,11 @@
 # docker-compose搭建SonarQube
 
+> SonarQube官网:
+
+```http
+https://www.sonarqube.org/
+```
+
 ## 1.准备工作
 
 ```sh
@@ -122,9 +128,15 @@ https://github.com/rhinoceros/sonar-p3c-pmd/releases/tag/pmd-3.2.0-beta-with-p3c
 
 ![image-20210628231105326](images/image-20210628231105326.png)
 
-9.项目连接到SonarQube服务器中
+## 9.项目连接到SonarQube服务器中
 
-9.1 maven直接连接
+SonarScanner for Maven:
+
+```http
+https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/
+```
+
+### 9.1 maven直接连接
 
 ![image-20210628231413773](images/image-20210628231413773.png)
 
