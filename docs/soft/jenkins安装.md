@@ -1,6 +1,6 @@
 # jenkins安装
 
-非docker安装的方式,因为docker安装,因为我有下载好的包,直接这么操作,真正操作肯定还是docker比较方便的,但是需要做好持久化
+非docker安装的方式,因为我有下载好的包,直接这么操作,真正操作肯定还是docker比较方便的,但是需要做好持久化
 
 ## 1.下载jenkins.war
 
@@ -35,7 +35,7 @@ cat /root/.jenkins/secrets/initialAdminPassword
 
 ### 3.2 安装推荐的插件
 
-![image-20210108230432312](https://minalz.cn/images/image-20210108230432312.png)
+![image-20210108230432312](../images/image-20210108230432312.png)
 
 ### 3.3 如果插件下载不成功,修改插件的更新地址试试
 
