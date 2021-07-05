@@ -152,9 +152,9 @@ https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/
 
 ```sh
 mvn sonar:sonar \
-  -Dsonar.projectKey=elkdemo1 \
-  -Dsonar.host.url=http://10.0.3.85:9001 \
-  -Dsonar.login=ce0994e82cd91bce28982a899f028fcf9fd82e9f
+  -Dsonar.projectKey=elkdemo \
+  -Dsonar.host.url=http://localhost:9001 \
+  -Dsonar.login=ce0994e82cd91bce22342a899f028fcf9fd82e9f
 ```
 
 可能会有如下的出错信息
@@ -179,10 +179,11 @@ SCM provider autodetection failed. Please use "sonar.scm.provider" to define SCM
 mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install \
 sonar:sonar \
   -Dsonar.projectKey=elkdemo \
-  -Dsonar.host.url=http://10.0.3.85:9001 \
-  -Dsonar.login=827179f3f1547e2f5bac5282198fea99a9e5ab74 \
+  -Dsonar.host.url=http://localhost:9001 \
+  -Dsonar.login=827179f3f1547e2f34ac5282198fea99a9e5ab74 \
   # 如果单元测试失败 可以继续执行
   -Dmaven.test.failure.ignore=true \
+  # 也可以web ui中设置 scm关闭 这样就会少一个警告 不过关系不大
   -Dsonar.scm.disabled=true
 ```
 
@@ -298,7 +299,7 @@ https://blog.csdn.net/wxmiy/article/details/89740578
  *
  * 接口控制器
  * @author minalz
- * @date 2021/06/328
+ * @date 2021/06/28
  */
 ```
 
