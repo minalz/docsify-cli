@@ -22,3 +22,7 @@ ByType -> ByName
 
 如果type查到一个,不再根据name查了,名字错了也不影响
 
+## 5.@resourse原理
+
+ByName -> ByType
+
