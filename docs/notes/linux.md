@@ -214,19 +214,19 @@ netstat -ntpl | grep :端口号 可以直接查看pid
 
 + `MySQL时间格式化`
 
-  `date_format %Y-%M-%d`
+  date_format %Y-%M-%d
 
 + `Oracle时间格式化`
 
-  1to_char YYYY-MM-DD`
+  to_char YYYY-MM-DD
 
 + `MySQL中value保留两位小数`
 
-  `Round`(value,2)
+  Round(value,2)
 
 + `修复MySQL table`
 
-  `repair/check` table 表名
+  repair/check table 表名
 
 ## 6.yum命令
 
