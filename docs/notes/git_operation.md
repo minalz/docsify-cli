@@ -54,7 +54,7 @@ https://blog.csdn.net/Capgras/article/details/100540501
 + git checkout . 本地所有修改的。没有提交的，都返回到原来的状态
 + windows安装git参考链接：
 
-  https://www.cnblogs.com/Dcl-Snow/p/10476004.html
+https://www.cnblogs.com/Dcl-Snow/p/10476004.html
   
 ## 4.强行推送到仓库
 如果一直出现这个错误：
