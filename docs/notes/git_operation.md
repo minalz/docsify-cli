@@ -46,7 +46,6 @@ https://blog.csdn.net/Capgras/article/details/100540501
 上面是比较安全的做法，如果你可以确定什么都没有改过只是更新本地代码
 
 + git pull (一句命令搞定)
-
 + git branch 看看分支
 + git chechout aaa 切换分支aaa
 + git branck aaa 创建aaa分支
