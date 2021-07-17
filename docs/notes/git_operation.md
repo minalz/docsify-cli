@@ -19,9 +19,7 @@ https://blog.csdn.net/Capgras/article/details/100540501
 ## 2.git提交更新操作:
 
 - git add style.css     或者    git add .
-
 - git commit -m "这是注释内容" 
-
 - git remote add origin https://github.com/oldmanadvancing/docsify-cli.git
 - git push -u origin master
 
