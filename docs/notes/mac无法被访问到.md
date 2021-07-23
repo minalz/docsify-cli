@@ -27,3 +27,5 @@ sudo kextload /Library/Extensions/cpfw.kext
 ```
 
 另外，DMG 安装包里还有个卸载脚本，可以彻底卸载这些 extension 和自启动配置残留。所以这个安装包要留好
+
+也就是说装了这个VPN客户端,虚拟机和Mac主机,就ping不通
