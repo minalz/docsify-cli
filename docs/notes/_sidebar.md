@@ -5,6 +5,7 @@
   - [Git指令](notes/git_operation.md)
   - [Idea使用技巧](notes/idea_skills.md)
   - [MAC使用技巧](notes/mac_skills.md)
+  - [MAC无法被访问到](notes/mac无法被访问到.md)
   
 + Spring
   - [Spring总结](notes/spring总结.md)
