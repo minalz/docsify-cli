@@ -8,8 +8,6 @@
 
 https://blog.csdn.net/weixin_39560657/article/details/111108974
 
-
-
 这个 dropping 行为在安装后就生效。关闭客户端没有效果。需要在命令行手动卸载 kernel extension
 
 在 Mac OS 下，当不需要连入 VPN 的时候，执行
