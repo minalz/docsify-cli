@@ -61,7 +61,6 @@ https://www.jianshu.com/p/bd2bfb553915
 分析：
 
 + MySQL分页正常，Oracle命令未正确结束，只要设置query.setFirstResult和MaxResult就报错
-
 + proxxy.xml 数据库连接正常
 + config.properties 修改Jpa的对应的数据库类型
 
