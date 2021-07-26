@@ -174,13 +174,9 @@
 8. 内存分析过程中会用到的一些指令
 
    + JPS 查看当前Java进行
-
    + Jinfo 查看或者修改JVM参数 试试修改Jinfo -flag name = value PID
-
    + Jstat class/gc
-
    + Jstack PID
-
    + Jmap: 生成堆内存的快照
 
      Jmap -heap PID
@@ -188,12 +184,9 @@
      生成快照文件： Jmap dump:format = b.file:heap.hprof PID
 
    + 分析内存
-
      + 查看内存工具
-
        + Jconsole 
        + Jvisualvm(windows需要安装插件 Mac直接就可以在上面下载插件)
-
        + MAT
        + perfma 在线的 dump分析文件 (你假笨 笨神)
 
@@ -224,9 +217,7 @@
       -XX:+UseG1GC
 
     + 调整内存大小再获取gc日志分析
-
     + 调整最大停顿时间
-
     + 启动并发GC时，堆内存占用百分比
 
       并发周期，基于整个堆的使用率
