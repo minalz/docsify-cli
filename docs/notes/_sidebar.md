@@ -4,6 +4,7 @@
   - [进制转换](notes/base_conversion.md)
   - [Git指令](notes/git_operation.md)
   - [Idea使用技巧](notes/idea_skills.md)
+  - [application.yml文件中@符号识别不了](notes/application.yml文件中@符号识别不了.md)
   - [MAC使用技巧](notes/mac_skills.md)
   - [MAC无法被访问到](notes/mac无法被访问到.md)
   
