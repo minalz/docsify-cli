@@ -24,6 +24,7 @@
   - [MySQL修改用户密码](notes/mysql修改用户密码.md)
   - [MySQL存储过程之循环遍历查询结果集](notes/MySQL存储过程之循环遍历查询结果集.md)
   - [MySQL主从同步(GTID)失败](notes/主从同步(GTID)失败.md)
+  - [MySQL查询最大表列数、行数、占用表空间](notes/MySQL查询最大表列数、行数、占用表空间.md)
   
 + 小程序
   - [小程序开发流程](notes/miniprogram/小程序开发流程.md)
