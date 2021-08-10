@@ -69,7 +69,7 @@ github中不太一样,https和ssh一样也可以实现免密拉取了
 
 如下图添加即可:
 
-![image-20210108220846587](images/image-20210108220846587.png)
+![image-20210108220846587](images/blog搭建CICD的步骤-gitee.assets/image-20210108220846587.png)
 
 测试是否配置成功:
 
@@ -187,7 +187,7 @@ cat /root/.jenkins/secrets/initialAdminPassword
 
 #### 4.3.2 安装推荐的插件:
 
-![image-20210108230432312](images/image-20210108230432312.png)
+![image-20210108230432312](images/blog搭建CICD的步骤-gitee.assets/image-20210108230432312.png)
 
 #### 4.3.3 如果插件下载不成功,修改插件的更新地址试试:
 
@@ -231,7 +231,7 @@ https://gitee.com/help/articles/4193#article-header3
 
 #### 4.4.2.1 webhook配置地址
 
-![image-20210424221005897](images/image-20210424221005897.png)
+![image-20210424221005897](images/blog搭建CICD的步骤-gitee.assets/image-20210424221005897.png)
 
 ### 4.5 编写脚本
 
