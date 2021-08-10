@@ -32,11 +32,22 @@ found character '@' that cannot start any token. (Do not use @ for indentation)
 			</plugin>
 		</plugins>
 		<resources>
-            <!-- 添加resource -->
+            <!-- 用maven来过滤文件 -->
 			<resource>
 				<directory>src/main/resources</directory>
-				<!--开启过滤，用指定的参数替换directory下的文件中的参数-->
+				<!--开启过滤，只过滤yml文件-->
 				<filtering>true</filtering>
+				<includes>
+					<include>**/*.yml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<!--关闭过滤，除了yml文件外，都不过滤-->
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>**/*.yml</exclude>
+				</excludes>
 			</resource>
 		</resources>
 	</build>
