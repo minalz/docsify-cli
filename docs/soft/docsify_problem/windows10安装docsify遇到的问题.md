@@ -2,15 +2,15 @@
 
 ## 1.node安装好之后，出现问题
 
-![image-20200516091429543](images/image-20200516091429543.png)
+![image-20200516091429543](images/windows10安装docsify遇到的问题.assets/image-20200516091429543.png)
 
 开始以为是node版本问题，然后重新卸载，安装了一个高版本的，还是如此，但是多了一个新的提示
 
-![image-20200516091523072](images/image-20200516091523072.png)
+![image-20200516091523072](images/windows10安装docsify遇到的问题.assets/image-20200516091523072.png)
 
 根据新的提示去百度，让npm install pkg-name
 
-![image-20200516091629803](images/image-20200516091629803.png)
+![image-20200516091629803](images/windows10安装docsify遇到的问题.assets/image-20200516091629803.png)
 
 可还是如此，解决不了，又变成了一开始的提示的，没有了颜色字体的提示了
 
@@ -20,7 +20,7 @@
 C:\Windows\System32\cmd.exe
 ```
 
-![image-20200516135229716](images/image-20200516135229716.png)
+![image-20200516135229716](images/windows10安装docsify遇到的问题.assets/image-20200516135229716.png)
 
 然后继续运行，还是不行，用的是win10的powershell管理员权限，还是提示没有这个命令
 
@@ -69,11 +69,11 @@ Set-ExecutionPolicy -Scope CurrentUser
 
 方法二：
 
-![image-20200516135523892](images/image-20200516135523892.png)
+![image-20200516135523892](images/windows10安装docsify遇到的问题.assets/image-20200516135523892.png)
 
 再输入docsify就正常了
 
-![image-20200516135555447](images/image-20200516135555447.png)
+![image-20200516135555447](images/windows10安装docsify遇到的问题.assets/image-20200516135555447.png)
 
 至此，终于搞定了。。。
 
