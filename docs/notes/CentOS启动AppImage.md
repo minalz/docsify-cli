@@ -34,3 +34,5 @@ yum --enablerepo=epel -y install fuse-sshfs # install from EPEL
 解决：
 
 https://blog.csdn.net/salman_tan/article/details/83147827?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-4.control
+
+需要升级gcc，需要编译很久，耐心等待...
