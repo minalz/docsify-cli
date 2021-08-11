@@ -7,6 +7,8 @@
   - [application.yml文件中@符号识别不了](notes/application.yml文件中@符号识别不了.md)
   - [MAC使用技巧](notes/mac_skills.md)
   - [MAC无法被访问到](notes/mac无法被访问到.md)
+  - [远程连接服务器报错解决方案](notes/远程连接服务器报错解决方案.md)
+  - [CentOS启动AppImage](notes/CentOS启动AppImage.md)
   
 + Spring
   - [Spring总结](notes/spring总结.md)
