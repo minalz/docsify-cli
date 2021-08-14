@@ -1,6 +1,6 @@
 # 周炜 
 
-#### *四年开发经验*
+#### *五年开发经验*
 
 > ### 个人信息
 
@@ -14,20 +14,32 @@
 
 > ### 技术能力
 
-1. 对JVM、MySQL、Redis、多线程的原理有所了解
-2. 熟悉主流开发框架和工具如: SSH、SSM、SpringCloud、SpringBoot、Zookeeper、Kafka、RabbitMq、Beetl等
-3. 了解Dubbo、Mycat、Nginx、SpringCloud Alibaba等
-4. 能够搭建和开发独立的功能模块,可以部署服务器环境和项目,有操作云服务器的经验
-5. 熟悉如HTML/CSS/JS,小程序等前端技术,有一年电商经验
-6. 个人博客: https://minalz.github.io/docsify-cli
+1. 对JVM、MySQL、Redis、多线程的原理有所了解,看过Spring、MyBatis、SpringBoot的部分核心源码
+2. 了解微服务架构SpringCloud,对Zookeeper+Dubbo和SpringCloudAlibaba这两套也有涉及
+3. 了解主流开发框架和工具如: RabbitMq、Kafka、JPA、Mycat、Nginx、K8s、Docker、Beetl等
+4. 小程序,IOT和电商均有经验,能够搭建和开发独立的功能模块,具有上云经验
+5. 个人博客: `https://minalz.cn`采用Docker+GitHub/Gitee+Jenkins搭建,并实现CICD
+6. GitHub地址:`https://github.com/minalz`
 
 > ### 工作经历
+
+#### **工作时间：2020/5—至今**
+
+**公司名称：**比孚信息科技有限公司  
+
+**职位名称：**Java Leader
+
+**工作描述：**
+
+1. 设计技术架构,优化或重构业务模块
+2. 评估团队人员的开发计划和技术实现方案
+3. 预研新技术(容器化)在项目上的可行性方案,云部署方案等
 
 #### **工作时间：2017/6—2020/5**
 
 **公司名称：**上海积锐智能科技有限公司  
 
-**职位名称：**Java开发工程师
+**职位名称：**Java高级工程师
 
 **工作描述：**
 
@@ -48,11 +60,36 @@
 
 > ### 项目经验
 
+#### 2020/5-至今	 智能仓储系统
+
+**所属公司：**	  比孚信息科技有限公司
+
+**软件架构：**	   SpringCloud+Consul+GateWay+JPA+Kafka+Redis+MySQL
+
+**服务模块:**  
+
+仓储系统、计划系统、商城系统、进出库系统、财务系统
+
+**项目描述：**	
+
+1. 生产流程控制,责任人的转移,对原料有效时间的控制
+2. 对生产线进行最大效率的计划排班
+3. 内部商城系统,主要用于工厂对应的供应商预购的订单管理
+4. 原料的入库管理和成品的出库管理,以及对货运汽车排班的管理
+5. 财务结算,主要用于对账
+
+**责任描述：**	
+
+1. 利用Redis+Jpa对缓存模块重构,权限和部分影响效率的代码重构等
+2. 对Kafka的消息传递进行调优处理,并对消息丢失进行保证,补偿等
+3. 多线程计算原料的使用率,数量等
+4. 业务和技术方案等的评估
+
 #### **2020/2-2020/5	 打车小程序、司机图像采集系统**
 
 **所属公司：**	  上海积锐智能科技有限公司
 
-**软件架构：**	  SpringBoot+MyBatisPlus+RabbitMq+Redis+MongoDB+MySQL
+**软件架构：**	   SpringBoot+MyBatisPlus+RabbitMq+Redis+MongoDB+MySQL
 
 **项目描述：**	
 
@@ -82,11 +119,13 @@
 
 4. 这是一个人完整做的项目,包括前端,后台,服务器环境等
 
-#### **2019/1-2020/5	车辆监控系统**
+#### **2019/1-至今	车辆监控系统**
 
 **所属公司：**	上海积锐智能科技有限公司
 
-**软件架构：**    SpringCloud+Eureka+Feign+Hystrix+Config+Bus+RabbitMq+MyBatisPlus+Redis+MongoDB+MySQL+Beetl
+**软件架构：**
+
+SpringCloud+Eureka+Feign+Hystrix+Config+Bus+RabbitMq+MyBatisPlus+Redis+MongoDB+MySQL+Beetl
 
 **服务模块:**  
 
@@ -113,8 +152,6 @@
 3. 单点登录,以使得多系统可以联通
 
 4. 通过redis来实现报警的实时显示
-
-5. 项目正在做衍进,准备切换到SrpingCloud Alibaba
 
 #### **2018/3-2018/12	稽查管理、出租车和网约车投屏系统**
 
@@ -146,11 +183,11 @@
 
 6. 项目部署、服务器环境的搭建
 
-#### **2017/6-2020/5	数据管理和营运分析**
+#### **2017/6-至今	数据管理和营运分析**
 
 **所属公司：**	上海积锐智能科技有限公司
 
-**软件架构：**	Strust+Spring+Hibernate+RMI+Bus+Redis+MongoDB+ExtJs+MySQL
+**软件架构：**	Strust + Spring + Hibernate + Bus+ Redis+MongoDB+ExtJs+MySQL
 
 **项目描述：**	
 
@@ -168,9 +205,11 @@
 
 #### **2016/6-2017/6	肤美人网上商城**
 
-**所属公司：**	安徽柯斯达信息科技有限公司
+**所属公司**：	安徽柯斯达信息科技有限公司
 
-**软件架构：**	Springmvc+Spring+Mybatis+Zookeeper+Dubbo+FastDFS+Redis+Solr+Kafka+Nginx+Freemarker+Mycat
+**软件架构：**	
+
+Springmvc + Spring + Mybatis + Dubbo + FastDFS + Redis + solr+Kafka+Nginx+Freemarker+Mycat
 
 **项目描述：**
 
@@ -191,7 +230,5 @@
 > ### 自我评价
 
 1. 热爱技术,对PHP和Shell有一定的了解
-
-2. 擅长总结,工作中遇到的问题,会进行记录并总结原因
-
-3. 有学习规划,目前在学k8s和docker
+2. 擅长总结,工作中遇到的问题,会进行记录并总结原因,博客地址:`https://minalz.cn`
+3. 有学习规划,目前在看Zookeeper和Dubbo的原理
