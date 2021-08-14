@@ -3,6 +3,7 @@
   - [JVM内存图解](notes/jvm_memory.md)
   - [进制转换](notes/base_conversion.md)
   - [Git指令](notes/git_operation.md)
+  - [git_pull失败](notes/git_pull失败.md)
   - [Idea使用技巧](notes/idea_skills.md)
   - [application.yml文件中@符号识别不了](notes/application.yml文件中@符号识别不了.md)
   - [MAC使用技巧](notes/mac_skills.md)
