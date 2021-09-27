@@ -11,6 +11,7 @@
   - [远程连接服务器报错解决方案](notes/远程连接服务器报错解决方案.md)
   - [CentOS启动AppImage](notes/CentOS启动AppImage.md)
   - [内存占满问题排查](notes/内存占满问题排查.md)
+  - [如何查询Linux服务器是几核的](notes/如何查询Linux服务器是几核的.md)
   
 + Spring
   - [Spring总结](notes/spring总结.md)
