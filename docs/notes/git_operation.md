@@ -74,5 +74,12 @@ git remote xxx 查看指定远程仓库地址
 git remote set-url origin 你新的远程仓库地址
 ```
 
+### token使用
 
+clone新的项目时，拼接token和http链接：https://$GH_TOKEN@github.com/owner/repo.git
+clone新的项目时使用http链接，密码换成token
+已经clone的项目，在.git/config中将原来的http中加入token：https://$GH_TOKEN@github.com/owner/repo.git
+
+例如: git remote add origin  https://ghp_sfa1WEIrTsdwjdsfdJbE0Gbzv0yVYF3Z2tNh@github.com/mina
+   lz/docsify-cli.git 
 
