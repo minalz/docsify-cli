@@ -63,7 +63,7 @@ $ ssh -T git@github.com
 Hi minalz! You've successfully authenticated, but GitHub does not provide shell access.
 
 # 注意:
-gitee拉取的链接,需要时ssh,如果是https的依然需要输入账号密码,gitee文档中是有括号说明的
+gitee拉取的链接,需要是ssh,如果是https的依然需要输入账号密码,gitee文档中是有括号说明的
 github中不太一样,https和ssh一样也可以实现免密拉取了
 ```
 
