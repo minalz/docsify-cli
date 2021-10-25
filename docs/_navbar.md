@@ -7,6 +7,14 @@
   * [Git](/notes/git/)
     
   * [MySQL](/notes/mysql/)
+    
+  * [MyBatis](/notes/mybatis/)
+    
+  * [Spring](/notes/spring/)
+    
+  * [Kafka](/notes/kafka/)
+    
+  * [Linux](/notes/linux/)
 
 * [Soft](/soft/)
 
