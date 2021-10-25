@@ -29,6 +29,22 @@
         noData: '找不到结果!',
         depth: 3
       },
+      // 显示文档更新日期
+      formatUpdated: 'YYYY}/{MM}/{DD} {HH}:{mm}',
+      plugins: [
+        function(hook, vm) {
+          hook.beforeEach(function (html) {
+            var url = 'https://github.com/minalz/docsify-cli/tree/master/docs/' + vm.route.file
+            var editHtml = '[📝 EDIT DOCUMENT](' + url + ')\n'
+            var editHtml_end = '[🖊 Edit Document](' + url + ')\n'
+            return editHtml
+                    + html
+                    + '\n----\n'
+                    + '> Last Modified {docsify-updated} '
+                    + editHtml_end
+          })
+        }
+      ],
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>

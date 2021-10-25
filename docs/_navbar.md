@@ -4,6 +4,8 @@
 
 * [Notes](/notes/)
 
+  * [Git](/notes/git/)
+
 * [Soft](/soft/)
 
 * [Docker](/docker/)
