@@ -24,13 +24,6 @@
   - [Kafka常用命令](notes/Kafka常用命令.md)
   - [Kafka选举机制](notes/Kafka选举机制.md)
   
-+ MySQL
-  - [MySQL之mysqldump的使用](notes/MySQL之mysqldump的使用.md)
-  - [MySQL修改用户密码](notes/mysql修改用户密码.md)
-  - [MySQL存储过程之循环遍历查询结果集](notes/MySQL存储过程之循环遍历查询结果集.md)
-  - [MySQL主从同步(GTID)失败](notes/主从同步(GTID)失败.md)
-  - [MySQL查询最大表列数、行数、占用表空间](notes/MySQL查询最大表列数、行数、占用表空间.md)
-  
 + 小程序
   - [小程序开发流程](notes/miniprogram/小程序开发流程.md)
   - [微信小程序自定义拍照的笔记](notes/miniprogram/微信小程序自定义拍照的笔记.md)
