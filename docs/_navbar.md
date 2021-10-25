@@ -5,6 +5,8 @@
 * [Notes](/notes/)
 
   * [Git](/notes/git/)
+    
+  * [MySQL](/notes/mysql/)
 
 * [Soft](/soft/)
 
