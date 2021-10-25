@@ -15,6 +15,8 @@
   * [Kafka](/notes/kafka/)
     
   * [Linux](/notes/linux/)
+    
+  * [Jvm](/notes/jvm/)
 
 * [Soft](/soft/)
 
