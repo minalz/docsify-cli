@@ -1,9 +1,4 @@
 + Notes
-  - [JVM](notes/jvm.md)
-  - [JVM内存图解](notes/jvm_memory.md)
-  - [进制转换](notes/base_conversion.md)
-  - [Git指令](notes/git_operation.md)
-  - [git_pull失败](notes/git_pull失败.md)
   - [Idea使用技巧](notes/idea_skills.md)
   - [application.yml文件中@符号识别不了](notes/application.yml文件中@符号识别不了.md)
   - [MAC使用技巧](notes/mac_skills.md)
@@ -12,17 +7,6 @@
   - [CentOS启动AppImage](notes/CentOS启动AppImage.md)
   - [内存占满问题排查](notes/内存占满问题排查.md)
   - [如何查询Linux服务器是几核的](notes/如何查询Linux服务器是几核的.md)
-  
-+ Spring
-  - [Spring总结](notes/spring总结.md)
-  - [Spring的事务传播行为](notes/Spring的事务传播行为.md)
-
-+ MyBatis
-  - [MyBatis插件原理](notes/MyBatis插件原理.md)
-  
-+ Kafka
-  - [Kafka常用命令](notes/Kafka常用命令.md)
-  - [Kafka选举机制](notes/Kafka选举机制.md)
   
 + 小程序
   - [小程序开发流程](notes/miniprogram/小程序开发流程.md)
