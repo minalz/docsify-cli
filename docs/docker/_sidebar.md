@@ -1,6 +1,7 @@
 + Docker
   - [Docker安装](docker/docker安装.md)
-  - [Docker Compose安装](docker/docker-compose的安装.md)
+  - [Docker-Compose安装](docker/docker-compose的安装.md)
+  - [Docker-Compose搭建Nacos集群](docker/docker-compose搭建nacos集群.md)
   - [Docker命令](docker/docker命令.md)
   - [Docker搭建MySQL](docker/docker搭建MySQL.md)
   - [Docker Nginx安装](docker/docker_nginx安装.md)
