@@ -3,9 +3,9 @@
 ## 1.创建文件,然后volume进行挂载
 
 ```
-mkdir /tmp/nginx/cert 将证书文件传到这个文件夹中
+mkdir /usr/local/myapp/nginx/cert 将证书文件传到这个文件夹中
 
-mkdir /tmp/nginx/nginx.conf
+mkdir /usr/local/myapp/nginx/nginx.conf
 ```
 
 nginx.conf文件如下:
@@ -102,6 +102,6 @@ http {
 ## 2.启动命令
 
 ```shell
-docker run -d --name docsify-nginx -p 80:80 -p 443:443 -p 9020:9020 -v /tmp/nginx/cert:/etc/nginx/cert -v /tmp/nginx/nginx.conf:/etc/nginx/nginx.conf nginx
+docker run -d --name docsify-nginx -p 80:80 -p 443:443 -p 9020:9020 -v /usr/local/myapp/nginx/cert:/etc/nginx/cert -v /usr/local/myapp/nginx/nginx.conf:/etc/nginx/nginx.conf nginx
 ```
 
