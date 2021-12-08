@@ -3,6 +3,7 @@
   - [Docker-Compose安装](docker/docker-compose的安装.md)
   - [Docker-Compose搭建Nacos集群](docker/docker-compose搭建nacos集群.md)
   - [docker-compose安装RocketMQ](docker/docker-compose安装RocketMQ.md)
+  - [docker搭建RabbitMQ](docker/docker搭建RabbitMQ.md)
   - [Docker命令](docker/docker命令.md)
   - [Docker搭建MySQL](docker/docker搭建MySQL.md)
   - [Docker Nginx安装](docker/docker_nginx安装.md)
