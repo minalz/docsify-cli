@@ -74,7 +74,8 @@ git remote xxx 查看指定远程仓库地址
 git remote set-url origin 你新的远程仓库地址
 ```
 
-### token使用
+## 6.token使用
+> 当出现密码不能使用，要求token时，可以用如下的方式暂时拉取代码
 
 clone新的项目时，拼接token和http链接：https://$GH_TOKEN@github.com/owner/repo.git
 clone新的项目时使用http链接，密码换成token
