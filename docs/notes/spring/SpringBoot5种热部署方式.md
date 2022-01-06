@@ -46,5 +46,4 @@ Jrebel是Java开发最好的热部署工具，对 Spring Boot 提供了极佳的
 
 ## 6.参考链接
 
-[my.oschina.net/
-ruoli/blog/1590148](https://mp.weixin.qq.com/s?__biz=MzUzMTA2NTU2Ng==&mid=2247487551&idx=1&sn=18f64ba49f3f0f9d8be9d1fdef8857d9&scene=21#wechat_redirect)
+https://mp.weixin.qq.com/s/29jwIPXSkwD4IIY8dmOWMw
