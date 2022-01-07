@@ -20,6 +20,7 @@
   - [校验值为什么类型的](notes/verify_value.md)
   - [String数组转List的三种方式](notes/String数组转List的三种方式.md)
   - [Excel数据用SQL批量生成](notes/Excel数据用SQL批量生成.md)
+  - [自定义注解校验参数](notes/自定义注解校验参数.md)
   - [201809笔记](notes/201809笔记.md)
   - [201810笔记](notes/201810笔记.md)
   
