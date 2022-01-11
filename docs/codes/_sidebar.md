@@ -2,6 +2,7 @@
   - [Lambda](codes/java8/lambda.md)
   - [Stream](codes/java8/stream.md)
   - [函数式接口](codes/java8/函数式接口.md)
+  - [sorted排序](codes/java8/sorted排序.md)
 + SpringCloud
   - [Ribbon](codes/springcloud/ribbon.md)
 + 设计模式
