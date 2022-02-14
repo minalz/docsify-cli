@@ -58,6 +58,7 @@ git remote rm origin
 # 改成ssh方式 git remote add origin url
 git remote add origin git@github.com:yourname/test.git
 # git remote -v 再查一次 变成ssh方式了 说明成功了
+# 或者 git remote set-url git@xx.git
 ```
 
 ssh查看方式->点击项目进去->点击Code
