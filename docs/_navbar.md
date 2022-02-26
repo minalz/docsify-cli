@@ -25,6 +25,8 @@
   * [Jvm](/notes/jvm/)
     
   * [ELK](/notes/elk/)
+    
+  * [Redis](/notes/redis/)
 
 * [Draw](/draw/)
   
