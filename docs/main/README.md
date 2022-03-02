@@ -236,5 +236,5 @@ Springmvc + Spring + Mybatis + Dubbo + FastDFS + Redis + solr+Kafka+Nginx+Freema
 > ### 自我评价
 
 1. 热爱技术,对PHP和Shell有一定的了解
-2. 擅长总结,工作中遇到的问题,会进行记录并总结原因,博客地址:`https://minalz.cn`
+2. 擅长总结,工作中遇到的问题,会进行记录并总结原因
 3. 有学习规划,目前在看Zookeeper和Dubbo的原理
