@@ -163,7 +163,7 @@ SpringCloud+Eureka+Feign+Hystrix+Config+Bus+RabbitMq+MyBatisPlus+Redis+MongoDB+M
 
 **所属公司：**	上海积锐智能科技有限公司
 
-**软件架构：**	SpringBoot+MyBatisPlus+RabbitMq+Redis+MongoDB+MySQL
+**软件架构：**	SpringBoot +MyBatisPlus+RabbitMq+Redis+MongoDB+MySQL
 
 **项目描述：**	
 
