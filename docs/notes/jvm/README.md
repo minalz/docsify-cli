@@ -1,1 +1,1 @@
-# Study Notes
+# JVM Notes
