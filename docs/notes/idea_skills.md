@@ -8,6 +8,7 @@
 
 3. 保存后 重启idea
 
+
 ## IDEA2020.1启动SpringBoot项目出现java程序包:xxx不存在
 
 例如：Error:(3, 46) java: 程序包org.springframework.context.annotation不存在
