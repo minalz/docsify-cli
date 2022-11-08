@@ -1,7 +1,7 @@
 # MINALZ
 
 
-> Good good study,Day day up
+> Stay Hungry，Stay Foolish
 
 [GitHub](https://github.com/minalz/docsify-cli.git)
 [Start](README.md)
