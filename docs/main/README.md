@@ -18,7 +18,7 @@
 
 1. 对JVM、MySQL、Redis、多线程的原理有所了解,看过Spring、MyBatis、SpringBoot的部分核心源码
 2. 了解微服务架构SpringCloud、SpringCloudAlibaba和Zookeeper+Dubbo
-3. 了解主流开发框架和工具如: RabbitMq、Kafka、JPA、Mycat、Nginx、K8s、Docker、Beetl等
+3. 了解主流开发框架和工具如: Kafka、RabbitMq、RocketMq、JPA、Mycat、Nginx、K8s、Docker、Beetl等
 4. IOT、电商和医疗行业均有经验,能够搭建和开发独立的功能模块,具有上云经验
 5. 个人博客: `https://minalz.cn`,采用Docker+GitHub/Gitee+Jenkins搭建,并实现CICD
 6. GitHub地址:`https://github.com/minalz`
