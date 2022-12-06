@@ -4,7 +4,7 @@
 > Stay Hungry，Stay Foolish
 
 [GitHub](https://github.com/minalz/docsify-cli.git)
-[Start](README.md.bak)
+[Start](README.md)
 
 
 <div style="width:300px;margin:0 auto; padding:20px 0;">
