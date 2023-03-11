@@ -316,9 +316,20 @@ https://www.jianshu.com/p/bb7c19c5fc47
     ./src/redis-cli -h 指定ip -p 指定端口 -a 指定密码
     ```
 
-## 15.Mac安装item2
+## 15.Mac安装Iterm2
 
 参考链接:https://zhuanlan.zhihu.com/p/37195261
+
+```shell
+# 安装后的插件要放在 ～/.zshrc/customer/plugin下
+# 安装iterm2后，本身的terminal会出现终端文字被覆盖的问题：
+```
+![image-01](images/env_install.assets/image-01.png)
+
+解决方式：
+![image-02](images/env_install.assets/image-02.png)
+
+参考链接:https://www.liuchuo.net/archives/4678
 
 ## 16.Mac千万不要随便修改用户,会导致管理员账号和密码丢失
 
