@@ -2,6 +2,7 @@
 
   - [SourceTree使用](soft/sourceTree.md)
   - [VirtualBox安装centos7(Mac版)](soft/VirtualBox安装centos7(Mac版).md)
+  - [window11 通过VirSualBox安装Linux虚拟机](soft/window11 通过VirSualBox安装Linux虚拟机.md)
   - [jenkins安装](soft/jenkins安装.md)
   - [其他软件安装](soft/env_install.md)
   
