@@ -73,3 +73,11 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
   ```sh
   sudo yum install python-pip
   ```
+
++ 如果出现了未识别的字符
+
+​	![ad983d5d993a5f181602bdd06e6d616](D:\AAAWorkSpace\docsify-cli\docs\docker\images\docker-compose的安装.assets\ad983d5d993a5f181602bdd06e6d616.png)
+
+​		解决方式：
+
+​		下载的源文件有问题，可参考链接：https://blog.csdn.net/uoYevoLi520/article/details/131046798
