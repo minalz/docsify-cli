@@ -324,12 +324,12 @@ https://www.jianshu.com/p/bb7c19c5fc47
 # 安装后的插件要放在 ～/.zshrc/customer/plugin下
 ```
 安装iterm2后，本身的terminal(Mac自带的终端配置)会出现终端文字被覆盖的问题：  
-![image-01](images/env_install.assets/image-01.png)
+![image-01](http://img.minalz.cn/typora/image-01.png)
 
 idea中有这样的问题也可以按照这样的方式来解决
 
 解决方式：
-![image-02](images/env_install.assets/image-02.png)
+![image-02](http://img.minalz.cn/typora/image-02.png)
 
 参考链接:https://www.liuchuo.net/archives/4678
 

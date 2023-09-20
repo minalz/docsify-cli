@@ -6,9 +6,7 @@
 
 ### 2.只需要设置一个网卡即可
 
-连接方式：桥接网卡
-
-![image-20230903232418276](D:\TyporaFile\window11 通过VirSualBox安装Linux虚拟机.assets\image-20230903232418276.png)
+连接方式：桥接网卡![image-20230903232418276](http://img.minalz.cn/typora/image-20230903232418276.png)
 
 ### 3.安装步骤参考Mac版，都差不多
 
@@ -121,6 +119,6 @@ ifconfig
 
 主机能ping通虚拟机但虚拟机ping不通主机，原因是防火墙的设置问题
 
-![820c1a029bd0cac2c7944e0d104ea39](D:\AAAWorkSpace\docsify-cli\docs\soft\images\window11 通过VirSualBox安装Linux虚拟机.assets\820c1a029bd0cac2c7944e0d104ea39.png)
+![820c1a029bd0cac2c7944e0d104ea39](http://img.minalz.cn/typora/820c1a029bd0cac2c7944e0d104ea39.png)
 
 参考链接：http://www.zlprogram.com/Show/34/6529088U.shtml
