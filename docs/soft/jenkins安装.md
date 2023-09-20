@@ -35,7 +35,7 @@ cat /root/.jenkins/secrets/initialAdminPassword
 
 ### 3.2 安装推荐的插件
 
-![image-20210108230432312](images/jenkins安装.assets/image-20210108230432312.png)
+![image-20210108230432312](http://img.minalz.cn/typora/image-20210108230432312.png)
 
 ### 3.3 如果插件下载不成功,修改插件的更新地址试试
 

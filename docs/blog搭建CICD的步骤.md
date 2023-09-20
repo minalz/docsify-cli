@@ -31,7 +31,7 @@ ssh-keygen -t rsa -C "your email"
 
 如下图添加即可:
 
-![image-20210108220846587](images/blog搭建CICD的步骤.assets/image-20210108220846587.png)
+![image-20210108220846587](http://img.minalz.cn/typora/image-20210108220846587.png)
 
 测试是否配置成功:
 
@@ -149,7 +149,7 @@ cat /root/.jenkins/secrets/initialAdminPassword
 
 #### 4.3.2 安装推荐的插件:
 
-![image-20210108230432312](images/blog搭建CICD的步骤.assets/image-20210108230432312.png)
+![image-20210108230432312](http://img.minalz.cn/typora/image-20210108230432312.png)
 
 #### 4.3.3 如果插件下载不成功,修改插件的更新地址试试:
 
@@ -203,7 +203,7 @@ github的Settings[个人信息右上角]-->Developer settings-->Personal access 
 
 最后保存好该token，比如:**72f048b514e95d6fe36f86d84374f2dcce402b43
 
-![image-20210108233620327](images/blog搭建CICD的步骤.assets/image-20210108233620327.png)
+![image-20210108233620327](http://img.minalz.cn/typora/image-20210108233620327.png)
 
 > (3)jenkins安装插件
 
@@ -218,19 +218,19 @@ github的Settings[个人信息右上角]-->Developer settings-->Personal access 
 
 添加github服务器
 
-![image-20210108234043017](images/blog搭建CICD的步骤.assets/image-20210108234043017.png)
+![image-20210108234043017](http://img.minalz.cn/typora/image-20210108234043017.png)
 
 添加凭据
 
-![image-20210108233925869](images/blog搭建CICD的步骤.assets/image-20210108233925869.png)
+![image-20210108233925869](http://img.minalz.cn/typora/image-20210108233925869.png)
 
 进行测试
 
-![image-20210109011429739](images/blog搭建CICD的步骤.assets/image-20210109011429739.png)
+![image-20210109011429739](http://img.minalz.cn/typora/image-20210109011429739.png)
 
 一定要在配置pipeline中配置这个,否则无法出发push
 
-![image-20210108234422729](images/blog搭建CICD的步骤.assets/image-20210108234422729.png)
+![image-20210108234422729](http://img.minalz.cn/typora/image-20210108234422729.png)
 
 ### 4.5 编写脚本
 
