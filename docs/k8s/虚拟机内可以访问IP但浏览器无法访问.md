@@ -56,7 +56,7 @@ iptables -F && iptables -X && iptables -F -t nat && iptables -X -t nat && iptabl
 
 然后执行了一遍出错了
 
-![1dbf1f2a3ce21c32b4344170d732d35](http://img.minalz.cn/typora/1dbf1f2a3ce21c32b4344170d732d35.png)
+![1dbf1f2a3ce21c32b4344170d732d35](http://sjluyi7xe.hd-bkt.clouddn.com/typora/1dbf1f2a3ce21c32b4344170d732d35.png)
 
 原来这个报错没有注意到，导致配置环境出错了，流量无法转发，所以访问不到，只能访问对应的节点+ip
 
@@ -64,7 +64,7 @@ iptables -F && iptables -X && iptables -F -t nat && iptables -X -t nat && iptabl
 
 下面是参考链接：
 
-![c8de908967cdf30ed566afc1f059d25](http://img.minalz.cn/typora/c8de908967cdf30ed566afc1f059d25.png)
+![c8de908967cdf30ed566afc1f059d25](http://sjluyi7xe.hd-bkt.clouddn.com/typora/c8de908967cdf30ed566afc1f059d25.png)
 
 参考链接：https://blog.csdn.net/qq_42532161/article/details/104950672
 

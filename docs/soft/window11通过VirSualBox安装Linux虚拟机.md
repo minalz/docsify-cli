@@ -9,7 +9,7 @@
 > 好处是配置一个网卡即可
 > 坏处是宿主机IP一直变动，虚拟机IP也需要跟着变动，IP和GATEWAY都需要跟着宿主机重新匹配才行
 
-连接方式：桥接网卡![image-20230903232418276](http://img.minalz.cn/typora/image-20230903232418276.png)
+连接方式：桥接网卡![image-20230903232418276](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20230903232418276.png)
 
 ### 2.1 设置两个网卡，仅主机网络+NAT（网络地址转换）
 
@@ -128,6 +128,6 @@ ifconfig
 
 主机能ping通虚拟机但虚拟机ping不通主机，原因是防火墙的设置问题
 
-![820c1a029bd0cac2c7944e0d104ea39](http://img.minalz.cn/typora/820c1a029bd0cac2c7944e0d104ea39.png)
+![820c1a029bd0cac2c7944e0d104ea39](http://sjluyi7xe.hd-bkt.clouddn.com/typora/820c1a029bd0cac2c7944e0d104ea39.png)
 
 参考链接：http://www.zlprogram.com/Show/34/6529088U.shtml

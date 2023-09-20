@@ -24,6 +24,8 @@
 
 ## 3.Mysql安装
 
+### 3.1 MacOS
+
 参考链接:
 
 https://www.cnblogs.com/nickchen121/p/11145123.html
@@ -49,6 +51,36 @@ https://www.cnblogs.com/nickchen121/p/11145123.html
    回车后，输入命令 SET PASSWORD FOR 'root'@'localhost' = PASSWORD('你的新密码');
 
    至此，密码修改完成，可以成功登陆。
+
+### 3.2 Linux
+https://blog.csdn.net/weixin_52799373/article/details/125385105/ (低版本跟着链接即可)
+
+如果是高版本mysql8.0的话：
+> msyql8 SET PASSWORD = PASSWORD('ok'); PASSWORD已经过期了 要用新的方法ALTER USER 'username'@'hostname' IDENTIFIED WITH mysql_native_password BY 'ok';
+> MySQL 8 中设置密码时遇到错误可能是因为 PASSWORD() 函数在 MySQL 8 中已经弃用。MySQL 8 推荐使用 CREATE USER 或 ALTER USER 语句结合 AUTHENTICATION 选项来设置或更改用户密码。
+
+解决方法：
+
+如果你是要创建一个新用户并设置密码，可以使用如下命令：
+sql
+CREATE USER 'username'@'hostname' IDENTIFIED WITH mysql_native_password BY 'ok';
+如果你是要更改现有用户的密码，可以使用如下命令：
+sql
+ALTER USER 'username'@'hostname' IDENTIFIED WITH mysql_native_password BY 'ok';
+如果你想使用更安全的密码验证插件，可以使用 mysql_native_password 或其他插件，如 caching_sha2_password：
+sql
+ALTER USER 'username'@'hostname' IDENTIFIED WITH caching_sha2_password BY 'ok';
+
+确保替换 'username' 和 'hostname' 为实际的用户名和主机名。
+
+```shell
+# 执行命令格式
+ALTER USER 'username'@'hostname' IDENTIFIED WITH caching_sha2_password BY 'ok';
+# 执行命令真实用户
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'ok';
+```
+
+注意：从 MySQL 5.7 开始，默认的认证插件从 mysql_native_password 变为了 caching_sha2_password，这可能是为了更安全的密码验证。如果客户端或应用程序不支持新的认证插件，可能需要将认证插件改回到 mysql_native_password。
 
 ## 4.Mac上zookeeper的安装与启动
 
@@ -274,7 +306,7 @@ https://www.jianshu.com/p/bb7c19c5fc47
 + 配置redis为后台启动
 
   ```shell
-  vi /usr/local/redis/etc/redis.conf //将**daemonize no** 改成daemonize yes
+  vi /usr/local/redis/etc/redis.conf //将**daemonize no** 改成daemonize yes 并且 bind 0.0.0.0 需要注释#
   ```
 
   
@@ -316,6 +348,22 @@ https://www.jianshu.com/p/bb7c19c5fc47
     ./src/redis-cli -h 指定ip -p 指定端口 -a 指定密码
     ```
 
+> Linux 第二种安装方式（更简单点，下载链接都一样）
+https://blog.csdn.net/jiedong_xu/article/details/131626318
+
+后续步骤差不多，cp /redis.conf /etc/redis.conf
+并且需要修改里面的配置项
+
+![3fbd97f28341907f3edef4d2f15cb80](http://sjluyi7xe.hd-bkt.clouddn.com/typora/3fbd97f28341907f3edef4d2f15cb80.png)
+
+启动命令：
+
+redis-server /etc/redis.conf
+
+客户端：
+
+redis-cli
+
 ## 15.Mac安装Iterm2
 
 参考链接:https://zhuanlan.zhihu.com/p/37195261
@@ -324,12 +372,12 @@ https://www.jianshu.com/p/bb7c19c5fc47
 # 安装后的插件要放在 ～/.zshrc/customer/plugin下
 ```
 安装iterm2后，本身的terminal(Mac自带的终端配置)会出现终端文字被覆盖的问题：  
-![image-01](http://img.minalz.cn/typora/image-01.png)
+![image-01](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-01.png)
 
 idea中有这样的问题也可以按照这样的方式来解决
 
 解决方式：
-![image-02](http://img.minalz.cn/typora/image-02.png)
+![image-02](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-02.png)
 
 参考链接:https://www.liuchuo.net/archives/4678
 
@@ -371,16 +419,21 @@ idea中有这样的问题也可以按照这样的方式来解决
 
 ## 18.homebrew安装
 
-  https://www.cnblogs.com/haojile/p/13193805.html
+https://www.cnblogs.com/haojile/p/13193805.html
 
 ## 19.Mac连接Linux服务器
 
-  ssh -p 28726 root@107.182.23.xxx
+```shell
+ssh -p 28726 root@107.182.23.xxx
+```
 
 ## 20.vue环境安装
 
-  https://jingyan.baidu.com/article/5225f26bbb430fe6fa0908ce.html
-  
-## 解放双手，markdown文章神器,Typora+PicGo+七牛云图床实现自动上传图片
+https://jingyan.baidu.com/article/5225f26bbb430fe6fa0908ce.html
 
-  https://blog.51cto.com/guosisoft/6471645
+## 21解放双手，markdown文章神器,Typora+PicGo+七牛云图床实现自动上传图片
+
+https://blog.51cto.com/guosisoft/6471645
+  
+## 22.Linux Nacos安装
+https://blog.csdn.net/henrin/article/details/130898186

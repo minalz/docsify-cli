@@ -4,11 +4,11 @@
 
 JRockit是oracle发明的，用于其WebLogic服务器，IBM JVM是IBM发明的用于其Websphere服务器（所以在某行开发的时候，他们用的是IBM的JDK，因为他们使用的IBM的应用程序服务器Websphere，使用其他JDK可能存在兼容性问题）。JRockit和J9不存在永久代这种说法。这里只讨论HotSpot虚拟机，这也是目前使用的最多的JVM。Sun JDK7 HotSpot虚拟机的内存模型如下图所示：
 
-![image-20200928135810574](http://img.minalz.cn/typora/image-20200928135810574.png)
+![image-20200928135810574](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928135810574.png)
 
 ### 1.2堆内存图解：
 
-![image-20200928135830369](http://img.minalz.cn/typora/image-20200928135830369.png)
+![image-20200928135830369](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928135830369.png)
 
 ### 1.3 JVM把内存划分成5片区域：
 
@@ -52,11 +52,11 @@ class Demo {
 
 ### 2.2如下编译：
 
-![image-20200928140013168](http://img.minalz.cn/typora/image-20200928140013168.png)
+![image-20200928140013168](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140013168.png)
 
 ### 2.3加载顺序：
 
-![image-20200928140023681](http://img.minalz.cn/typora/image-20200928140023681.png)
+![image-20200928140023681](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140023681.png)
 
 ## 3.数组内存图解:
 
@@ -83,11 +83,11 @@ class Demo {
 	}
 }
 ```
-![image-20200928140119052](http://img.minalz.cn/typora/image-20200928140119052.png)
+![image-20200928140119052](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140119052.png)
 
 编译后的运行结果：
 
-![image-20200928140125444](http://img.minalz.cn/typora/image-20200928140125444.png)
+![image-20200928140125444](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140125444.png)
 
 这里的数组返回的一串数是空间地址，16进制表示的.(蓝色框所选)
 
@@ -96,7 +96,7 @@ class Demo {
 解释：`对象实例名称+@+对象所在的内存地址`
 源码分析：
 
-![image-20200928140146957](http://img.minalz.cn/typora/image-20200928140146957.png)
+![image-20200928140146957](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140146957.png)
 
 `System.out.println("arr:"+arr);其实就是等同于下句`
 `System.out.println("arr:"+arr.toString());`
@@ -148,28 +148,28 @@ public String toString() {
 
 ### 3.3内存分配分析：
 
-![image-20200928140632269](http://img.minalz.cn/typora/image-20200928140632269.png)
+![image-20200928140632269](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140632269.png)
 
 ### 3.4数组中的异常：
 
 #### 3.4.1数组角标异常：
 
-![image-20200928140658510](http://img.minalz.cn/typora/image-20200928140658510.png)
+![image-20200928140658510](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140658510.png)
 
 因为在堆内存中根本就没有分配第七个空间了
 
-![image-20200928140705656](http://img.minalz.cn/typora/image-20200928140705656.png)
+![image-20200928140705656](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140705656.png)
 
 #### 3.4.2数组的空指针异常：
 
-![image-20200928140712499](http://img.minalz.cn/typora/image-20200928140712499.png)
+![image-20200928140712499](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140712499.png)
 
 因为原本执行堆内存空间的地址被null给赋值了
 如下图所示：
 
-![image-20200928140718813](http://img.minalz.cn/typora/image-20200928140718813.png)
+![image-20200928140718813](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140718813.png)
 
-![image-20200928140728311](http://img.minalz.cn/typora/image-20200928140728311.png)
+![image-20200928140728311](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140728311.png)
 
 ## 4.对象内存图解：
 
@@ -208,7 +208,7 @@ class Demo {
 
 一个java类中可以写多个class，但是只能有一个public类，并且public修饰的class的名称必须和文件名相同，类的修饰符只有public，没有所谓的默认修饰符，如果没有public修饰，那么文件名可以随便起，否则报错：
 
-![image-20200928140924289](http://img.minalz.cn/typora/image-20200928140924289.png)
+![image-20200928140924289](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928140924289.png)
 
 ### 4.3为什么一个java源文件中只能有一个public类？
 
@@ -233,7 +233,7 @@ javac -encoding UTF-8 Demo.java
 
 #### 4.5上述代码的内存图解：
 
-![image-20200928141326230](http://img.minalz.cn/typora/image-20200928141326230.png)
+![image-20200928141326230](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928141326230.png)
 
 ## 5.自加自减分析：a++  ++a
 
@@ -255,7 +255,7 @@ class Demo {
 
 `内存加载分析`：
 
-![image-20200928141404698](http://img.minalz.cn/typora/image-20200928141404698.png)
+![image-20200928141404698](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928141404698.png)
 
 ### 5.2练习：
 
@@ -285,9 +285,9 @@ class Demo {
 
 运行结果：
 
-![image-20200928141431291](http://img.minalz.cn/typora/image-20200928141431291.png)
+![image-20200928141431291](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928141431291.png)
 
 内存分析：
 
-![image-20200928141437277](http://img.minalz.cn/typora/image-20200928141437277.png)
+![image-20200928141437277](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928141437277.png)
 

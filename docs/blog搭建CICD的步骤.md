@@ -31,7 +31,7 @@ ssh-keygen -t rsa -C "your email"
 
 如下图添加即可:
 
-![image-20210108220846587](http://img.minalz.cn/typora/image-20210108220846587.png)
+![image-20210108220846587](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210108220846587.png)
 
 测试是否配置成功:
 
@@ -149,7 +149,7 @@ cat /root/.jenkins/secrets/initialAdminPassword
 
 #### 4.3.2 安装推荐的插件:
 
-![image-20210108230432312](http://img.minalz.cn/typora/image-20210108230432312.png)
+![image-20210108230432312](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210108230432312.png)
 
 #### 4.3.3 如果插件下载不成功,修改插件的更新地址试试:
 
@@ -203,7 +203,7 @@ github的Settings[个人信息右上角]-->Developer settings-->Personal access 
 
 最后保存好该token，比如:**72f048b514e95d6fe36f86d84374f2dcce402b43
 
-![image-20210108233620327](http://img.minalz.cn/typora/image-20210108233620327.png)
+![image-20210108233620327](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210108233620327.png)
 
 > (3)jenkins安装插件
 
@@ -218,25 +218,25 @@ github的Settings[个人信息右上角]-->Developer settings-->Personal access 
 
 添加github服务器
 
-![image-20210108234043017](http://img.minalz.cn/typora/image-20210108234043017.png)
+![image-20210108234043017](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210108234043017.png)
 
 添加凭据
 
-![image-20210108233925869](http://img.minalz.cn/typora/image-20210108233925869.png)
+![image-20210108233925869](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210108233925869.png)
 
 进行测试
 
-![image-20210109011429739](http://img.minalz.cn/typora/image-20210109011429739.png)
+![image-20210109011429739](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210109011429739.png)
 
 一定要在配置pipeline中配置这个,否则无法触发push
 
-![image-20210108234422729](http://img.minalz.cn/typora/image-20210108234422729.png)
+![image-20210108234422729](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210108234422729.png)
 
 配置全局的git账号和邮箱
 
 **Manage Jenkins -> System -> Git plugin**
 
-![image-20240313102953298](http://img.minalz.cn/typora/image-20240313102953298.png)
+![image-20240313102953298](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20240313102953298.png)
 
 ### 4.5 编写脚本
 
@@ -274,7 +274,7 @@ node {
 
 ```shell
 cd /root/.jenkins/workspace/
-mkdir workspace
+mkdir scripts
 vi pwd.txt 然后输入docker hub的密码 我这里是用的阿里云的镜像仓库
 wq
 ```
@@ -291,7 +291,9 @@ cat <<EOF > Dockerfile
 FROM node:12-alpine
 COPY  /   /docs/
 WORKDIR /docs
-RUN npm i docsify-cli -g --registry=https://registry.npm.taobao.org
+# 老的域名 2022年5月31后停止使用了
+# RUN npm i docsify-cli -g --registry=https://registry.npm.taobao.org
+RUN npm i docsify-cli -g --registry=https://registry.npmmirror.com
 EXPOSE 3000/tcp
 ENTRYPOINT docsify serve .
 EOF
@@ -399,7 +401,7 @@ http {
 
 ## 5.2 Github hook触发了，但是jenkins没有自动构建
 
-![auto-orient,1](http://img.minalz.cn/typora/309067949836180.png)
+![auto-orient,1](http://sjluyi7xe.hd-bkt.clouddn.com/typora/309067949836180.png)
 
 解决步骤：
 
@@ -409,7 +411,7 @@ http {
 
 **Manage Jenkins -> System -> Git plugin**
 
-![image-20240313102953298](http://img.minalz.cn/typora/image-20240313102953298.png)
+![image-20240313102953298](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20240313102953298.png)
 
 ## 5.3 如果配置环境是本地的虚拟机，那么还需要做内网穿透，我这里用的cpolar
 
@@ -431,15 +433,15 @@ http {
 
 需要修改jenkins url的地址为内网映射后的地址
 
-![image-20240313103649012](http://img.minalz.cn/typora/image-20240313103649012.png)
+![image-20240313103649012](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20240313103649012.png)
 
 **Jenkins Manager -> System -> Jenkins Location**
 
-![image-20240313103623769](http://img.minalz.cn/typora/image-20240313103623769.png)
+![image-20240313103623769](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20240313103623769.png)
 
 Github的webhook地址也要同步改成内网映射后的地址
 
-![image-20240313103816599](http://img.minalz.cn/typora/image-20240313103816599.png)
+![image-20240313103816599](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20240313103816599.png)
 
 ## 5.4 如果jenkins和k8s不在同一集群中，那么执行yaml文件的时候会报错
 
@@ -471,7 +473,7 @@ echo "k8s 【spring-test-cicd】 deploy success"
 
 # 5.5 jenkins升级后报错
 
-![e0342063080e99338c8aa4b86161627](http://img.minalz.cn/typora/e0342063080e99338c8aa4b86161627.png)
+![e0342063080e99338c8aa4b86161627](http://sjluyi7xe.hd-bkt.clouddn.com/typora/e0342063080e99338c8aa4b86161627.png)
 
 解决方案：
 

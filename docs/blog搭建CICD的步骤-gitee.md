@@ -69,7 +69,7 @@ github中不太一样,https和ssh一样也可以实现免密拉取了
 
 如下图添加即可:
 
-![image-20210108220846587](http://img.minalz.cn/typora/image-20210108220846587.png)
+![image-20210108220846587](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210108220846587.png)
 
 测试是否配置成功:
 
@@ -187,7 +187,7 @@ cat /root/.jenkins/secrets/initialAdminPassword
 
 #### 4.3.2 安装推荐的插件:
 
-![image-20210108230432312](http://img.minalz.cn/typora/image-20210108230432312.png)
+![image-20210108230432312](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210108230432312.png)
 
 #### 4.3.3 如果插件下载不成功,修改插件的更新地址试试:
 
@@ -231,7 +231,7 @@ https://gitee.com/help/articles/4193#article-header3
 
 #### 4.4.2.1 webhook配置地址
 
-![image-20210424221005897](http://img.minalz.cn/typora/image-20210424221005897.png)
+![image-20210424221005897](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210424221005897.png)
 
 ### 4.5 编写脚本
 
@@ -270,7 +270,7 @@ node {
 
 ```shell
 cd /root/.jenkins/workspace/
-mkdir workspace
+mkdir scripts
 vi pwd.txt 然后输入docker hub的密码 我这里是用的阿里云的镜像仓库
 wq
 ```
@@ -287,7 +287,9 @@ cat <<EOF > Dockerfile
 FROM node:10-alpine
 COPY  /   /docs/
 WORKDIR /docs
-RUN npm i docsify-cli -g --registry=https://registry.npm.taobao.org
+# 老的域名 2022年5月31后停止使用了
+# RUN npm i docsify-cli -g --registry=https://registry.npm.taobao.org
+RUN npm i docsify-cli -g --registry=https://registry.npmmirror.com
 EXPOSE 3000/tcp
 ENTRYPOINT docsify serve .
 EOF

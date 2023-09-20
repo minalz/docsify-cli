@@ -6,7 +6,7 @@ https://blog.csdn.net/zjhred/article/details/104951936
 
 ## 1.新建代码库
 
-[![图片](http://img.minalz.cn/typora/640.jpg)](https://mp.weixin.qq.com/s?__biz=MzUzMTA2NTU2Ng==&mid=2247487551&idx=1&sn=18f64ba49f3f0f9d8be9d1fdef8857d9&scene=21#wechat_redirect)
+[![图片](http://sjluyi7xe.hd-bkt.clouddn.com/typora/640.jpg)](https://mp.weixin.qq.com/s?__biz=MzUzMTA2NTU2Ng==&mid=2247487551&idx=1&sn=18f64ba49f3f0f9d8be9d1fdef8857d9&scene=21#wechat_redirect)
 
 下面是常用 的Git 命令清单。几个专用名词的译名如下：
 

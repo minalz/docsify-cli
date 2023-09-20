@@ -9,7 +9,7 @@
 
 说是2021年8月13日,就移除密码验证的方式了,要求使用个人personal access token来进行代替
 
-![image-20210814230803694](http://img.minalz.cn/typora/image-20210814230803694.png)
+![image-20210814230803694](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210814230803694.png)
 
 前一天都还好好的,今天突然就不行,说明验证方式确实是出问题了,查了一些资料,也是这么说的
 
@@ -29,7 +29,7 @@ git之前都是配置好的,没有问题的,起码git上的公私钥都是没问
 
 点击头像->Settings->左边菜单栏Developer settings->Personal access tokens->generate new token->完成信息设置->保存好这个token,窗口关闭就看不到了
 
-![image-20210814233827899](http://img.minalz.cn/typora/image-20210814233827899.png)
+![image-20210814233827899](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210814233827899.png)
 
 最后点击Generate token->一定要记得保存token,如果丢了,只能再重新设置一遍了
 
@@ -39,7 +39,7 @@ git之前都是配置好的,没有问题的,起码git上的公私钥都是没问
 
 Idea中打开设置->GitHub->如果之前是用户名密码设置的,删除点,然后点'+',重新添加,选择Enter token
 
-![image-20210814233450067](http://img.minalz.cn/typora/image-20210814233450067.png)
+![image-20210814233450067](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210814233450067.png)
 
 ## 4.重新设置git origin
 
@@ -63,6 +63,6 @@ git remote add origin git@github.com:yourname/test.git
 
 ssh查看方式->点击项目进去->点击Code
 
-![image-20210814234423342](http://img.minalz.cn/typora/image-20210814234423342.png)
+![image-20210814234423342](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210814234423342.png)
 
 ## 5.再次git pull
