@@ -280,9 +280,9 @@ echo "==========开始Build=========="
 # 进入到docsify-cli目录
 cd ../docsify-cli/docs
 
-# 编写Dockerfile文件
+# 编写Dockerfile文件 之前是10-alpine 但是会报错，升级成12-alpine之后就可以正常启动了
 cat <<EOF > Dockerfile
-FROM node:10-alpine
+FROM node:12-alpine
 COPY  /   /docs/
 WORKDIR /docs
 RUN npm i docsify-cli -g --registry=https://registry.npm.taobao.org
