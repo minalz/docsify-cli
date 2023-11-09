@@ -4,3 +4,4 @@
 + [MySQL主从同步(GTID)失败](notes/mysql/MySQL主从同步(GTID)失败.md)
 + [MySQL查询最大表列数、行数、占用表空间](notes/mysql/MySQL查询最大表列数、行数、占用表空间.md)
 + [MySQL对表结构进行增删改操作](notes/mysql/MySQL对表结构进行增删改操作.md)
++ [MySQL字段值更新](notes/mysql/MySQL字段值更新.md)
