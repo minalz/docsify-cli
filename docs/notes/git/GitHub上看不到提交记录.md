@@ -24,3 +24,16 @@
     ```
 
 3. 强制修改提交历史： 如果之前的提交已经使用了错误的用户名和邮箱，你可以使用 git filter-branch 或者 git rebase 来修改提交历史。这样做会改变历史记录，谨慎操作。可以参考 Git 文档或其他资源学习如何修改提交历史。
+
+4. 最后使用的方式
+
+```shell
+git filter-branch --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "<old_username>" ];
+  then
+      export GIT_AUTHOR_NAME="<new_username>";
+      export GIT_AUTHOR_EMAIL="<new_email>";
+      git commit-tree "$@";
+  else
+      git commit-tree "$@";
+  fi' -- --all
+```
