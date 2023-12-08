@@ -25,7 +25,7 @@
 
 3. 强制修改提交历史： 如果之前的提交已经使用了错误的用户名和邮箱，你可以使用 git filter-branch 或者 git rebase 来修改提交历史。这样做会改变历史记录，谨慎操作。可以参考 Git 文档或其他资源学习如何修改提交历史。
 
-4. 最后使用的方式
+4. 用脚本命令提交
 
 ```shell
 git filter-branch --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "<old_username>" ];
@@ -36,4 +36,20 @@ git filter-branch --commit-filter 'if [ "$GIT_AUTHOR_NAME" = "<old_username>" ];
   else
       git commit-tree "$@";
   fi' -- --all
+  
+  git push --force --all
+```
+
+5. 以上都不行，最后是用的以下方式
+
+在GitHub上添加提交记录的邮箱
+
+```text
+登录到 GitHub 账户。
+
+点击右上角的用户头像，选择 "Settings"（设置）。
+
+在左侧菜单中选择 "Emails"（邮件）。
+
+这里会列出你在 GitHub 上添加的所有邮箱。你可以看到哪些邮箱被确认，以及它们的状态（验证过或未验证）。
 ```
