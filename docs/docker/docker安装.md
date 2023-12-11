@@ -2,6 +2,8 @@
 
 ## 1.卸载之前的docker
 
+> 系统自带的docker版本
+
 ```sh
 sudo yum remove docker \
                   docker-client \
@@ -12,6 +14,30 @@ sudo yum remove docker \
                   docker-logrotate \
                   docker-engine
 ```
+
+> 如果是已经安装过一次docker的，用下面的方式卸载
+
+```shell
+[root@minalz101 ~]# rpm -qa |grep docker
+docker-compose-plugin-2.20.2-1.el7.x86_64
+docker-ce-rootless-extras-24.0.5-1.el7.x86_64
+docker-buildx-plugin-0.11.2-1.el7.x86_64
+docker-ce-cli-24.0.5-1.el7.x86_64
+docker-ce-24.0.5-1.el7.x86_64
+```
+
+```shell
+sudo yum remove docker \
+        docker-compose-plugin-2.20.2-1.el7.x86_64 \
+        docker-ce-rootless-extras-24.0.5-1.el7.x86_64 \
+        docker-buildx-plugin-0.11.2-1.el7.x86_64 \
+        docker-ce-cli-24.0.5-1.el7.x86_64 \
+        docker-ce-24.0.5-1.el7.x86_64
+        
+rm -rf /var/lib/docker 
+```
+
+参考链接：https://blog.csdn.net/Zhousan0125/article/details/130574769
 
 ## 2.安装必要的依赖
 
@@ -42,7 +68,11 @@ sudo yum install -y docker-ce docker-ce-cli containerd.io
 ## 5.启动docker
 
 ```sh
+# 启动docker
 sudo systemctl start docker
+
+# 开启自启动
+sudo systemctl enable docker
 ```
 
 ## 6.添加镜像加速器，这里用的是阿里云
