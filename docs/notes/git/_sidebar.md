@@ -1,4 +1,6 @@
 + [Git指令](notes/git/git_operation.md)
 + [git_pull失败](notes/git/git_pull失败.md)
++ [GitHub上看不到提交记录](notes/git/GitHub上看不到提交记录.md)
 + [github和gitee配置sshkey冲突解决](notes/git/github和gitee配置sshkey冲突解决.md)
++ [Git一直推送失败](notes/git/Git一直推送失败.md)
 + [Git各种操作命令详细清单](notes/git/Git各种操作命令详细清单.md)
