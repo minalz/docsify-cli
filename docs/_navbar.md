@@ -6,7 +6,7 @@
 
 * [Docker](/docker/)
 * 
-* [Kubernetes](/kubernetes/)
+* [K8s](/k8s/)
 
 * [Algorithm](/algorithm/)
 
