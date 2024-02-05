@@ -5,7 +5,6 @@
   - [四）Service相关理论与实践](k8s/Service相关理论与实践.md)
   - [五）Kubernetes实战走起](k8s/Kubernetes实战走起.md)
 + 问题与总结
-  - [虚拟机内可以访问IP但是浏览器无法访问](k8s/虚拟机内可以访问IP但是浏览器无法访问.md)
   - [解决k8s无法拉取镜像的问题](k8s/解决k8s无法拉取镜像的问题.md)
   - [k8s集群的POD内不能访问service](k8s/k8s集群的pod内不能访问service.md)
   - [虚拟机内可以访问IP但浏览器无法访问](k8s/虚拟机内可以访问IP但浏览器无法访问.md)
