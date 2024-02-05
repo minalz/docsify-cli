@@ -1,7 +1,5 @@
 # 01 搭建K8s集群[无需科学上网]
 
-> 非原创笔记
-
 > `官网`：<https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl>
 >
 > `GitHub`：https://github.com/kubernetes/kubeadm
@@ -142,6 +140,8 @@ sed -i '/swap/s/^\(.*\)$/#\1/g' /etc/fstab
 
 # (4)配置iptables的ACCEPT规则
 iptables -F && iptables -X && iptables -F -t nat && iptables -X -t nat && iptables -P FORWARD ACCEPT
+
+# 第四步要注意是否有报错，否则虚拟机+NodePort端口是无法访问的，只能访问对应节点+NodePort端口
 
 # (5)设置系统参数
 cat <<EOF >  /etc/sysctl.d/k8s.conf
@@ -381,8 +381,10 @@ kubectl apply -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml
 # 确认一下calico是否安装成功
 kubectl get pods --all-namespaces -w
 
+# 以下是自己搭建过程中出现问题的解决方案
+
 # 第一次成功了，但是熄了一次屏之后还是怎么的calico就启不来了，报IP冲突 - 验证不行
-kubectl set env daemonset/calico-node -n kube-system IP=10.0.2.10/24 IP6=fd80:24e2:f998:72d6::/120
+kubectl set env daemonset/calico-node -n kube-system IP=10.244.0.0/16 IP6=fd80:24e2:f998:72d6::/120 -- 这个不能乱用，会导致分配的ip出问题，导致后续ping不通service的IP地址
 
 解决方案：https://docs.tigera.io/archive/v3.18/networking/ip-autodetection
 

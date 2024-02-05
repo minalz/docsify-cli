@@ -1,4 +1,4 @@
-# k8s集群的POD内不能访问service
+# k8s集群的pod内不能访问service
 
 > 使用VirtualBox搭建的虚拟机，然后创建了k8s集群，但是无法访问service的IP
 
@@ -61,6 +61,14 @@ ipvs:
 ```
 
 #### 3.将ipvs模式设置为ip_vs相关模块
+
+> 每一个节点都要执行一次，master和worker都需要，否则重启了kube-proxy还是会报错的，如下错误
+
+```shell
+can't determine whether to use ipvs proxy, error: IPVS proxier will not be used because the following required kernel modules are not loaded: [ip_vs ip_vs_rr ip_vs_wrr ip_vs_sh]
+```
+
+配置如下：
 
 ```shell
 cat > /etc/sysconfig/modules/ipvs.modules <<EOF
