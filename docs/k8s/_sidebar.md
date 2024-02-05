@@ -4,3 +4,4 @@
   - [使用Kubeadm搭建集群K8s](k8s/使用Kubeadm搭建集群K8s.md)
   - [虚拟机内可以访问IP，但是浏览器无法访问](k8s/虚拟机内可以访问IP，但是浏览器无法访问.md)
   - [解决k8s无法拉取镜像的问题](k8s/解决k8s无法拉取镜像的问题.md)
+  - [k8s集群的POD内不能访问service](k8s/k8s集群的POD内不能访问service.md)
