@@ -5,7 +5,7 @@
 * [Soft](/soft/)
 
 * [Docker](/docker/)
-* 
+
 * [K8s](/k8s/)
 
 * [Algorithm](/algorithm/)
