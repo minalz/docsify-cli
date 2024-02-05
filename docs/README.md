@@ -60,7 +60,7 @@ Docker + Docsify + jenkins + Gitee 并且已经实现了CICD
 
 > 原理
 
-输出中...
+已输出
 
 > K8S
 
@@ -68,7 +68,7 @@ Docker + Docsify + jenkins + Gitee 并且已经实现了CICD
 
 ## Algorithm
 
-持续输出中...
+已输出
 
 ## ELK
 
