@@ -228,9 +228,15 @@ github的Settings[个人信息右上角]-->Developer settings-->Personal access 
 
 ![image-20210109011429739](http://img.minalz.cn/typora/image-20210109011429739.png)
 
-一定要在配置pipeline中配置这个,否则无法出发push
+一定要在配置pipeline中配置这个,否则无法触发push
 
 ![image-20210108234422729](http://img.minalz.cn/typora/image-20210108234422729.png)
+
+配置全局的git账号和邮箱
+
+**Manage Jenkins -> System -> Git plugin**
+
+![image-20240313102953298](http://img.minalz.cn/typora/image-20240313102953298.png)
 
 ### 4.5 编写脚本
 
@@ -389,5 +395,77 @@ http {
     server {
         listen 80;
 ...
+```
+
+## 5.2 Github hook触发了，但是jenkins没有自动构建
+
+![auto-orient,1](http://img.minalz.cn/typora/309067949836180.png)
+
+解决步骤：
+
+1.github网络不好，连接超时
+
+2.jenkins上的git无法访问，配置一下github的name和email
+
+**Manage Jenkins -> System -> Git plugin**
+
+![image-20240313102953298](http://img.minalz.cn/typora/image-20240313102953298.png)
+
+## 5.3 如果配置环境是本地的虚拟机，那么还需要做内网穿透，我这里用的cpolar
+
+链接：https://dashboard.cpolar.com/status
+
+缺点：启动的时候提供http和https的域名，但是重新启动后，域名就会变动
+
+其他软件：
+
+1.花生壳可以，但是https需要额外花6元认证
+
+2.ngork，会不定时变动域名，不稳定
+
+3.神桌，免费3天，后续就要收费了
+
+4.natfrp，免费，但是是境外服务，延迟比较高，链接：https://www.natfrp.com/user/
+
+具体配置：
+
+需要修改jenkins url的地址为内网映射后的地址
+
+![image-20240313103649012](http://img.minalz.cn/typora/image-20240313103649012.png)
+
+**Jenkins Manager -> System -> Jenkins Location**
+
+![image-20240313103623769](http://img.minalz.cn/typora/image-20240313103623769.png)
+
+Github的webhook地址也要同步改成内网映射后的地址
+
+![image-20240313103816599](http://img.minalz.cn/typora/image-20240313103816599.png)
+
+## 5.4 如果jenkins和k8s不在同一集群中，那么执行yaml文件的时候会报错
+
+1.在同一集群中执行，并且jenkins在master节点上，如果是在worker节点上，需要单独在那个worker节点上执行命令
+
+```sh
+切换到master上，cd ~  --->  cat .kube/config  --->复制内容
+切换到worker上   cd ~  --->  vi .kube/config   --->粘贴内容
+```
+
+2.不在同一集群中，就需要跨机器进行操作了
+
+2.1 首先是hub仓库登录
+
+```sh
+cat /usr/local/myapp/scripts/pwd.txt | docker login -u yourname registry.cn-hangzhou.aliyuncs.com --password-stdin
+# pwd.txt 需要单独建在同一文件夹下 输入一行密码即可
+```
+
+2.2 执行yaml中的脚本命令
+
+```sh
+kubectl delete -f /usr/local/myapp/scripts/spring-test-cicd.yaml
+
+kubectl apply -f /usr/local/myapp/scripts/spring-test-cicd.yaml
+
+echo "k8s 【spring-test-cicd】 deploy success"
 ```
 

@@ -7,6 +7,7 @@
   - [CentOS启动AppImage](notes/CentOS启动AppImage.md)
   - [内存占满问题排查](notes/内存占满问题排查.md)
   - [如何查询Linux服务器是几核的](notes/如何查询Linux服务器是几核的.md)
+  - [实现两台服务器之间的免密登录](notes/实现两台服务器之间的免密登录.md)
   
 + 小程序
   - [小程序开发流程](notes/miniprogram/小程序开发流程.md)
