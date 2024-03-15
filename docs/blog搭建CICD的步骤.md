@@ -469,3 +469,18 @@ kubectl apply -f /usr/local/myapp/scripts/spring-test-cicd.yaml
 echo "k8s 【spring-test-cicd】 deploy success"
 ```
 
+# 5.5 jenkins升级后报错
+
+![e0342063080e99338c8aa4b86161627](http://img.minalz.cn/typora/e0342063080e99338c8aa4b86161627.png)
+
+解决方案：
+
+https://blog.csdn.net/CutelittleBo/article/details/123250302
+
+注意观察一下操作指令，直接复制执行，会漏命令
+
+解决方案：
+
+https://blog.csdn.net/weixin_45468221/article/details/122861158
+
+这个命令是第一个解决方案中的其中一个，按理说执行这个即可，但由于我是先执行了第一个，所以无法确定
