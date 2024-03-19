@@ -1,6 +1,6 @@
 # SakuraFrp使用手册
 
-官方链接：https://doc.natfrp.com/launcher/usage.html#macos-autostart
+官方链接：https://doc.natfrp.com/launcher/usage.html
 
 > 如果是Linux版本，前提条件需要安装zstd工具：
 
@@ -9,7 +9,7 @@
    在编译 zstd 之前，你需要安装一些编译工具和依赖项。运行以下命令安装所需的软件包：
 
    ```sh
-   bashCopy codesudo yum groupinstall "Development Tools"
+   sudo yum group install "Development Tools"
    sudo yum install cmake
    ```
 
@@ -17,12 +17,11 @@
 
 2. **下载并编译源代码**：
 
-   首先，下载 zstd 的源代码。你可以从官方 GitHub 仓库（https://github.com/facebook/zstd/releases）下载最新的稳定版本。
+   首先，下载 zstd 的源代码。你可以从官方 GitHub 仓库（https://github.com/facebook/zstd/releases）下载最新的稳定版。
 
    解压下载的压缩包，然后进入解压后的目录。在目录中执行以下命令编译 zstd：
 
    ```sh
-   bashCopy code
    make
    ```
 
@@ -33,7 +32,6 @@
    编译成功后，运行以下命令安装 zstd：
 
    ```sh
-   bashCopy code
    sudo make install
    ```
 
@@ -44,19 +42,18 @@
    最后，你可以使用以下命令验证 zstd 是否成功安装：
 
    ```sh
-   bashCopy code
    zstd --version
    ```
 
    如果 zstd 安装成功，你应该会看到版本信息。
 
+### 问题
 
+#### 1.如何执行
 
 安装了启动器后，Web UI上要单独配置隧道，并且frpc还要单独执行命令行的命令，此时远程管理上才能看到隧道的状态
 
-
-
-自定义域名验证步骤：
+#### 2.自定义域名验证步骤：
 
 不需要添加WorkingDirectory=/ect/frpc 默认就是当前目录
 
@@ -70,9 +67,7 @@
 
 然后再到sakura frp web ui上验证域名是否备案
 
-
-
-jenkins hook url配置的地方报错
+#### 3.jenkins hook url配置的地方报错
 
 ```
 Caused: sun.security.validator.ValidatorException: PKIX path building failed
@@ -86,10 +81,29 @@ keytool -import -trustcacerts -keystore $JAVA_HOME/lib/security/cacerts -storepa
 
 jenkins需要重启
 
-此时都能访问了，然后我们配置github webhooks时，发现一只delivery失败 500
+#### 4.一直delivery500
+
+此时都能访问了，然后我们配置github webhooks时，发现一直delivery失败 500
 
 将ssl配置禁用接口（这就是证书验证失败的原因），找了很多方法都无法解决，最后只能修改github webhooks中的校验配置了
 
 ![image-20240315143151236](http://img.minalz.cn/typora/image-20240315143151236.png)
 
 重新验证delivery,推送是成功的
+
+#### 5.安装sakura frp报错
+
+启动的时候，创建不了.config的文件，发现是新创建的natfrp用户没有/home/natfrp下创建文件的权限导致的
+
+```sh
+sudo chown natfrp:natfrp /home/natfrp
+```
+
+重新启动
+
+```sh
+systemctl start natfrp.service
+sleep 3
+systemctl stop natfrp.service
+```
+
