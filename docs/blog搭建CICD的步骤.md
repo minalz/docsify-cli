@@ -274,7 +274,7 @@ node {
 
 ```shell
 cd /root/.jenkins/workspace/
-mkdir workspace
+mkdir scripts
 vi pwd.txt 然后输入docker hub的密码 我这里是用的阿里云的镜像仓库
 wq
 ```
@@ -291,7 +291,9 @@ cat <<EOF > Dockerfile
 FROM node:12-alpine
 COPY  /   /docs/
 WORKDIR /docs
-RUN npm i docsify-cli -g --registry=https://registry.npm.taobao.org
+# 老的域名 2022年5月31后停止使用了
+# RUN npm i docsify-cli -g --registry=https://registry.npm.taobao.org
+RUN npm i docsify-cli -g --registry=https://registry.npmmirror.com
 EXPOSE 3000/tcp
 ENTRYPOINT docsify serve .
 EOF
