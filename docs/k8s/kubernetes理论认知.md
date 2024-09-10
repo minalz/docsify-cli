@@ -27,17 +27,17 @@ ETCD
 10-至于像容器的持久化存储，网络等可以联系一下Docker中的内容
 ```
 
-![image-20231208161618629](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20231208161618629.png)
+![image-20231208161618629](http://img.minalz.cn/typora/image-20231208161618629.png)
 
 不妨把这个图翻转一下方便查看
 
-![image-20231208161702697](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20231208161702697.png)
+![image-20231208161702697](http://img.minalz.cn/typora/image-20231208161702697.png)
 
 (12)官网K8S架构图
 
 https://kubernetes.io/docs/concepts/architecture/cloud-controller/
 
-![image-20231208161723745](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20231208161723745.png)
+![image-20231208161723745](http://img.minalz.cn/typora/image-20231208161723745.png)
 
 **Minikube[Y]**
 

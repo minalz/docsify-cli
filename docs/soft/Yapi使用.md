@@ -84,19 +84,19 @@ https://easyyapi.com/documents/index.html
 
 第一步：Plugins->Marketplace->EasyYapi install
 
-![image-20230315175258922](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20230315175258922.png)
+![image-20230315175258922](http://img.minalz.cn/typora/image-20230315175258922.png)
 
 
 
 ### 7.安装好了进行配置
 
-![image-20230315175506022](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20230315175506022.png)
+![image-20230315175506022](http://img.minalz.cn/typora/image-20230315175506022.png)
 
 
 
 ### 8.获取token
 
-![image-20230315175529452](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20230315175529452.png)
+![image-20230315175529452](http://img.minalz.cn/typora/image-20230315175529452.png)
 
 
 
@@ -130,7 +130,7 @@ https://easyyapi.com/documents/index.html
 
 #### 9.3 推送方式Ctrl+Alt+E
 
-![image-20230315183353900](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20230315183353900.png)
+![image-20230315183353900](http://img.minalz.cn/typora/image-20230315183353900.png)
 
 
 
@@ -138,10 +138,10 @@ https://easyyapi.com/documents/index.html
 
 #### 10.1 基本信息和请求参数
 
-![image-20230315183222163](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20230315183222163.png)
+![image-20230315183222163](http://img.minalz.cn/typora/image-20230315183222163.png)
 
 
 
 #### 10.2 返回数据
 
-![image-20230315183238940](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20230315183238940.png)
+![image-20230315183238940](http://img.minalz.cn/typora/image-20230315183238940.png)

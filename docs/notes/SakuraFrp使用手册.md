@@ -87,7 +87,7 @@ jenkins需要重启
 
 将ssl配置禁用接口（这就是证书验证失败的原因），找了很多方法都无法解决，最后只能修改github webhooks中的校验配置了
 
-![image-20240315143151236](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20240315143151236.png)
+![image-20240315143151236](http://img.minalz.cn/typora/image-20240315143151236.png)
 
 重新验证delivery,推送是成功的
 

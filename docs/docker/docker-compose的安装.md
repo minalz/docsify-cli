@@ -76,7 +76,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 + 如果出现了未识别的字符
 
-​	![ad983d5d993a5f181602bdd06e6d616](http://sjluyi7xe.hd-bkt.clouddn.com/typora/ad983d5d993a5f181602bdd06e6d616.png)
+​	![ad983d5d993a5f181602bdd06e6d616](http://img.minalz.cn/typora/ad983d5d993a5f181602bdd06e6d616.png)
 
 ​		解决方式：
 

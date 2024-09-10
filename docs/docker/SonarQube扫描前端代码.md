@@ -2,7 +2,7 @@
 
 ## 1.安装插件
 
-![image-20210630005213646](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210630005213646.png)
+![image-20210630005213646](http://img.minalz.cn/typora/image-20210630005213646.png)
 
 ## 2.在项目根路径下创建sonar-project.properties
 
@@ -29,4 +29,4 @@ sonar-scanner
 
 ### 4.查看结果
 
-![image-20210630005437459](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210630005437459.png)
+![image-20210630005437459](http://img.minalz.cn/typora/image-20210630005437459.png)

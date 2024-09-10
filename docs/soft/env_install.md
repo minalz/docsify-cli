@@ -354,7 +354,7 @@ https://blog.csdn.net/jiedong_xu/article/details/131626318
 后续步骤差不多，cp /redis.conf /etc/redis.conf
 并且需要修改里面的配置项
 
-![3fbd97f28341907f3edef4d2f15cb80](http://sjluyi7xe.hd-bkt.clouddn.com/typora/3fbd97f28341907f3edef4d2f15cb80.png)
+![3fbd97f28341907f3edef4d2f15cb80](http://img.minalz.cn/typora/3fbd97f28341907f3edef4d2f15cb80.png)
 
 启动命令：
 
@@ -372,12 +372,12 @@ redis-cli
 # 安装后的插件要放在 ～/.zshrc/customer/plugin下
 ```
 安装iterm2后，本身的terminal(Mac自带的终端配置)会出现终端文字被覆盖的问题：  
-![image-01](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-01.png)
+![image-01](http://img.minalz.cn/typora/image-01.png)
 
 idea中有这样的问题也可以按照这样的方式来解决
 
 解决方式：
-![image-02](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-02.png)
+![image-02](http://img.minalz.cn/typora/image-02.png)
 
 参考链接:https://www.liuchuo.net/archives/4678
 

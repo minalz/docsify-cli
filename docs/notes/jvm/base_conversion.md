@@ -45,15 +45,15 @@
 
 ### 3.1 十进制9转成二进制
 
-![image-20200928141742358](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928141742358.png)
+![image-20200928141742358](http://img.minalz.cn/typora/image-20200928141742358.png)
 
 ### 3.2 十进制9转八进制
 
-![image-20200928141749506](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928141749506.png)
+![image-20200928141749506](http://img.minalz.cn/typora/image-20200928141749506.png)
 
 ### 3.3 十进制21转十六进制
 
-![image-20200928141800967](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928141800967.png)
+![image-20200928141800967](http://img.minalz.cn/typora/image-20200928141800967.png)
 
 由此 如果想将各种进制反过来求取对应的十进制，应该是先转成对应的二进制，然后再通过二进制转成十进制
 
@@ -63,17 +63,17 @@
 
 ### 4.1 与、或、异或运算
 
-![image-20200928141835695](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928141835695.png)
+![image-20200928141835695](http://img.minalz.cn/typora/image-20200928141835695.png)
 
 ### 4.2左移右移计算分析
 
-![image-20200928141849975](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928141849975.png)
+![image-20200928141849975](http://img.minalz.cn/typora/image-20200928141849975.png)
 
 ### 4.3 Int强转为byte精度缺失的原因
 
 #### 4.3.1 Int = 130  byte=？
 
-![image-20200928141902391](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928153843493.png)
+![image-20200928141902391](http://img.minalz.cn/typora/image-20200928153843493.png)
 
 #### 4.3.2 示例代码
 
@@ -91,5 +91,5 @@ class Demo {
 
 #### 4.3.3 编译执行
 
-![image-20200928141934028](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200928141934028.png)
+![image-20200928141934028](http://img.minalz.cn/typora/image-20200928141934028.png)
 

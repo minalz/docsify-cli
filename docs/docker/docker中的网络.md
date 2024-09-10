@@ -2,9 +2,9 @@
 
 ## 1.计算机网络模型
 
-![image-20201208144428992](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20201208144428992.png)
+![image-20201208144428992](http://img.minalz.cn/typora/image-20201208144428992.png)
 
-![](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20201208144436073.png)
+![](http://img.minalz.cn/typora/image-20201208144436073.png)
 
 ## 2.Linux中网卡
 
@@ -230,7 +230,7 @@ bridge：docker network inspect bridge
 
 
 
-![image-20201208151132872](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20201208151132872.png)
+![image-20201208151132872](http://img.minalz.cn/typora/image-20201208151132872.png)
 
 在tomcat01容器中是可以访问互联网的，NAT是通过iptables实现的
 

@@ -104,11 +104,11 @@ http://yourserverIP:5601/
 
 点击Management->Elasticsearch->Index Management 会发现有一个索引
 
-![image-20210524102112967](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210524102112967.png)
+![image-20210524102112967](http://img.minalz.cn/typora/image-20210524102112967.png)
 
 再点击Kibana->Index Patterns->Create index pattern->创建elkdemo->Next step
 
-![image-20210524102309039](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210524102309039.png)
+![image-20210524102309039](http://img.minalz.cn/typora/image-20210524102309039.png)
 
 ## 7.发送请求
 
@@ -116,4 +116,4 @@ http://localhost:8088/index?marking=testelk
 
 点击Discover
 
-![image-20210524102744544](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20210524102744544.png)
+![image-20210524102744544](http://img.minalz.cn/typora/image-20210524102744544.png)

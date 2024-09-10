@@ -80,7 +80,7 @@ public class SendEmailUtil {
 
 进去QQ邮箱-->设置-->账号-->进行设置如下图
 
-![image-20200930140358189](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200930140358189.png)
+![image-20200930140358189](http://img.minalz.cn/typora/image-20200930140358189.png)
 
 点击开启,并且需要发送一条校验短信,就可以获取授权码了,我这里是已经开启过后的图
 
@@ -88,5 +88,5 @@ public class SendEmailUtil {
 
 进去163邮箱-->设置-->POP3/SMTP/IMAP-->设置如下图
 
-![image-20200930140921351](http://sjluyi7xe.hd-bkt.clouddn.com/typora/image-20200930140921351.png)
+![image-20200930140921351](http://img.minalz.cn/typora/image-20200930140921351.png)
 
