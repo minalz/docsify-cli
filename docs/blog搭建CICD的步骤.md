@@ -401,8 +401,6 @@ http {
 
 ## 5.2 Github hook触发了，但是jenkins没有自动构建
 
-![auto-orient,1](http://img.minalz.cn/typora/309067949836180.png)
-
 解决步骤：
 
 1.github网络不好，连接超时
@@ -473,7 +471,7 @@ echo "k8s 【spring-test-cicd】 deploy success"
 
 # 5.5 jenkins升级后报错
 
-![e0342063080e99338c8aa4b86161627](http://img.minalz.cn/typora/e0342063080e99338c8aa4b86161627.png)
+![28c7a5e5ac71d2b2eb45deab33a56ca4](http://img.minalz.cn/typora/28c7a5e5ac71d2b2eb45deab33a56ca4.png)
 
 解决方案：
 
