@@ -34,3 +34,5 @@
   
 * [Links](/links/)
 
+* [AI](/ai/)
+
