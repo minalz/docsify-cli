@@ -43,5 +43,11 @@
 
 ## 五、会话记忆隔离
 
+![image-20250624231923354](http://img.minalz.cn/typora/image-20250624231923354.png)
+
+
+
+![image-20250624232014202](http://img.minalz.cn/typora/image-20250624232014202.png)
+
 
 
