@@ -51,3 +51,19 @@
 
 
 
+## 六、会话功能-会话记忆持久化
+
+### 1.这只是服务器的持久化，服务器重启了，也会丢失记忆
+
+![image-20250624233150377](http://img.minalz.cn/typora/image-20250624233150377.png)
+
+### 2.redis-持久化
+
+![image-20250624233248582](http://img.minalz.cn/typora/image-20250624233248582.png)
+
+### 3.实现步骤
+
+![image-20250624233400449](http://img.minalz.cn/typora/image-20250624233400449.png)
+
+
+
