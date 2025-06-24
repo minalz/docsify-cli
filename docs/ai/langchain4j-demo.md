@@ -65,5 +65,58 @@
 
 ![image-20250624233400449](http://img.minalz.cn/typora/image-20250624233400449.png)
 
+## 七、RAG知识库-原理
+
+![image-20250624235024382](http://img.minalz.cn/typora/image-20250624235024382.png)
+
+### 1.灰色部分 langchain4j帮我们做了
+
+![image-20250624235234894](http://img.minalz.cn/typora/image-20250624235234894.png)
+
+### 2.用到了向量数据库：
+
+Milvus、Chroma、Pinecone
+
+RedisSearch(Redis)、pgvector(PostgreSQL)
+
+![image-20250624235544051](http://img.minalz.cn/typora/image-20250624235544051.png)
+
+
+
+![image-20250625000028785](http://img.minalz.cn/typora/image-20250625000028785.png)
+
+
+
+![image-20250625000118667](http://img.minalz.cn/typora/image-20250625000118667.png)
+
+![image-20250625000221679](http://img.minalz.cn/typora/image-20250625000221679.png)
+
+
+
+
+
+![image-20250625000412396](http://img.minalz.cn/typora/image-20250625000412396.png)
+
+
+
+### 3.langchain4j的检索流程图：
+
+![image-20250625000437703](http://img.minalz.cn/typora/image-20250625000437703.png)
+
+
+
+![image-20250625000711138](http://img.minalz.cn/typora/image-20250625000711138.png)
+
+
+
+### 4.RAG原理总结：
+
+1. 两个向量的余弦相似度越高,说明向量对应的文本相似度越高
+
+2. 向量数据库使用流程
+● 借助于向量模型,把文档知识数据向量化后存储到向量数据库
+● 用户输入的内容,借助于向量模型转化为向量后,与数据库中的向量通过计算余弦相似度
+的方式,找出相似度比较高的文本片段
+
 
 
