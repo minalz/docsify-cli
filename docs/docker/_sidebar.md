@@ -10,6 +10,7 @@
   - [Dockerfile格式](docker/dockerfile格式.md)
   - [Docker中的网络](docker/docker中的网络.md)
   - [Docker数据持久化](docker/docker数据持久化.md)
+  - [Docker下载镜像超时的解决方案](docker/docker下载镜像超时的解决方案.md)
 
 + SonarQube
   - [Docker-Compose搭建SonarQube](docker/docker-compose搭建SonarQube.md)

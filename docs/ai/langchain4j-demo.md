@@ -120,3 +120,109 @@ RedisSearch(Redis)、pgvector(PostgreSQL)
 
 
 
+## 八、RAG知识库-快速入门
+
+![image-20250625222555606](http://img.minalz.cn/typora/image-20250625222555606.png)
+
+
+
+## 九、RAG知识库-核心API
+
+![image-20250625224905366](http://img.minalz.cn/typora/image-20250625224905366.png)
+
+
+
+### 1.文档加载器,用于把磁盘或者网络中的数据加载进程序
+
+FileSystemDocumentLoader,根据本地磁盘绝对路径加载
+
+ClassPathDocumentLoader,相对于类路径加载
+
+UrlDocumentLoader,根据url路径加载
+
+
+
+### 2.文档解析器,用于解析使用文档加载器加载进内存的内容,把非纯文本数据转化成纯文本
+
+TextDocumentParser,解析纯文本格式的文件
+
+ApachePdfBoxDocumentParser,解析pdf格式文件
+
+ApachePoiDocumentParser,解析微软的office文件,例如DOC、PPT、XLS
+
+ApacheTikaDocumentParser(默认),几乎可以解析所有格式的文件
+
+1.准备pdf格式的数据
+
+2.引入依赖
+
+3.指定解析器
+
+```pom
+<dependency>
+    <groupId>dev.langchain4j</groupId>
+    <artifactId>langchain4j-document-parser-apache-pdfbox</artifactId>
+    <version>1.0.1-beta6</version>
+</dependency>
+```
+
+
+
+### 3.文档分割器,用于把一个大的文档,切割成一个一个的小片段
+
+DocuemntByParagraphSplitter,按照段落分割文本
+
+DocumentByLineSplitter,按照行分割文本
+
+DocumentBySentenceSplitter,按照句子分割文本
+
+DocumentByWordSplitter,按照词分割文本
+
+DocumentByCharacterSplitter,按照固定数量的字符分割文本
+
+DocumentByRegexSplitter,按照正则表达式分割文本
+
+DocumentSplitters.recursive( ... )(默认),递归分割器,优先段落分割,再按照行分割,再按照句子分割,再按照词分割
+
+![image-20250625230325833](http://img.minalz.cn/typora/image-20250625230325833.png)
+
+```java
+DocumentSplitter documentSplitter = DocumentSplitters.recursive(
+    每个片段最大容纳的字符,
+    两个片段之间重叠字符的个数
+);
+
+EmbeddingStoreIngestor ingestor = EmbeddingStoreIngestor.builder()
+.embeddingStore(store)
+.documentSplitter(documentSplitter)
+.build();
+```
+
+## 十、向量模型
+
+![image-20250625230655569](http://img.minalz.cn/typora/image-20250625230655569.png)
+
+![image-20250625230746855](http://img.minalz.cn/typora/image-20250625230746855.png)
+
+![image-20250625230804733](http://img.minalz.cn/typora/image-20250625230804733.png)
+
+## 十一、EmbeddingStore 用于操作向量数据库（添加、检索）
+
+![image-20250625231716287](http://img.minalz.cn/typora/image-20250625231716287.png)
+
+
+
+![image-20250625231910400](http://img.minalz.cn/typora/image-20250625231910400.png)
+
+### 1.环境安装
+
+```shell
+docker pull redis:latest
+安装redis:docker run --name redis -d -p 6379:6379 redis
+停止原有的redis镜像:docdocker stop redis
+删除原有的redis镜像:docker rm redis
+安装带有向量化功能的redis:docker run --name redis-vector -d -p 6379:6379 --memory=2g redislabs/redisearch
+可设置内存参数：--memory=512m
+安装mysql: docker run -- name mysql-d -p 3307:3306-e MYSQL_ROOT_PASSWORD=1234 mysql
+```
+
