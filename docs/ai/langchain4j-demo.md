@@ -221,8 +221,12 @@ docker pull redis:latest
 安装redis:docker run --name redis -d -p 6379:6379 redis
 停止原有的redis镜像:docdocker stop redis
 删除原有的redis镜像:docker rm redis
-安装带有向量化功能的redis:docker run --name redis-vector -d -p 6379:6379 --memory=2g redislabs/redisearch
-可设置内存参数：--memory=512m
+警告警告：安装带有向量化功能的redis:docker run --name redis-vector -d -p 6379:6379 --memory=2g redislabs/redisearch -- 这个已经过时了，导致启动springboot的时候，一直将容器宕机最后换了redis-stack就正常了
+docker run --name redis-stack -d -p 6379:6379 redis/redis-stack
+链接地址：https://hub.docker.com/r/redis/redis-stack
 安装mysql: docker run -- name mysql-d -p 3307:3306-e MYSQL_ROOT_PASSWORD=1234 mysql
 ```
 
+## 十二、Tools工具（以前教FunctionCalling 改名字了）
+
+![image-20250626230542572](http://img.minalz.cn/typora/image-20250626230542572.png)
