@@ -227,6 +227,6 @@ docker run --name redis-stack -d -p 6379:6379 redis/redis-stack
 安装mysql: docker run -- name mysql-d -p 3307:3306-e MYSQL_ROOT_PASSWORD=1234 mysql
 ```
 
-## 十二、Tools工具（以前教FunctionCalling 改名字了）
+## 十二、Tools工具（以前叫Function Calling 改名字了）
 
 ![image-20250626230542572](http://img.minalz.cn/typora/image-20250626230542572.png)
