@@ -230,3 +230,11 @@ docker run --name redis-stack -d -p 6379:6379 redis/redis-stack
 ## 十二、Tools工具（以前叫Function Calling 改名字了）
 
 ![image-20250626230542572](http://img.minalz.cn/typora/image-20250626230542572.png)
+
+## 十三、Tools使用
+
+![image-20250627000055440](http://img.minalz.cn/typora/image-20250627000055440.png)
+
+好消息是 灰色部分 lanchain4j都帮我们做了
+
+![image-20250627000224210](http://img.minalz.cn/typora/image-20250627000224210.png)
