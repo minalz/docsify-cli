@@ -5,12 +5,10 @@
 ![image-20250623230220664](http://img.minalz.cn/typora/image-20250623230220664.png)
 
 
-
 1. 引入依赖
 2. 生命接口
 3. 使用AiServices为接口创建代理对象
 4. 在Controller中注入并使用
-
 
 
 ### 声明式
