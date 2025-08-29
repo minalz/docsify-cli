@@ -24,6 +24,7 @@
   - [Excel数据用SQL批量生成](notes/Excel数据用SQL批量生成.md)
   - [自定义注解校验参数](notes/自定义注解校验参数.md)
   - [全局唯一ID解决方案](notes/全局唯一ID解决方案.md)
+  - [百万级Excel导出优化](notes/百万级Excel导出优化.md)
   - [Spring Boot 整合 Canal + RabbitMQ 监听数据变更](notes/Spring Boot 整合 Canal + RabbitMQ 监听数据变更.md)
   - [201809笔记](notes/201809笔记.md)
   - [201810笔记](notes/201810笔记.md)
