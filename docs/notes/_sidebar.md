@@ -26,6 +26,7 @@
   - [全局唯一ID解决方案](notes/全局唯一ID解决方案.md)
   - [百万级Excel导出优化](notes/百万级Excel导出优化.md)
   - [Java-PDF导出.md](notes/Java-PDF导出.md)
+  - [NodeJs-PDF导出.md](notes/NodeJs-PDF导出.md)
   - [Spring Boot 整合 Canal + RabbitMQ 监听数据变更](notes/Spring Boot 整合 Canal + RabbitMQ 监听数据变更.md)
   - [201809笔记](notes/201809笔记.md)
   - [201810笔记](notes/201810笔记.md)
