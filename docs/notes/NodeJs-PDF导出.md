@@ -310,7 +310,6 @@ export class AppModule {}
 ### 4.请求page-pdf.html页面，点击导出即可
 
 
-
 ### 5.如果涉及跨域，需要配置CORS
 
 main.ts里新增CORS的配置
