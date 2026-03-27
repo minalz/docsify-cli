@@ -18,6 +18,12 @@
 
 - RAG
   - [llama3+RAG搭建](ai/RAG/llama3与Rag搭建.md)
+
+
+- OpenClaw
+  - [OpenClaw安装](ai/OpenClaw/OpenClaw安装.md)
+  - [OpenClaw配置Model](ai/OpenClaw/OpenClaw配置Model.md)
+  - [OpenClaw配置插件](ai/OpenClaw/OpenClaw配置插件.md)
   
 
   
