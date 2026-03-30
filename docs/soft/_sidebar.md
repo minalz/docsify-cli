@@ -3,6 +3,7 @@
   - [SourceTree使用](soft/sourceTree.md)
   - [VirtualBox安装centos7(Mac版)](soft/VirtualBox安装centos7(Mac版).md)
   - [Window11通过VirSualBox安装Linux虚拟机](soft/window11通过VirSualBox安装Linux虚拟机.md)
+  - [Window11通过WSL复制同一个Ubuntu版本为多个环境](soft/WSL复制同一个Ubuntu版本为多个环境.md)
   - [jenkins安装](soft/jenkins安装.md)
   - [Yapi使用](soft/Yapi使用.md)
   - [其他软件安装](soft/env_install.md)
