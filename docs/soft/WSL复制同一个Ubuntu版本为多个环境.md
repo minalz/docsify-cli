@@ -467,5 +467,19 @@ Write-Host "$name 创建完成，IP: $ip" -ForegroundColor Green
 .\add-wsl-node.ps1 -NodeNumber 106
 ```
 
+删除已创建的wsl
+```bash
+# 逐个注销（删除）
+wsl --unregister ubuntu-101
+wsl --unregister ubuntu-102
+wsl --unregister ubuntu-103
 
+# 验证删除
+wsl --list --verbose
+
+# 删除 D 盘文件（可选，unregister 已删除虚拟磁盘）
+Remove-Item -Recurse -Force D:\WSL\Ubuntu\ubuntu-101
+Remove-Item -Recurse -Force D:\WSL\Ubuntu\ubuntu-102
+Remove-Item -Recurse -Force D:\WSL\Ubuntu\ubuntu-103
+```
 
