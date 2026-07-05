@@ -1,81 +1,88 @@
-# window11 通过VirSualBox安装Linux虚拟机
+# Window11 通过 VirtualBox 安装 Linux 虚拟机
 
-### 1.安装方式，结合Mac的安装方法
+## 1. 安装方式
 
-发现最后宿主机无法ping通主机，耗费了太多的时间，用了桥接的方式来设置了，毕竟只是搭建个环境而已，其他的无所谓
+结合 Mac 的安装方法，发现最后宿主机无法 ping 通主机，耗费了太多的时间。最终使用了 **桥接方式**，毕竟只是搭建个环境而已，其他的无所谓。
 
-### 2.只需要设置一个网卡即可（桥接方式）
+## 2. 网络配置方式
 
-> 好处是配置一个网卡即可
-> 坏处是宿主机IP一直变动，虚拟机IP也需要跟着变动，IP和GATEWAY都需要跟着宿主机重新匹配才行
+### 方式一：只设置一个网卡（桥接方式）
 
-连接方式：桥接网卡![image-20230903232418276](http://img.minalz.cn/typora/image-20230903232418276.png)
+连接方式：桥接网卡
 
-### 2.1 设置两个网卡，仅主机网络+NAT（网络地址转换）
+![桥接网卡](http://img.minalz.cn/typora/image-20230903232418276.png)
 
-> 好处是宿主机IP一直变动，虚拟机IP不用随机改变
+**优缺点：**
+- ✅ **好处**：配置一个网卡即可
+- ❌ **坏处**：宿主机 IP 一直变动，虚拟机 IP 也需要跟着变动，IP 和 GATEWAY 都需要跟着宿主机重新匹配才行
 
-参考链接：https://zhuanlan.zhihu.com/p/363202714
+### 方式二：设置两个网卡（仅主机网络 + NAT）
 
-### 3.安装步骤参考Mac版，都差不多
+**优缺点：**
+- ✅ **好处**：宿主机 IP 一直变动，虚拟机 IP 不用随机改变
 
-网络连接一定要记得打开
+参考链接：[知乎教程](https://zhuanlan.zhihu.com/p/363202714)
 
-### 4.安装完成后，修改配置
+## 3. 安装步骤
 
-```sh
-##更新 如下两个文件的配置 启用一个网卡只会有0s3
-/etc/sysconfig/network-scripts/ifcfg-enp0s3
-/etc/sysconfig/network-scripts/ifcfg-enp0s8
+安装步骤参考 Mac 版，都差不多。
 
-# 修改 
-onboot=yes
+> ⚠️ **注意**：网络连接一定要记得打开！
+
+## 4. 安装完成后，修改配置
+
+```bash
+# 更新网卡配置（启用一个网卡只会有 0s3）
+vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
+
+# 修改以下内容
+ONBOOT=yes
 BOOTPROTO="dhcp" -> BOOTPROTO="static"
-IPADDR="192.168.56.101"
-GATEWAY="192.168.56.1"
-# 保存 
-wq
+IPADDR="192.168.6.101"
+GATEWAY="192.168.6.1"
 
-##然后重启网络
-servcie network restart
+# 保存并退出
+:wq
+
+# 重启网络
+service network restart
 ```
 
-如果一开始启用了两个网卡，然后又修改成了一个网卡（桥接模式），service network restart会报错的，解决方式是删除掉多余的配置，如0s8结尾的文件
+> **注意**：
+> 1. 如果一开始启用了两个网卡，然后又修改成了一个网卡（桥接模式），`service network restart` 会报错。解决方式是删除掉多余的配置，如 `0s8` 结尾的文件。
+> 2. 设置的 IP 一定要和宿主机是同一个网段的。比如宿主机是 `193.168.6.1`，那么上面的配置就要对应改成这个网段的：
+>    ```bash
+>    IPADDR="192.168.6.101" -> IPADDR="192.168.6.102"
+>    ```
 
-注意：设置的IP一定要和宿主机是同一个网段的，比如宿主机是193.168.6.1，那么上面的配置就要对应改成这个网段的
+## 5. 更改 YUM 的配置
 
-```sh
-IPADDR="192.168.6.101" -> IPADDR="192.168.6.102"
-```
+### 5.1 下载阿里云的 Repo
 
-### 5.更改yum的配置
-
-#### 5.1下载阿里云的repo
-
-```sh
+```bash
 [root@k8s-master ~]# yum install -y wget  
 [root@centos7 /]# mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
-[root@centos7 /]# wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repoCopy to clipboardErrorCopied
+[root@centos7 /]# wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 ```
 
-#### 5.2清除缓存并生成新的缓存
+### 5.2 清除缓存并生成新的缓存
 
-```sh
+```bash
 [root@centos7 /]# yum clean all
 [root@centos7 /]# yum makecache
 ```
 
-#### 5.3验证
+### 5.3 验证
 
-安装net-tools工具，运行ifconfig命令
+安装 net-tools 工具，运行 ifconfig 命令：
 
-```sh
+```bash
 yum install -y net-tools
 ```
 
-#### 5.4关闭防火墙
+### 5.4 关闭防火墙
 
-```sh
+```bash
 [root@k8s-master ~]# firewall-cmd --state
 running
 [root@k8s-master ~]# systemctl stop firewalld.service
@@ -83,51 +90,65 @@ running
 Removed symlink /etc/systemd/system/multi-user.target.wants/firewalld.service.
 Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
 
-firewall-cmd --state #查看防火墙状态
+# 查看防火墙状态
+firewall-cmd --state
 
-systemctl stop firewalld.service #停止firewall
-systemctl disable firewalld.service #禁止firewall开机启动
+# 停止 firewall
+systemctl stop firewalld.service
+
+# 禁止 firewall 开机启动
+systemctl disable firewalld.service
 ```
 
-#### 5.5关闭selinux
+### 5.5 关闭 SELinux
 
-```sh
+```bash
 [root@k8s-master ~]# getenforce
 Enforcing
 [root@k8s-master ~]# setenforce 0
 [root@k8s-master ~]# sed -i 's/^ *SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 
-#查看selinux状态
+# 查看 SELinux 状态
 getenforce
 
-#临时关闭selinux
+# 临时关闭 SELinux
 setenforce 0 
-#永久关闭（需重启系统）
-sed -i 's/^ *SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config 
-至此完成Centos7.6操作系统安装和优化。
+
+# 永久关闭（需重启系统）
+sed -i 's/^ *SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 ```
 
-### 6.可能会出现的问题
+> 至此完成 CentOS 7.6 操作系统安装和优化。
 
-#### 6.1相同的虚拟机克隆后,IP地址没有变化,需要进行修改,修改only-host的那个网卡信息
+## 6. 可能会出现的问题
 
-```sh
+### 6.1 相同的虚拟机克隆后，IP 地址没有变化
+
+需要进行修改，修改 Host-Only 的那个网卡信息：
+
+```bash
 vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
+
 # 修改 
 BOOTPROTO="dhcp" -> BOOTPROTO="static"
 IPADDR="192.168.56.101" -> IPADDR="192.168.56.102"
+
 # 保存 
-wq
+:wq
+
 # 重启网卡
 service network restart
-# 查看网卡信息,IP变了
+
+# 查看网卡信息，IP 变了
 ifconfig
 ```
 
-#### 6.2ping测试
+### 6.2 Ping 测试
 
-主机能ping通虚拟机但虚拟机ping不通主机，原因是防火墙的设置问题
+**问题**：主机能 ping 通虚拟机，但虚拟机 ping 不通主机。
 
-![820c1a029bd0cac2c7944e0d104ea39](http://img.minalz.cn/typora/820c1a029bd0cac2c7944e0d104ea39.png)
+**原因**：防火墙的设置问题。
 
-参考链接：http://www.zlprogram.com/Show/34/6529088U.shtml
+![防火墙设置](http://img.minalz.cn/typora/820c1a029bd0cac2c7944e0d104ea39.png)
+
+参考链接：[zlprogram 教程](http://www.zlprogram.com/Show/34/6529088U.shtml)

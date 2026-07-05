@@ -1,6 +1,6 @@
 # WSL 复制同一个 Ubuntu 版本为多个环境
 
-## 安装方式
+## 1. 安装方式
 
 ### 方式一：从商店多次安装（不可行）
 
@@ -20,19 +20,19 @@ wsl --import ubuntu-102  D:\WSL\Ubuntu\ubuntu-102  D:\WSL\backup\ubuntu-base.tar
 wsl --import ubuntu-103  D:\WSL\Ubuntu\ubuntu-103  D:\WSL\backup\ubuntu-base.tar
 ```
 
-查看有哪些虚拟化实例：
+**查看有哪些虚拟化实例：**
 
 ```powershell
 wsl --list --verbose
 ```
 
-删除之前不需要的实例：
+**删除之前不需要的实例：**
 
 ```powershell
 wsl --unregister ubuntu-22.04.05
 ```
 
-## 配置固定 IP
+## 2. 配置固定 IP
 
 要实现固定 IP `192.168.3.101/102/103`，需要完整配置 **Hyper-V 虚拟交换机 + 静态 IP**。
 

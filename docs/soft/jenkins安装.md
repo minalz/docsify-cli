@@ -1,33 +1,32 @@
-# jenkins安装
+# Jenkins 安装
 
-非docker安装的方式,因为我有下载好的包,直接这么操作,真正操作肯定还是docker比较方便的,但是需要做好持久化
+> 本文介绍非 Docker 安装方式（使用已下载的 jenkins.war 包）。推荐使用 Docker 方式安装，但需注意做好数据持久化。
 
-## 1.下载jenkins.war
+## 1. 下载 Jenkins.war
 
 ```shell
 wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
 ```
 
-下载特别慢,最好自己找其他资源下载,版本低了可以安装好了后再选择`在线升级`
+> 💡 下载速度较慢时，建议寻找其他镜像源。如果版本较低，安装完成后可选择**在线升级**。
 
-## 2.启动
+## 2. 启动 Jenkins
 
-```java
+```shell
 nohup java -Dhudson.util.ProcessTree.disable=true -jar jenkins.war --httpPort=9090 >/dev/null 2>&1 &
-  
-查看日志:
+
+# 查看日志
 tail -f nohup.out
 ```
 
-execute shell中启动的进程在Job退出时会被杀死，所以需要加参数
+> **注意：** execute shell 中启动的进程在 Job 退出时会被杀死，因此需要添加参数：
+> ```shell
+> -Dhudson.util.ProcessTree.disable=true
+> ```
 
-```
--Dhudson.util.ProcessTree.disable=true
-```
+## 3. 访问 Jenkins
 
-## 3.访问jenkins
-
-### 3.1 访问的时候需要输入密码
+### 3.1 首次访问需要输入密码
 
 ```shell
 cat /root/.jenkins/secrets/initialAdminPassword
@@ -35,50 +34,50 @@ cat /root/.jenkins/secrets/initialAdminPassword
 
 ### 3.2 安装推荐的插件
 
-![image-20210108230432312](http://img.minalz.cn/typora/image-20210108230432312.png)
+![安装推荐插件](http://img.minalz.cn/typora/image-20210108230432312.png)
 
-### 3.3 如果插件下载不成功,修改插件的更新地址试试
+### 3.3 插件下载失败？修改更新源
+
+如果插件下载不成功，可以尝试修改插件更新地址为清华镜像源：
 
 ```shell
 https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json
 ```
 
-### 3.4 创建一个用户
+### 3.4 创建用户
 
-```shell
+```
 username: admin01
 password: admin01
 ```
 
-## 4.jenkins安装链接参考
+## 4. Jenkins 安装参考链接
 
-```http
+```text
 https://www.cnblogs.com/cjsblog/p/10740840.html
 ```
 
-## 5.jenkins和SonarQube集成
+## 5. Jenkins 和 SonarQube 集成
 
-```http
+```text
 https://www.cnblogs.com/cjsblog/p/10740840.html
 ```
 
-## 6.注意事项
+## 6. 注意事项
 
-6.1 生成git 凭证的时候,可以先生成公钥,然后再去置换私钥
+1. **生成 Git 凭证**：可以先生成公钥，然后再去置换私钥
+2. **登录方式**：或直接用用户名密码进行登录
+3. **查看日志**：GitHub 网络很慢，拉取代码时经常超时，注意查看日志排查问题
 
-6.2 或者直接用户名密码进行登录
-
-6.3 看日志,github网络很慢,经常拉取代码的时候会超时
-
-```http
+```text
 https://blog.csdn.net/weixin_39172380/article/details/109580285
 ```
 
-## 7.maven安装
+## 7. Maven 安装
 
-因为只是演示,所以可装可不装
+> 本文仅为演示环境，Maven 可装可不装。
 
-```http
+```text
 https://blog.csdn.net/qq_38270106/article/details/97764483
 ```
 
