@@ -1,9 +1,25 @@
-# OpenClaw配置Model
+# ⚙️ OpenClaw 配置 Model
 
-## 1.配置百炼
+> 🤖 配置 AI 模型提供商，支持云端和本地模型
+
+---
+
+## 目录
+
+- [1. 配置阿里云百炼](#1-配置阿里云百炼)
+- [2. 配置本地模型 (Ollama + Qwen)](#2-配置本地模型-ollama--qwen)
+- [3. Ollama 安装优化](#3-ollama-安装优化)
+- [常用命令](#常用命令)
+
+---
+
+## 1. 配置阿里云百炼
+
+在配置文件中添加以下 JSON 配置：
 
 ```json
-"models": {
+{
+  "models": {
     "mode": "merge",
     "providers": {
       "bailian": {
@@ -41,95 +57,149 @@
         "bailian/qwen3-coder-next": {}
       }
     }
-  },
+  }
+}
 ```
 
-## 2.配置本地模型(Ollama + Qwen)
+### 📋 模型参数说明
+
+| 参数 | 说明 |
+|:---|:---|
+| `id` | 模型唯一标识符 |
+| `name` | 模型显示名称 |
+| `reasoning` | 是否支持推理模式 |
+| `input` | 支持的输入类型（text、image 等）|
+| `contextWindow` | 上下文窗口大小（token 数）|
+| `maxTokens` | 最大输出 token 数 |
+
+---
+
+## 2. 配置本地模型 (Ollama + Qwen)
+
+### 配置示例
 
 ```json
-ollama: {
-        baseUrl: 'http://192.168.3.100:11434/v1',
-        apiKey: '__OPENCLAW_REDACTED__',
-        models: [
+{
+  "models": {
+    "providers": {
+      "ollama": {
+        "baseUrl": "http://192.168.3.100:11434/v1",
+        "apiKey": "__OPENCLAW_REDACTED__",
+        "models": [
           {
-            id: 'qwen3.5:4b',
-            name: 'Qwen3.5-4B',
-            reasoning: false,
-            input: [
-              'text',
-            ],
-            cost: {
-              input: 0,
-              output: 0,
-              cacheRead: 0,
-              cacheWrite: 0,
+            "id": "qwen3.5:4b",
+            "name": "Qwen3.5-4B",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
             },
-            contextWindow: 32768,
-            maxTokens: 8192,
+            "contextWindow": 32768,
+            "maxTokens": 8192
           }
         ]
       }
-    },
-
-agents: {
-    defaults: {
-      model: {
-        primary: 'ollama/qwen3.5:4b',
-      },
-      models: {
-        'bailian/qwen3.5-plus': {},
-        'bailian/qwen3-coder-next': {},
-        'ollama/qwen3.5:4b': {},
-      },
-      workspace: '/home/zhouwei/.openclaw/workspace',
-      compaction: {
-        mode: 'safeguard',
-      },
-      maxConcurrent: 4,
-      subagents: {
-        maxConcurrent: 8,
-      }
     }
   },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "ollama/qwen3.5:4b"
+      },
+      "models": {
+        "bailian/qwen3.5-plus": {},
+        "bailian/qwen3-coder-next": {},
+        "ollama/qwen3.5:4b": {}
+      },
+      "workspace": "/home/zhouwei/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    }
+  }
+}
 ```
 
-注意点:
+### ⚠️ 重要注意事项
 
-1.ollama的配置baseUrl IP是电脑本机的ip，如果ollama在windows本机，openclaw在wsl ubuntu中，需要看一下ip地址是多少，不要盲目127.0.0.1
+1. **IP 地址配置**
+   - Ollama 的 `baseUrl` IP 必须是电脑的**实际 IP**
+   - 如果 Ollama 在 Windows 本机，OpenClaw 在 WSL Ubuntu 中，需要查看实际 IP 地址
+   - ❌ 不要盲目使用 `127.0.0.1`
 
-2.本地模型配置后，延迟比较高，和机器的配置有关
+2. **性能提示**
+   - 本地模型响应延迟较高
+   - 延迟与机器配置密切相关
+   - 建议使用 4B 或 7B 的量化模型
 
+---
 
+## 3. Ollama 安装优化
 
-## 3.ollama安装huggingface很卡，设置一下环境变量
+### 🚀 设置国内镜像源
+
+如果从 HuggingFace 下载模型很慢，可以设置国内镜像源：
+
+**PowerShell 管理员模式：**
 
 ```powershell
-# 设置镜像源（PowerShell 管理员）
+# 设置镜像源
 [Environment]::SetEnvironmentVariable("OLLAMA_MODELS", "https://ollama.mirrors.est-unix.cn", "User")
 
 # 关闭 Ollama
 taskkill /F /IM ollama.exe
 
 # 重新打开 Ollama 应用
-
-# 然后下载（会走国内镜像）
-# 使用 HF-Mirror 下载
-ollama pull hf.co/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive:Q4_K_M （镜像源切换了之后，下载很快）
-curl -L -o qwen3.5-4b-q4_k_m.gguf https://hf-mirror.com/bartowski/Qwen3.5-4B-GGUF/resolve/main/Qwen3.5-4B-Q4_K_M.gguf（单独下载文件或者huggingface网站下载，都很慢）
 ```
 
-gguf文件虽然下载成功了，但是安装总是失败, 切换了镜像源也是失败，最后放弃安装这种量化模型了
+### 📥 下载模型
+
+**使用 HF-Mirror 下载（推荐）：**
+
+```bash
+# 切换镜像源后，下载速度会很快
+ollama pull hf.co/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive:Q4_K_M
+```
+
+**直接下载 GGUF 文件（不推荐，速度慢）：**
+
+```bash
+curl -L -o qwen3.5-4b-q4_k_m.gguf https://hf-mirror.com/bartowski/Qwen3.5-4B-GGUF/resolve/main/Qwen3.5-4B-Q4_K_M.gguf
+```
+
+### ❌ 已知问题
+
+GGUF 文件下载成功后，安装可能仍然失败：
 
 ```text
-Error: max retries exceeded: Get "https://huggingface.co/v2/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive/blobs/sha256:e8b41bd7e9bcbc408abffef18491cba9652b2f618ecf60fe23f01b070bd36374?__sign=eyJhbGciOiJFZERTQSJ9.eyJyZWFkIjp0cnVlLCJwZXJtaXNzaW9ucyI6eyJyZXBvLmNvbnRlbnQucmVhZCI6dHJ1ZX0sImlhdCI6MTc3NDU0MjM5Miwic3ViIjoiL0hhdWhhdUNTL1F3ZW4zLjUtOUItVW5jZW5zb3JlZC1IYXVoYXVDUy1BZ2dyZXNzaXZlIiwiZXhwIjoxNzc0NTQyOTkyLCJpc3MiOiJodHRwczovL2h1Z2dpbmdmYWNlLmNvIn0.d0z3STZbaJAtBWJZP8k1pk7hMfQvulMMXe9KtdXDYrzj8VnH8OL2joM76zCi5jMt7lIEWxCjE4onMxcbr-XnCA": dial tcp 128.242.240.59:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+Error: max retries exceeded: Get "https://huggingface.co/v2/...": 
+dial tcp 128.242.240.59:443: connectex: A connection attempt failed...
 ```
 
+> 💡 **建议**：如果量化模型安装失败，可以切换其他模型或使用云端模型。
 
+---
 
-常用命令: 
+## 常用命令
 
-查询列表: ollama list
+| 命令 | 说明 | 示例 |
+|:---|:---|:---|
+| `ollama list` | 查询已安装的模型列表 | - |
+| `ollama pull` | 下载模型 | `ollama pull qwen3.5:4b` |
+| `ollama run` | 运行模型 | `ollama run qwen3.5:4b` |
+| `ollama rm` | 删除模型 | `ollama rm qwen2.5:7b` |
 
-删除模型：ollama rm qwen2.5:7b
+---
 
-执行模型: ollama run qwen3.5:4b
+## 🔗 相关资源
+
+- 📖 [Ollama 官方文档](https://ollama.com/docs)
+- 🌐 [阿里云百炼平台](https://bailian.console.aliyun.com/)
+- 📦 [HuggingFace 镜像站](https://hf-mirror.com/)
