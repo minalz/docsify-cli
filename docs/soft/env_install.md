@@ -1,10 +1,14 @@
-# 软件安装指南
+# 📦 软件安装指南
 
-## 1. Navicat 破解
+> 💡 开发环境及常用软件安装汇总，涵盖数据库、IDE、中间件等工具
+
+---
+
+## 🔓 1. Navicat 破解
 
 参考链接：[Navicat 破解教程](http://www.downcc.com/soft/322714.html)
 
-## 2. IDEA 破解
+## 💡 2. IDEA 破解
 
 参考链接：[idea 破解教程](https://shimo.im/docs/52dekJN4tiUAaBgv/read?from=groupmessage&isappinstalled=0)
 
@@ -22,7 +26,7 @@
 
 - **Code 激活** 或 **License Server 激活**：[http://fls.jetbrains-agent.com](http://fls.jetbrains-agent.com)
 
-## 3. MySQL 安装
+## 🗄️ 3. MySQL 安装
 
 ### 3.1 MacOS
 
@@ -111,23 +115,23 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'ok';
 
 > **注意**：从 MySQL 5.7 开始，默认的认证插件从 `mysql_native_password` 变为了 `caching_sha2_password`，这可能是为了更安全的密码验证。如果客户端或应用程序不支持新的认证插件，可能需要将认证插件改回到 `mysql_native_password`。
 
-## 4. Mac 上 Zookeeper 的安装与启动
+## 🦌 4. Mac 上 Zookeeper 的安装与启动
 
 参考链接：[简书 Zookeeper 教程](https://www.jianshu.com/p/5491d16e6abd)
 
-## 5. Mac 上安装 Consul
+## 🏛️ 5. Mac 上安装 Consul
 
 参考链接：[Consul 安装教程](http://www.yulu618.com/article/detail/post-2080.html)
 
-## 6. Sublime 安装教程
+## 📝 6. Sublime 安装教程
 
 参考链接：[简书 Sublime 教程](https://www.jianshu.com/p/9c8db3620be9)
 
-## 7. Docsify 安装教程
+## 📚 7. Docsify 安装教程
 
 参考链接：[cnblogs Docsify 教程](https://www.cnblogs.com/jackson0714/p/docsify01.html)
 
-## 8. Mac Nacos 启动（和 Windows 有点区别）
+## ☁️ 8. Mac Nacos 启动（和 Windows 有点区别）
 
 ```bash
 sh startup.sh -m standalone
@@ -149,7 +153,7 @@ sudo nginx -s stop
 
 参考链接：[CSDN Nacos 教程](https://blog.csdn.net/weixin_44722978/article/details/104690535)
 
-## 9. Mac 安装 Nginx
+## 🌐 9. Mac 安装 Nginx
 
 这是个大坑，配置 Nacos 集群，花了将近四五个小时。一开始是自己的阿里云服务器配置不够高，一直启动不了三个 Nacos，后来就在 Mac 上直接配置，Nginx 一直端口改变不成功，最后才发现对端口号的大小有限制，坑死了。
 
@@ -190,15 +194,15 @@ JAVA_OPT="${JAVA_OPT} -Dnacos.server.ip=服务器的ip"
 - IP: `192.168.1.41`
 - 路径: `/Users/zhouwei/development/nacos`
 
-## 10. Navicat 导出表结构为 Excel 格式
+## 📊 10. Navicat 导出表结构为 Excel 格式
 
 参考链接：[cnblogs Navicat 教程](https://www.cnblogs.com/xianxiaobo/p/10254737.html)
 
-## 11. 删除 Consul 的无效/失效服务
+## 🧹 11. 删除 Consul 的无效/失效服务
 
 参考链接：[简书 Consul 教程](https://www.jianshu.com/p/bd2bfb553915)
 
-## 12. DML、DDL、DCL 区别
+## 🗃️ 12. DML、DDL、DCL 区别
 
 ### DML（Data Manipulation Language）数据库操纵语言
 
@@ -235,11 +239,11 @@ DROP DATABASE 数据库名称
 
 是用来设置或更改数据库用户或角色权限的语句，包括（`grant`, `deny`, `revoke` 等）语句。这个比较少用到。
 
-## 13. 查看端口占用情况
+## 🔍 13. 查看端口占用情况
 
 参考链接：[cnblogs 端口查看教程](https://www.cnblogs.com/keystone/p/12516552.html)
 
-## 14. Redis 安装
+## 🔴 14. Redis 安装
 
 ### 14.1 Mac 安装
 
@@ -381,7 +385,7 @@ redis-server /etc/redis.conf
 redis-cli
 ```
 
-## 15. Mac 安装 iTerm2
+## 💻 15. Mac 安装 iTerm2
 
 参考链接：[知乎 iTerm2 教程](https://zhuanlan.zhihu.com/p/37195261)
 
@@ -401,11 +405,11 @@ IDEA 中有这样的问题也可以按照这样的方式来解决。
 
 参考链接：[liuchuo iTerm2 教程](https://www.liuchuo.net/archives/4678)
 
-## 16. Mac 千万不要随便修改用户，会导致管理员账号和密码丢失
+## ⚠️ 16. Mac 千万不要随便修改用户，会导致管理员账号和密码丢失
 
 参考链接：[Apple Discussions 教程](https://discussionschinese.apple.com/thread/140108050)
 
-## 17. Mac ZSH 隐藏命令行前面的用户名和主机名
+## 🖥️ 17. Mac ZSH 隐藏命令行前面的用户名和主机名
 
 修改 `vim ~/.zshrc` 文件，在文件底部增加：
 
@@ -437,24 +441,24 @@ prompt_context() {
 
 > **注意**：修改后记得执行 `source ~/.zshrc` 使配置生效。
 
-## 18. Homebrew 安装
+## 🍺 18. Homebrew 安装
 
 参考链接：[cnblogs Homebrew 教程](https://www.cnblogs.com/haojile/p/13193805.html)
 
-## 19. Mac 连接 Linux 服务器
+## 🔗 19. Mac 连接 Linux 服务器
 
 ```bash
 ssh -p 28726 root@107.182.23.xxx
 ```
 
-## 20. Vue 环境安装
+## 🟢 20. Vue 环境安装
 
 参考链接：[百度经验 Vue 教程](https://jingyan.baidu.com/article/5225f26bbb430fe6fa0908ce.html)
 
-## 21. 解放双手，Markdown 文章神器：Typora + PicGo + 七牛云图床实现自动上传图片
+## 🖼️ 21. 解放双手，Markdown 文章神器：Typora + PicGo + 七牛云图床实现自动上传图片
 
 参考链接：[51CTO 教程](https://blog.51cto.com/guosisoft/6471645)
 
-## 22. Linux Nacos 安装
+## ☁️ 22. Linux Nacos 安装
 
 参考链接：[CSDN Nacos 教程](https://blog.csdn.net/henrin/article/details/130898186)

@@ -1,8 +1,12 @@
-# VirtualBox 安装 CentOS7 (Mac 版)
+# 🖥️ VirtualBox 安装 CentOS7 (Mac 版)
 
+> 💡 Mac 环境下使用 VirtualBox 安装 CentOS7 虚拟机完整指南
+>
 > 转载链接地址：[原文来源](https://www.cnblogs.com/zhuzi91/p/12356856.html)
 
-## 1. 准备条件
+---
+
+## 📋 1. 准备条件
 
 - **VirtualBox**：6.1.4 版本
 - **CentOS7 镜像**：CentOS-7-x86_64-Minimal-1908.iso
@@ -14,7 +18,7 @@
 - **VirtualBox 下载**：[VirtualBox Downloads](https://www.virtualbox.org/wiki/Downloads)
 - **CentOS 7 镜像下载**：[CentOS 7 ISO](http://isoredirect.centos.org/centos/7/isos/x86_64/)
 
-## 2. 安装
+## 🔧 2. 安装
 
 ### 2.1 配置基本信息
 
@@ -60,7 +64,7 @@
 service network restart
 ```
 
-## 3. 更改 YUM 的配置
+## 🔄 3. 更改 YUM 的配置
 
 ### 3.1 下载阿里云的 Repo
 
@@ -127,7 +131,7 @@ sed -i 's/^ *SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 
 > 至此完成 CentOS 7.6 操作系统安装和优化。
 
-## 4. 补充
+## 📌 4. 补充
 
 ### 4.1 Mac 的 VirtualBox 6.X 版本的 Host-Only 配置没有了，怎么配置？！
 
@@ -157,7 +161,7 @@ error：VBoxNetAdpCtl: Error while adding new interface: failed to open /dev/vbo
 sudo /Library/Application\ Support/VirtualBox/LaunchDaemons/VirtualBoxStartup.sh restart
 ```
 
-## 5. 虚拟机克隆
+## 🌀 5. 虚拟机克隆
 
 ### 5.1 相同的虚拟机克隆后，IP 地址没有变化，需要进行修改
 

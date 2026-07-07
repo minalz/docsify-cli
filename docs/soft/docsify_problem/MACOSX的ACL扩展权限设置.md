@@ -1,6 +1,10 @@
-# Mac OS X 的 ACL 扩展权限设置
+# 🍎 Mac OS X 的 ACL 扩展权限设置
 
-## 问题描述
+> 💡 解决 Mac 环境下 Web 开发时的文件权限问题，通过 ACL 扩展权限实现多用户协作
+
+---
+
+## ❓ 问题描述
 
 在 Web 开发时，网站是以 `mymac` 的用户运行的，而我在本地是以 `root` 的用户编辑的。这就带来一个问题：
 
@@ -9,7 +13,7 @@
 
 最郁闷的是使用 Git 合并的时候，如果忘了加 `sudo`，就会因权限不足提示大量的合并失败，需要先回滚，再重新合并，甚是不爽。
 
-## 解决方案
+## ✅ 解决方案
 
 这个问题，在标准 Linux 下，是可以用 `setfacl`/`getfacl` 做 ACL 控制解决此问题，但是 Mac OS X 上并没有这两个命令。
 
@@ -26,7 +30,7 @@ sudo chmod -R +a 'root allow write,delete,file_inherit,directory_inherit,add_sub
 sudo chmod -R +a 'mymac allow write,delete,file_inherit,directory_inherit,add_subdirectory' MyBlog
 ```
 
-## 验证权限设置
+## 🔍 验证权限设置
 
 执行以下命令确认权限设置有成功：
 
@@ -39,10 +43,10 @@ ls -le
 #  1: user:mymac allow add_file,delete,file_inherit,directory_inherit,add_subdirectory
 ```
 
-## 更多用法
+## 📖 更多用法
 
 该命令的其他用法，请参考原文：[OS X ACL usage](http://cache.baiducontent.com/c?m=9d78d513d99c12fe4fede5234c01d717534380126f868e013894cd47c9221d03506790a63a71525a80803c305dfe1e4bea87672f681e5fe4cab5e920c0e8c3763888506e3643d8&p=87769a47808104ff57ee9475166482&newp=882a9645dd970af81fbe9b7c1b4189231610db2151dcdb01298ffe0cc4241a1a1a3aecbf2620140fd5c47d6002a9485ee8f737783d0834f1f689df08d2ecce7e7bc37073&user=baidu&fm=sc&query=mac+os+x+acl&qid=9253ed90003ad8da&p1=2)。
 
-## 参考链接
+## 🔗 参考链接
 
 - [原文来源](https://www.cnblogs.com/pheye/p/5740815.html)

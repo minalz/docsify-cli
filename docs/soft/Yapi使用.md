@@ -1,12 +1,16 @@
-# Yapi 使用
+# 📋 YApi 使用指南
 
-## 1. 官网教程
+> 💡 YApi 接口管理平台安装配置及 IDEA EasyYapi 插件使用说明
+
+---
+
+## 🌐 1. 官网教程
 
 ```text
 https://hellosean1025.github.io/yapi/documents/index.html
 ```
 
-## 2. 安装方式
+## 📥 2. 安装方式
 
 ### 2.1 命令行部署
 
@@ -50,39 +54,39 @@ services:
     restart: unless-stopped
 ```
 
-## 3. 执行命令
+## ▶️ 3. 执行命令
 
 ```shell
 docker-compose up -d
 ```
 
-## 4. 测试地址
+## ✅ 4. 测试地址
 
 - 地址：https://minalz.cn:3001
 - 账号：你的账号
 - 密码：你的密码
 
-## 5. EasyYapi 插件链接
+## 🔌 5. EasyYapi 插件链接
 
 ```text
 https://easyyapi.com/documents/index.html
 ```
 
-## 6. IDEA 安装 EasyYapi 插件
+## 💻 6. IDEA 安装 EasyYapi 插件
 
 第一步：Plugins -> Marketplace -> EasyYapi install
 
 ![image-20230315175258922](http://img.minalz.cn/typora/image-20230315175258922.png)
 
-## 7. 安装好了进行配置
+## ⚙️ 7. 安装好了进行配置
 
 ![image-20230315175506022](http://img.minalz.cn/typora/image-20230315175506022.png)
 
-## 8. 获取 token
+## 🔑 8. 获取 token
 
 ![image-20230315175529452](http://img.minalz.cn/typora/image-20230315175529452.png)
 
-## 9. 手动推送
+## 🚀 9. 手动推送
 
 ### 9.1 类注释
 
@@ -110,7 +114,7 @@ https://easyyapi.com/documents/index.html
 
 ![image-20230315183353900](http://img.minalz.cn/typora/image-20230315183353900.png)
 
-## 10. 查看
+## 👀 10. 查看
 
 ### 10.1 基本信息和请求参数
 

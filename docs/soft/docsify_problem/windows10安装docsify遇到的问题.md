@@ -1,6 +1,10 @@
-# Windows10 安装 Docsify 遇到的问题
+# 🪟 Windows10 安装 Docsify 遇到的问题
 
-## 1. Node 安装好后出现问题
+> 💡 记录 Windows10 环境下安装 Docsify 时遇到的 PowerShell 执行策略问题及解决方案
+
+---
+
+## ❓ 1. Node 安装好后出现问题
 
 ![Node 安装问题](http://img.minalz.cn/typora/image-20200516091429543.png)
 
@@ -30,7 +34,7 @@ C:\Windows\System32\cmd.exe
 
 [PowerShell 执行策略问题](https://blog.csdn.net/github_39506988/article/details/89920475)
 
-## 2. 完美解决
+## ✅ 2. 完美解决
 
 ### 方法一：修改执行策略
 

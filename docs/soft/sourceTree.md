@@ -1,6 +1,10 @@
-# SourceTree 使用
+# 💻 SourceTree 使用指南
 
-## 1. Windows 安装教程
+> 💡 Git 图形化客户端 SourceTree 的安装与使用说明
+
+---
+
+## 🪟 1. Windows 安装教程
 
 ### 参考链接
 
@@ -27,7 +31,7 @@
 C:\Users\%username%\AppData\Local\SourceTree
 ```
 
-## 2. Mac 安装教程
+## 🍎 2. Mac 安装教程
 
 ### 参考链接
 

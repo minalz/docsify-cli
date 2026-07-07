@@ -1,6 +1,6 @@
-# PostgreSQL 安装指南
+# 🗄️ PostgreSQL 安装指南
 
-本文档提供 PostgreSQL 16 的多种安装方式，包括 Linux 一键脚本安装和 Docker 容器化部署。
+> 💡 本文档提供 PostgreSQL 16 的多种安装方式，包括 Linux 一键脚本安装和 Docker 容器化部署。
 
 ---
 
@@ -13,7 +13,7 @@
 
 ---
 
-## 方式一：Linux 一键脚本安装
+## 🐧 方式一：Linux 一键脚本安装
 
 ### 功能说明
 
@@ -229,7 +229,7 @@ psql -U postgre -d test_db -h localhost
 
 ---
 
-## 方式二：Docker 容器化部署
+## 🐳 方式二：Docker 容器化部署
 
 ### Windows PowerShell 环境
 
@@ -279,7 +279,7 @@ docker run -d --name postgres `
 
 ---
 
-## 卸载 PostgreSQL
+## 🗑️ 卸载 PostgreSQL
 
 ### 完全卸载命令
 
@@ -310,7 +310,7 @@ sudo ss -tlnp | grep 5432
 
 ---
 
-## 常见问题排查
+## ❓ 常见问题排查
 
 ### 1. 服务启动失败
 
@@ -337,7 +337,7 @@ sudo journalctl -u postgresql -xe
 
 ---
 
-## 参考资料
+## 📖 参考资料
 
 - [PostgreSQL 官方文档](https://www.postgresql.org/docs/)
 - [Docker Hub - PostgreSQL](https://hub.docker.com/_/postgres)
