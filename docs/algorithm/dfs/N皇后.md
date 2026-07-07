@@ -1,6 +1,31 @@
+# ♟️ N 皇后
+
+> 📝 LeetCode 51. N 皇后 | DFS | 回溯算法
+
+---
+
+## 📖 题目描述
+
+将 `n` 个皇后放置在 `n×n` 的棋盘上，使得任何两个皇后都不能处于同一行、同一列或同一斜线上。返回所有不同的解法。
+
+---
+
+## 💡 解题思路
+
+- 使用 DFS + 回溯逐行放置皇后
+- 每行选择一个合法的列位置
+- 合法性检查：
+  - 同一竖线：`cols.get(rowIndex) == column`
+  - 左到右斜线：`rowIndex - cols.get(rowIndex) == row - column`
+  - 右到左斜线：`rowIndex + cols.get(rowIndex) == row + column`
+
+---
+
+## 🔧 代码实现
+
 ```java
 /**
- * @description: 51.N 皇后
+ * @description: 51. N 皇后
  * @author: minalz
  * @date: 2021-05-31 00:36
  **/
