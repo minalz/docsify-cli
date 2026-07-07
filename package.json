@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@sujaykumarh/docsify-plugin-footer": "^1.2.0"
+  }
+}
