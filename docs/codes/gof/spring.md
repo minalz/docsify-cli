@@ -1,6 +1,10 @@
-# Spring中的设计模式
+# 🔄 Spring 中的设计模式
 
-## 1.设计模式在Spring中的体现
+> 💡 Spring框架中常用的设计模式及其体现
+
+---
+
+## 📖 设计模式在Spring中的体现
 | 设计模式名称 | 涉及到的java类        |
 | :----------- | --------------------- |
 | 工厂模式     | BeanFactory           |
@@ -12,7 +16,7 @@
 | 模版方法     | JdbcTemplate          |
 | 观察者模式   | ContextLoaderListener |
 
-## 2.行为划分举例
+## 🔹 行为划分举例
 <table>
     <tr>
         <th>类型</th><th>名称</th><th>英文</th>

@@ -1,6 +1,10 @@
-# Stream API
+# 🌊 Stream API
 
-## 1. 执行流程
+> 💡 Java8 Stream API详解 | 创建流 | 中间操作 | 终止操作
+
+---
+
+## 📖 执行流程
 
 主要步骤有三个：
 

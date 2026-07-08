@@ -1,6 +1,10 @@
-# 单例模式
+# 🎯 单例模式
 
-## 1.饿汉式
+> 💡 单例模式的七种实现方式
+
+---
+
+## 📖 饿汉式
 
 ```java
 public class Singleton {
@@ -20,7 +24,7 @@ public class Singleton {
 }
 ```
 
-## 2.懒汉式
+## 🔹 懒汉式
 
 ```java
 public class Singleton {
@@ -43,7 +47,7 @@ public class Singleton {
 }
 ```
 
-## 3.懒汉式+同步方法
+## 🔹 懒汉式+同步方法
 
 ```java
 public class Singleton {
@@ -66,7 +70,7 @@ public class Singleton {
 }
 ```
 
-## 4.Double-Check
+## 🔹 Double-Check
 
 ```java
 public class Singleton {
@@ -94,7 +98,7 @@ public class Singleton {
 }
 ```
 
-## 5.Volatile+Double-Check
+## 🔹 Volatile+Double-Check
 
 ```java
 public class Singleton {
@@ -122,7 +126,7 @@ public class Singleton {
 }
 ```
 
-## 6.Holder方式
+## 🔹 Holder方式
 
 ```java
 public class Singleton {
@@ -144,7 +148,7 @@ public class Singleton {
 }
 ```
 
-## 7.枚举方式
+## 🔹 枚举方式
 
 ```java
 public enum Singleton {

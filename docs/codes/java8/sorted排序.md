@@ -1,6 +1,10 @@
-# Java8 stream sorted排序时包括null
+# 🔄 Stream Sorted 排序
 
-## 1.创建排序字段带null的List（排序字段为User.name）
+> 💡 Java8 Stream排序处理null值的方法
+
+---
+
+## 📖 创建排序字段带null的List
 
 ```java
 Student User{
@@ -13,7 +17,7 @@ List<User> list = Lists.newArrayList(new User("xiao_ming", 21), new User("xiao_h
 
 
 
-## 2.Comparator.nullsFirst/Comparator.nullsLast使用示例
+## 🔹 Comparator.nullsFirst/Comparator.nullsLast使用示例
 
 ```java
 List<User> nList = list.stream().sorted(
@@ -23,7 +27,7 @@ List<User> nList = list.stream().sorted(
 
 
 
-## 3.类型
+## 🔹 类型说明
 
 | 方法                  | 描述                                       |
 | --------------------- | ------------------------------------------ |
