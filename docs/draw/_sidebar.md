@@ -1,6 +1,7 @@
-  + [Git开发项目流程](draw/Git开发项目流程.md)
-  + [RocketMQ架构图](draw/RocketMQ架构图.md)
-  + [RabbitMQ架构图](draw/RabbitMQ架构图.md)
-  + [Dubbo通信方式](draw/Dubbo通信方式.md)
-  + [双写保证一致性](draw/双写保证一致性.md)
-  + [线程生命周期](draw/线程生命周期.md)
+- 🎨 **绘图笔记**
+  - [📋 Git 开发项目流程](draw/Git开发项目流程.md)
+  - [🏗️ RocketMQ 架构图](draw/RocketMQ架构图.md)
+  - [🐇 RabbitMQ 架构图](draw/RabbitMQ架构图.md)
+  - [📡 Dubbo 通信方式](draw/Dubbo通信方式.md)
+  - [💾 双写保证一致性](draw/双写保证一致性.md)
+  - [🧵 线程生命周期](draw/线程生命周期.md)
