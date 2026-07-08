@@ -1,8 +1,12 @@
-# Docker安装
+# 📦 Docker 安装指南
 
-## 1.卸载之前的docker
+> 🚀 在 Linux 系统上安装 Docker 的完整教程
 
-> 系统自带的docker版本
+---
+
+## 📖 1. 卸载之前的 Docker
+
+> 💡 如果系统已安装旧版本，需要先卸载
 
 ```sh
 sudo yum remove docker \
@@ -15,7 +19,7 @@ sudo yum remove docker \
                   docker-engine
 ```
 
-> 如果是已经安装过一次docker的，用下面的方式卸载
+> ⚠️ 如果是已经安装过一次 Docker 的，用下面的方式卸载
 
 ```shell
 [root@minalz101 ~]# rpm -qa |grep docker
@@ -37,9 +41,11 @@ sudo yum remove docker \
 rm -rf /var/lib/docker 
 ```
 
-参考链接：https://blog.csdn.net/Zhousan0125/article/details/130574769
+参考链接：[CentOS 卸载 Docker](https://blog.csdn.net/Zhousan0125/article/details/130574769)
 
-## 2.安装必要的依赖
+---
+
+## 🔧 2. 安装必要的依赖
 
 ```sh
 sudo yum install -y yum-utils \
@@ -47,7 +53,9 @@ sudo yum install -y yum-utils \
     lvm2
 ```
 
-## 3.设置docker仓库
+---
+
+## 📚 3. 设置 Docker 仓库
 
 ```sh
 sudo yum-config-manager \
@@ -55,17 +63,21 @@ sudo yum-config-manager \
       https://download.docker.com/linux/centos/docker-ce.repo
 ```
 
-如果添加错了，用下面的链接修改(因为上面的命令再执行一遍也不会覆盖，是没用的)：
+如果添加错了仓库，可以用下面的方式修改（因为上面的命令再执行一遍也不会覆盖）：
 
-参考链接：https://blog.csdn.net/m0_47333020/article/details/108738569
+参考链接：[修改 Docker 仓库](https://blog.csdn.net/m0_47333020/article/details/108738569)
 
-## 4.安装docker
+---
+
+## 📥 4. 安装 Docker
 
 ```sh
 sudo yum install -y docker-ce docker-ce-cli containerd.io
 ```
 
-## 5.启动docker
+---
+
+## 🚀 5. 启动 Docker
 
 ```sh
 # 启动docker
@@ -75,19 +87,23 @@ sudo systemctl start docker
 sudo systemctl enable docker
 ```
 
-## 6.添加镜像加速器，这里用的是阿里云
+---
 
-使用自己的阿里云账号登录，查看菜单栏左下角，发现有一个镜像加速器:
+## 🌐 6. 添加镜像加速器（阿里云）
 
-参考链接：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
+> 💡 使用自己的阿里云账号登录，查看菜单栏左下角的镜像加速器
 
-## 7.测试docker安装是否成功
+参考链接：[阿里云镜像加速器](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)
+
+---
+
+## ✅ 7. 测试 Docker 安装是否成功
 
 ```sh
 sudo docker run hello-world
 ```
 
-出现如下提示 说明成功了
+出现如下提示说明安装成功！✅
 
 ```sh
 Hello from Docker!
@@ -103,53 +119,60 @@ To generate this message, Docker took the following steps:
     to your terminal.
 ```
 
-## 8.测试创建Tomcat
+---
+
+## 🧪 8. 测试创建 Tomcat
 
 ```sh
 docker pull tomcat
 docker run -d --name my-tomcat -p 9090:8080 tomcat
 ```
 
+> 💡 如果浏览器访问时 404，那是因为 Tomcat 9+ 版本中，容器中有一个 `webapps` 是空的，还有一个 `webapps.dist`
+
 ```sh
-# 如果浏览器访问时404,那是因为tomcat是9以上,容器中有一个webapp是空的,还有一个webapp.dist
+# 解决 Tomcat 404 问题
 docker exec -it my-tomcat bash
 cp -r webapps.dist/* ./webapps
 rm -rf webapps.dist/
 # 再次访问就成功了
 ```
 
+---
 
-## 9.测试创建MySQL
+## 🗄️ 9. 测试创建 MySQL
 
 ```sh
 docker run -d --name my-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=test123 --privileged mysql
 ```
 
-## 10.进入到容器里面
+---
+
+## 🐚 10. 进入容器
 
 ```sh
 docker exec -it containerid /bin/bash
 ```
 
-## 11.其他
+---
 
-+ docker pull在哪拉取的镜像？
+## 💡 11. 常见问题
 
-  默认是在`hub.docker.com`
+### ❓ docker pull 在哪拉取的镜像？
 
-+ docker pull tomcat拉取的版本是？
+> 默认是在 `hub.docker.com`
 
-  默认是最新的版本，可以在后面指定版本`:`,比如node: 10-alpine
+### ❓ docker pull tomcat 拉取的版本是？
 
-+ 命令
+> 默认是最新的版本，可以在后面指定版本 `:`，比如 `node:10-alpine`
 
-  ```sh
-  docker pull        拉取镜像到本地
-  docker run         根据某个镜像创建容器
-  -d                 让容器在后台运行，其实就是一个进程
-  --name             给容器指定一个名字
-  -p                 将容器的端口映射到宿主机的端口
-  docker exec -it    进入到某个容器中并交互式运行 最后要加一个bash
-  ```
+### 📝 常用命令速查
 
-  
+```bash
+docker pull        # 拉取镜像到本地
+docker run         # 根据某个镜像创建容器
+-d                 # 让容器在后台运行，其实就是一个进程
+--name             # 给容器指定一个名字
+-p                 # 将容器的端口映射到宿主机的端口
+docker exec -it    # 进入到某个容器中并交互式运行，最后要加一个 bash
+```

@@ -1,9 +1,20 @@
-## 参考链接
+# ☁️ Docker Compose 搭建 Nacos 集群
 
-https://nacos.io/zh-cn/docs/quick-start-docker.html
+> 📦 使用 Docker Compose 一键部署 Nacos 服务注册中心
 
-> 单机
-```dockerfile
+---
+
+## 📖 参考链接
+
+[Nacos 官方文档 - Docker 快速开始](https://nacos.io/zh-cn/docs/quick-start-docker.html)
+
+---
+
+## 🚀 Docker Compose 配置
+
+> 💡 单机模式配置（适合开发测试环境）
+
+```yaml
 version: '3'
 
 services:
@@ -21,6 +32,7 @@ services:
     volumes:
       - ./mysql/data/:/var/lib/mysql/
       - ./mysql/my.cnf:/etc/mysql/my.cnf
+      
   nacos:
     image: nacos/nacos-server
     container_name: nacos
@@ -47,3 +59,27 @@ services:
     ports:
       - "80:8848"
 ```
+
+---
+
+## 📝 使用说明
+
+### 1️⃣ 创建 docker-compose.yml 文件
+
+将上面的配置保存为 `docker-compose.yml`
+
+### 2️⃣ 启动服务
+
+```bash
+docker-compose up -d
+```
+
+### 3️⃣ 访问 Nacos 控制台
+
+浏览器访问：`http://localhost:80`
+
+默认账号密码：`nacos/nacos`
+
+---
+
+> 💡 **提示**：生产环境建议使用集群模式，确保高可用性！

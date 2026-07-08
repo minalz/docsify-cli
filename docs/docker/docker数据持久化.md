@@ -1,109 +1,182 @@
-# Docker数据持久化
+# 💾 Docker 数据持久化
 
-## 1. Volume
+> 📦 使用 Volume 和 Bind Mounting 实现数据持久化
 
-> (1)创建mysql数据库的container
+---
 
-```sh
-docker run -d --name mysql01 -e MYSQL_ROOT_PASSWORD=123456	mysql:5.7
+## 1️⃣ Volume（数据卷）
+
+### 📥 创建 MySQL 容器
+
+```bash
+docker run -d \
+  --name mysql01 \
+  -e MYSQL_ROOT_PASSWORD=123456 \
+  mysql:5.7
 ```
 
-> (2)查看volume
+### 🔍 查看 Volume
 
-```sh
+```bash
 docker volume ls
 ```
 
-> (3)具体查看该volume 
+### 📖 查看 Volume 详情
 
-```sh
-docker volume inspect
-48507d0e7936f94eb984adf8177ec50fc6a7ecd8745ea0bc165ef485371589e8
+```bash
+docker volume inspect 48507d0e7936f94eb984adf8177ec50fc6a7ecd8745ea0bc165ef485371589e8
 ```
 
-> (4)名字不好看，name太长，修改一下
+### 🏷️ 使用自定义 Volume 名称
 
-```sh
-docker run -d --name mysql01 -v mysql01_volume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456	mysql:5.7
+```bash
+docker run -d \
+  --name mysql01 \
+  -v mysql01_volume:/var/lib/mysql \
+  -e MYSQL_ROOT_PASSWORD=123456 \
+  mysql:5.7
 ```
 
-`-v mysql01_volume:/var/lib/mysql`表示给上述的volume起一个能识别的名字
+> 💡 `-v mysql01_volume:/var/lib/mysql` 表示给 volume 起一个容易识别的名字
 
-> (5)查看volume
+### 🔎 查看自定义 Volume
 
-```sh
- docker volume ls
- docker volume inspect mysql01_volume
+```bash
+docker volume ls
+docker volume inspect mysql01_volume
 ```
 
-> (6)测试是否可以持久化保存数据
+### ✅ 测试数据持久化
 
-```sh
-# 进入容器中
+#### 1. 进入容器并创建数据库
+
+```bash
+# 进入容器
 docker exec -it mysql01 bash
 
-# 登录mysql服务
+# 登录 MySQL
 mysql -uroot -p123456
 
-# 创建测试库
-create database db_test
+# 创建测试数据库
+create database db_test;
+```
 
-# 退出mysql服务，退出mysql container # 删除mysql容器
+#### 2. 删除容器
+
+```bash
 docker rm -f mysql01
+```
 
-# 查看volume
+#### 3. 查看 Volume（仍然存在）
+
+```bash
 docker volume ls
+```
 
-# 发现volume还在
-DRIVER         VOLUME NAM
-local          mysql01_volume
+输出：
+```
+DRIVER    VOLUME NAME
+local     mysql01_volume
+```
 
-# 新建一个mysql container，并且指定使用"mysql01_volume"
-docker run -d --name test-mysql -v mysql01_volume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
+#### 4. 创建新容器并使用原有 Volume
 
-# 进入容器，登录mysql服务，查看数据库docker exec -it test-mysql bash mysql -uroot -p123456
-show database;
+```bash
+docker run -d \
+  --name test-mysql \
+  -v mysql01_volume:/var/lib/mysql \
+  -e MYSQL_ROOT_PASSWORD=123456 \
+  mysql:5.7
+```
 
-# 可以发现db_test仍然在
+#### 5. 验证数据是否保留
+
+```bash
+# 进入容器
+docker exec -it test-mysql bash
+
+# 登录 MySQL
+mysql -uroot -p123456
+
+# 查看数据库
+show databases;
+```
+
+输出：
+```
++--------------------+
 | information_schema |
-| db_test	|
-| mysql	|
+| db_test            |
+| mysql              |
 | performance_schema |
-| sys |
+| sys                |
++--------------------+
 ```
 
-## 2. Bind Mounting
+> ✅ 可以发现 `db_test` 仍然存在！数据持久化成功！
 
-> (1)创建一个tomcat容器
+---
 
-```sh
-docker run -d --name tomcat01 -p 9090:8080 -v
-/tmp/test:/usr/local/tomcat/webapps/test tomcat
+## 2️⃣ Bind Mounting（绑定挂载）
+
+### 🚀 创建 Tomcat 容器
+
+```bash
+docker run -d \
+  --name tomcat01 \
+  -p 9090:8080 \
+  -v /tmp/test:/usr/local/tomcat/webapps/test \
+  tomcat
 ```
 
-> (2)查看两个目录
+### 🔍 查看两个目录
 
-```sh
-centos：cd /tmp/test
-# 进入tomcat容器
+```bash
+# 在宿主机上
+cd /tmp/test
+
+# 在容器中
 docker exec -it tomcat01 bash
-tomcat容器：cd /usr/local/tomcat/webapps/test
+cd /usr/local/tomcat/webapps/test
 ```
 
-> (3)在centos的/tmp/test中新建1.html，并写一些内容
+### 📝 在宿主机创建文件
 
-```sh
-<p style="color:blue; font-size:20pt;">Only test content!!!</p
+在 `/tmp/test` 中创建 `1.html`：
+
+```html
+<p style="color:blue; font-size:20pt;">Only test content!!!</p>
 ```
 
-> (4)进入tomcat01的对应目录查看，发现也有一个1.html，并且也有内容  
+### ✅ 验证同步
 
-> (5)在centos7上访问该路径：
+#### 1. 在容器中查看
 
-```sh
+进入 tomcat01 的对应目录，发现也有一个 `1.html`，并且内容相同
+
+#### 2. 访问测试
+
+```bash
+# 在宿主机上访问
 curl localhost:9090/test/1.html
 ```
 
-> (6)在win浏览器中通过ip访问
+#### 3. 浏览器访问
 
-会显示`Only test content!!!`
+在 Windows 浏览器中通过 IP 访问，会显示：`Only test content!!!`
+
+---
+
+## 📊 Volume vs Bind Mounting 对比
+
+| 特性 | Volume | Bind Mounting |
+|:---|:---|:---|
+| 存储位置 | Docker 管理的目录 | 宿主机指定路径 |
+| 可移植性 | 高 | 低 |
+| 性能 | 较好 | 好 |
+| 适用场景 | 数据库持久化 | 开发时代码同步 |
+| 管理方式 | `docker volume` 命令 | 直接操作文件系统 |
+
+---
+
+> 💡 **提示**：数据持久化是 Docker 的重要特性，确保容器删除后数据不会丢失！

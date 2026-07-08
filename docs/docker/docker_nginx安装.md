@@ -1,27 +1,40 @@
-# Docker Nginx 安装
+# 🌐 Docker 安装 Nginx
 
-## 1.创建文件,然后volume进行挂载
+> 📦 使用 Docker 部署 Nginx 并配置 HTTPS 和负载均衡
 
+---
+
+## 📁 1. 创建文件目录
+
+### 创建证书和配置文件
+
+```bash
+# 创建证书目录
+mkdir -p /usr/local/myapp/nginx/cert
+
+# 将证书文件上传到该目录
+
+# 创建配置文件
+mkdir -p /usr/local/myapp/nginx
+touch /usr/local/myapp/nginx/nginx.conf
 ```
-mkdir /usr/local/myapp/nginx/cert 将证书文件传到这个文件夹中
 
-mkdir /usr/local/myapp/nginx/nginx.conf
-```
+---
 
-nginx.conf文件如下:
+## 📝 2. Nginx 配置文件
 
-```shell
+### nginx.conf 完整配置
+
+```nginx
 user  nginx;
 worker_processes  1;
 
 error_log  /var/log/nginx/error.log warn;
 pid        /var/run/nginx.pid;
 
-
 events {
     worker_connections  1024;
 }
-
 
 http {
     include       /etc/nginx/mime.types;
@@ -42,66 +55,100 @@ http {
 
     include /etc/nginx/conf.d/*.conf;
   
+    # HTTP 自动跳转 HTTPS
     server {
         listen 80;
         server_name yourdomainname;
         # Http访问也会转成Https的访问
         rewrite ^(.*) https://$server_name$1 permanent;
     }
-    # 以下属性中以ssl开头的属性代表与证书配置有关，其他属性请根据自己的需要进行配置。
+    
+    # HTTPS 配置（443 端口）
     server {
-        listen 443 ssl;   #SSL协议访问端口号为443。此处如未添加ssl，可能会造成Nginx无法启动。
-        server_name yourdomainname;  #将localhost修改为您证书绑定的域名，例如：www.example.com。
+        listen 443 ssl;
+        server_name yourdomainname;
         root html;
         index index.html index.htm;
-        ssl_certificate /etc/nginx/cert/domain.name_bundle.crt;   #将domain name.pem替换成您证书的文件名。
-        ssl_certificate_key /etc/nginx/cert/domain.name.key;   #将domain name.key替换成您证书的密钥文件名。
+        
+        # SSL 证书配置
+        ssl_certificate /etc/nginx/cert/domain.name_bundle.crt;
+        ssl_certificate_key /etc/nginx/cert/domain.name.key;
         ssl_session_timeout 5m;
-        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;  #使用此加密套件。
-        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;   #使用该协议进行配置。
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
         ssl_prefer_server_ciphers on;
 
         location / {
             proxy_pass http://balance;
         }
-
     }
     
-    # 如果想要多个应用都用Nginx来进行转发,比如jenkins 也可以改成支持https
-    # 以下属性中以ssl开头的属性代表与证书配置有关，其他属性请根据自己的需要进行配置。
+    # 多应用 HTTPS 支持（例如 Jenkins）
     server {
-        listen 9090 ssl;   #SSL协议访问端口号为443。此处如未添加ssl，可能会造成Nginx无法启动。
-        server_name yourdomainname;  #将localhost修改为您证书绑定的域名，例如：www.example.com。
+        listen 9090 ssl;
+        server_name yourdomainname;
         root html;
         index index.html index.htm;
-        ssl_certificate /etc/nginx/cert/domain.name_bundle.crt;   #将domain name.pem替换成您证书的文件名。
-        ssl_certificate_key /etc/nginx/cert/domain.name.key;   #将domain name.key替换成您证书的密钥文件名。
+        
+        ssl_certificate /etc/nginx/cert/domain.name_bundle.crt;
+        ssl_certificate_key /etc/nginx/cert/domain.name.key;
         ssl_session_timeout 5m;
-        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;  #使用此加密套件。
-        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;   #使用该协议进行配置。
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
         ssl_prefer_server_ciphers on;
         error_page 497 http://yourIp1:9090;
 
         location / {
             proxy_pass http://yourIp1:9090;
-            # 显示具体负载的机器的ip,X-Route-Ip随便命名
+            # 显示具体负载的机器的IP
             # add_header X-Route-Ip $upstream_addr;
             # add_header X-Route-Status $upstream_status;
         }
-
     }
 
-	# 这个可以配置负载均衡,如果有多个应用,默认是轮询
-    upstream balance{ 
+    # 负载均衡配置（默认轮询）
+    upstream balance { 
         server yourIp1:3000;
         server yourIp2:3000;
     }
 }
 ```
 
-## 2.启动命令
+> 💡 **配置说明**：
+> - 将 `yourdomainname` 替换为你的域名
+> - 将 `domain.name_bundle.crt` 和 `domain.name.key` 替换为你的证书文件名
+> - 将 `yourIp1:3000` 等替换为实际的应用服务器地址
 
-```shell
-docker run -d --name docsify-nginx -p 80:80 -p 443:443 -p 9020:9020 -v /usr/local/myapp/nginx/cert:/etc/nginx/cert -v /usr/local/myapp/nginx/nginx.conf:/etc/nginx/nginx.conf nginx
+---
+
+## 🚀 3. 启动 Nginx 容器
+
+```bash
+docker run -d \
+  --name docsify-nginx \
+  -p 80:80 \
+  -p 443:443 \
+  -p 9020:9020 \
+  -v /usr/local/myapp/nginx/cert:/etc/nginx/cert \
+  -v /usr/local/myapp/nginx/nginx.conf:/etc/nginx/nginx.conf \
+  nginx
 ```
 
+### 📝 端口说明
+
+| 端口 | 说明 |
+|:---|:---|
+| `80` | HTTP 端口 |
+| `443` | HTTPS 端口 |
+| `9020` | 自定义应用端口 |
+
+### 📂 挂载说明
+
+| 宿主机路径 | 容器路径 | 说明 |
+|:---|:---|:---|
+| `/usr/local/myapp/nginx/cert` | `/etc/nginx/cert` | SSL 证书 |
+| `/usr/local/myapp/nginx/nginx.conf` | `/etc/nginx/nginx.conf` | 配置文件 |
+
+---
+
+> 💡 **提示**：Nginx 是一款高性能的 HTTP 和反向代理服务器，支持负载均衡、SSL/TLS 等功能！
