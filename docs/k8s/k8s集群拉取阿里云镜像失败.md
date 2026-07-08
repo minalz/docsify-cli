@@ -1,97 +1,135 @@
-# k8s集群拉取阿里云镜像失败
+# ☁️ K8s 集群拉取阿里云镜像失败
 
-> VirtualBox搭建的虚拟机，创建的k8s集群，拉取镜像失败，提示要登录仓库，但是我在对应的服务器中都已经docker login并成功了，可还是拉取不成功，参考如下的方案可解决，这里我使用的是方案三，方案一我操作了没成功，方案二没实际操作
+> ❌ 问题：VirtualBox 虚拟机 K8s 集群拉取阿里云镜像失败，提示需要登录仓库
 
+---
 
+## 🔍 问题描述
 
-#### 方案一
+- ✅ Docker login 登录成功
+- ❌ K8s 拉取镜像仍然失败
+- ❌ 提示需要认证
 
-查看[官方文档](https://links.jianshu.com/go?to=https%3A%2F%2Fkubernetes.io%2Fdocs%2Fconcepts%2Fcontainers%2Fimages%2F%23using-a-private-regist)，发现kubelet在提取镜像时会读取`${home}/.docker/config.json`中的认证密钥，但是上述报错情况，显然没有读取到/root/.docker/config.json的密钥，重启kubelet也没有效果。根据官方文档所写，将`${home}/.docker/config.json`文件复制到`/var/lib/kubelet`下。如下操作：
+---
+
+## 🛠️ 解决方案
+
+### 方案一：复制 Docker 配置到 kubelet（未成功）
+
+查看[官方文档](https://kubernetes.io/docs/concepts/containers/images/#using-a-private-registry)，发现 kubelet 在提取镜像时会读取 `${home}/.docker/config.json` 中的认证密钥。
+
+**操作步骤**：
 
 ```shell
+# 复制 Docker 配置到 kubelet 目录
 $ cp ${home}/.docker/config.json /var/lib/kubelet/
+
+# 重启 kubelet
 $ systemctl restart kubelet.service
 ```
 
+> ⚠️ **结果**：操作后重新部署服务，仍然无法拉取镜像
 
+---
 
-执行完以上操作之后，再重新部署服务，就可以正常拉取镜像了。
+### 方案二：修改 kubelet 服务用户（未实际操作）
 
+参考 GitHub [Issues](https://github.com/kubernetes/kubernetes/issues/45487#issuecomment-464516064)，以 root 用户登录 Docker 仓库，在 kubelet 的 systemd unit 文件中加入 `User=root`。
 
-
-#### 方案二
-
-参考github上一个[issues](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fkubernetes%2Fkubernetes%2Fissues%2F45487%23issuecomment-464516064),以root用户登录docker仓库(一登录)，在kubelet的systemd unit文件中加入User=root，重启kubelet。
+**操作步骤**：
 
 ```shell
-#注意，我这里是用二进制安装的集群，如果你是用kubeadm安装的，需要找到对应的文件
+# 编辑 kubelet 服务文件（二进制安装方式）
 $ vim /etc/systemd/system/kubelet.service
 ......
 [Service]
-User=root  #加入此行
+User=root  # 加入此行
 ......
 
+# 重新加载配置
 $ systemctl daemon-reload
+
+# 重启 kubelet
 $ systemctl restart kubelet
 ```
 
+> 💡 **注意**：如果是 kubeadm 安装的集群，需要找到对应的配置文件
 
+---
 
-执行完以上操作之后，再重新部署服务，就可以正常拉取镜像了。
+### 方案三：创建 Docker Registry Secret（✅ 推荐，已使用）
 
+> ⚠️ **缺点**：如果有多个命名空间，需要每个命名空间都单独创建一个 Secret
 
-
-#### 方案三（我使用的是方案3）
-
-> 缺点：如果有多个命名空间，需要每个命名空间都单独创建一个secret
-
-创建docker registry认证的Secret。
+#### 1. 创建 Secret
 
 ```shell
-# 注意secret不会同步到所有的命名空间  如果是多个命名空间 需要单独都创建
-$ kubectl create secret docker-registry my-aliyun-secret --docker-server=XXXXXXX --docker-username=xxxx --docker-password=xxxxx --docker-email=test@gmail.com
+# 注意：Secret 不会同步到所有命名空间，多个命名空间需要分别创建
+$ kubectl create secret docker-registry my-aliyun-secret \
+    --docker-server='registry.cn-hangzhou.aliyuncs.com' \
+    --docker-username='xxx' \
+    --docker-password='xxxx' \
+    --docker-email='xxx@163.com'
+```
+
+> 💡 **提示**：如果内容有特殊字符，加单引号即可
+
+#### 2. 在 Deployment 中引用 Secret
+
+```yaml
+# 编辑部署文件
 $ vim bxpp.yaml
 ......
-    spec:
-      imagePullSecrets:  # 加入这个参数
-      - name: my-aliyun-secret
-      containers:
+spec:
+  imagePullSecrets:  # 添加这个参数
+  - name: my-aliyun-secret
+  containers:
 ......
+
+# 应用配置
 $ kubectl apply -f bxpp-test.yaml
 ```
 
-执行完以上操作之后，再重新部署服务，就可以正常拉取镜像了。
+#### 3. 验证
 
-删除命名：
+执行完以上操作后，重新部署服务，即可正常拉取镜像！
 
-```shell
-kubectl delete secret my-aliyun-secret
-```
+---
 
+## 🔧 Secret 管理命令
 
-
-编辑内容：
+### 删除 Secret
 
 ```shell
 kubectl delete secret my-aliyun-secret
 ```
 
+### 编辑 Secret
 
-
-我的配置（和上面是一样的，就是整理了一下格式）：
-
+```shell
+kubectl edit secret my-aliyun-secret
 ```
+
+---
+
+## 📝 配置示例
+
+```shell
 kubectl create secret docker-registry my-aliyun-secret \
---docker-server='registry.cn-hangzhou.aliyuncs.com' \
---docker-username='xxx' \
---docker-password='xxxx' \
---docker-email='xxx@163.com'
+    --docker-server='registry.cn-hangzhou.aliyuncs.com' \
+    --docker-username='xxx' \
+    --docker-password='xxxx' \
+    --docker-email='xxx@163.com'
 ```
 
-注意：
+> ⚠️ **重要**：如果内容有特殊字符，加单引号即可
 
-**如果内容有特殊字符的，加单引号即可**
+---
 
-#### 参考链接
+## 📚 参考链接
 
-https://www.jianshu.com/p/bf6275f75334
+[K8s 拉取私有镜像解决方案](https://www.jianshu.com/p/bf6275f75334)
+
+---
+
+> 💡 **提示**：推荐使用方案三（创建 Secret），简单且可靠！
