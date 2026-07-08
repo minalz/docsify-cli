@@ -1,9 +1,29 @@
-# Redis文档汇总
+# 📕 Redis 文档汇总
 
-## 看完后，我才明白Redis为什么默认16个数据库??
-https://mp.weixin.qq.com/s/4Z0IgqwZHZ5AiWb1UsRrTQ
+> 📚 Redis 学习资源与实战教程集合
 
-## Linux Redis安装
-https://blog.csdn.net/jiedong_xu/article/details/131626318
+---
 
-相关配置在env_install.md中有更详细的步骤
+## 📖 学习文章
+
+### 1️⃣ Redis 为什么默认 16 个数据库？
+
+[看完后，我才明白 Redis 为什么默认 16 个数据库](https://mp.weixin.qq.com/s/4Z0IgqwZHZ5AiWb1UsRrTQ)
+
+### 2️⃣ Linux Redis 安装
+
+[Linux Redis 安装教程](https://blog.csdn.net/jiedong_xu/article/details/131626318)
+
+> 💡 **提示**：相关配置在 `env_install.md` 中有更详细的步骤
+
+---
+
+## 📚 更多资源
+
+- Redis 官方文档
+- Redis 实战教程
+- Redis 性能优化
+
+---
+
+> 💡 **提示**：本文档汇总 Redis 相关学习资源，持续更新中！
