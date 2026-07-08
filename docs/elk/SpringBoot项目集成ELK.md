@@ -1,13 +1,21 @@
-# SpringBoot项目集成ELK
+# ☕ SpringBoot 项目集成 ELK
 
-## 1.新建springboot项目elkdemo
+> 📈 将 SpringBoot 应用日志接入 ELK 技术栈的完整教程
 
-zip已上传
+---
 
-## 2.添加jar包
+## 📦 1. 新建 SpringBoot 项目
 
-```
-<!-- elk logstash -->
+创建一个名为 `elkdemo` 的 SpringBoot 项目
+
+---
+
+## 📚 2. 添加依赖
+
+在 `pom.xml` 中添加 Logstash 日志编码器依赖：
+
+```xml
+<!-- ELK Logstash -->
 <dependency>
     <groupId>net.logstash.logback</groupId>
     <artifactId>logstash-logback-encoder</artifactId>
@@ -15,54 +23,42 @@ zip已上传
 </dependency>
 ```
 
-## 3.添加logback.xml
+---
 
-destination 输入要发送到logstash的地址
+## 📝 3. 配置 logback.xml
+
+在 `src/main/resources` 下创建 `logback.xml` 文件：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 日志级别从低到高分为TRACE < DEBUG < INFO < WARN < ERROR < FATAL，如果设置为WARN，则低于WARN的信息都不会输出 -->
-<!-- scan:当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true -->
-<!-- scanPeriod:设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。 -->
-<!-- debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。 -->
-<!--<configuration  scan="true" scanPeriod="10 seconds">-->
 <configuration>
-
-    <!--<include resource="org/springframework/boot/logging/logback/base.xml" />-->
-
     <contextName>logback</contextName>
-    <!-- name的值是变量的名称，value的值是变量定义的值。通过定义的值会被插入到logger上下文中。定义变量后，可以使“${}”来使用变量。 -->
     <property name="log.path" value="log" />
 
     <!-- 彩色日志 -->
-    <!-- 彩色日志依赖的渲染类 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
     <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
     <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+    
     <!-- 彩色日志格式 -->
     <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%method,%line])  %clr(${PID:- }){magenta} %clr(---){faint} %clr([%thread]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %msg%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
 
-    <!--输出到控制台-->
+    <!-- 输出到控制台 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <!--此日志appender是为开发使用，只配置最低级别，控制台输出的日志级别是大于或等于此级别的日志信息-->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>info</level>
         </filter>
         <encoder>
             <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>
-            <!-- 设置字符集 -->
             <charset>UTF-8</charset>
         </encoder>
     </appender>
 
-    <!--日志导出到 Logstash-->
-    <appender name="stash"
-              class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+    <!-- 日志导出到 Logstash -->
+    <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
         <destination>yourserverIP:9250</destination>
-        <!-- encoder必须配置,有多种可选 -->
-        <encoder charset="UTF-8"
-                 class="net.logstash.logback.encoder.LogstashEncoder" >
-            <!-- "appname":"ye_test" 的作用是指定创建索引的名字时用，并且在生成的文档中会多了这个字段  -->
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+            <!-- appname 用于指定索引名称 -->
             <customFields>{"appname":"ye_test"}</customFields>
         </encoder>
     </appender>
@@ -71,11 +67,14 @@ destination 输入要发送到logstash的地址
         <appender-ref ref="stash"/>
         <appender-ref ref="CONSOLE" />
     </root>
-
 </configuration>
 ```
 
-## 4.添加请求
+> 💡 **关键配置**：将 `destination` 中的 `yourserverIP` 替换为实际的 Logstash 服务器 IP 地址
+
+---
+
+## 💻 4. 添加测试接口
 
 ```java
 @Slf4j
@@ -85,35 +84,68 @@ public class IndexController {
 
     @GetMapping("/index")
     public Object index(String marking) {
-
         logger.debug("===elkdemo测试: 此时marking=" + marking);
         logger.info("===elkdemo: 此时marking" + marking);
         logger.warn("===elkdemo: 此时marking" + marking);
         logger.error("===elkdemo: 此时marking" + marking);
-
+        
         return "success";
     }
 }
 ```
 
-## 5.启动项目
+---
 
-## 6.查看kibana看板
+## 🚀 5. 启动项目
 
-http://yourserverIP:5601/
+运行 SpringBoot 应用
 
-点击Management->Elasticsearch->Index Management 会发现有一个索引
+---
 
-![image-20210524102112967](http://img.minalz.cn/typora/image-20210524102112967.png)
+## 🔍 6. 查看 Kibana 看板
 
-再点击Kibana->Index Patterns->Create index pattern->创建elkdemo->Next step
+### 6.1 访问 Kibana
 
-![image-20210524102309039](http://img.minalz.cn/typora/image-20210524102309039.png)
+浏览器访问：`http://yourserverIP:5601/`
 
-## 7.发送请求
+### 6.2 检查索引
 
+点击 **Management → Elasticsearch → Index Management**，会发现有一个 `elkdemo` 索引
+
+![索引管理](http://img.minalz.cn/typora/image-20210524102112967.png)
+
+### 6.3 创建索引模式
+
+点击 **Kibana → Index Patterns → Create index pattern → 创建 elkdemo → Next step**
+
+![创建索引模式](http://img.minalz.cn/typora/image-20210524102309039.png)
+
+---
+
+## 📡 7. 发送测试请求
+
+```
 http://localhost:8088/index?marking=testelk
+```
 
-点击Discover
+点击 **Discover** 查看日志数据
 
-![image-20210524102744544](http://img.minalz.cn/typora/image-20210524102744544.png)
+![查看日志](http://img.minalz.cn/typora/image-20210524102744544.png)
+
+---
+
+## 📊 集成步骤总结
+
+| 步骤 | 说明 |
+|:---|:---|
+| 1️⃣ | 创建 SpringBoot 项目 |
+| 2️⃣ | 添加 logstash-logback-encoder 依赖 |
+| 3️⃣ | 配置 logback.xml，设置 Logstash 地址 |
+| 4️⃣ | 创建测试接口，输出不同级别日志 |
+| 5️⃣ | 启动项目 |
+| 6️⃣ | 在 Kibana 中创建索引模式 |
+| 7️⃣ | 发送请求，查看日志数据 |
+
+---
+
+> 💡 **提示**：通过 ELK 集成，可以实现集中式日志管理、实时日志搜索与可视化分析！
