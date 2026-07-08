@@ -1,45 +1,53 @@
-# 服务部署到Kubernetes
+# 🚀 Kubernetes 实战走起
 
-## 部署wordpress+mysql
+> 📦 服务部署到 Kubernetes 的完整实践指南
 
-> (1)创建wordpress命名空间
+---
+
+## 📝 部署 WordPress + MySQL
+
+### 1. 创建命名空间
 
 ```shell
 kubectl create namespace wordpress
 ```
 
-> (2)创建wordpress-db.yaml文件：`网盘/Kubernetes实战走起/课堂源码/wordpress-db.yaml`
+### 2. 部署 MySQL
 
-> (3)根据wordpress-db.yaml创建资源[mysql数据库]
+**创建 wordpress-db.yaml**：
 
 ```shell
 kubectl apply -f wordpress-db.yaml
-kubectl get pods -n wordpress      # 记得获取ip，因为wordpress.yaml文件中要修改
+kubectl get pods -n wordpress
 kubectl get svc mysql -n wordpress
 kubectl describe svc mysql -n wordpress
 ```
 
-> (4)创建wordpress.yaml文件：`网盘/Kubernetes实战走起/课堂源码/wordpress.yaml`
+### 3. 部署 WordPress
 
-> (5)根据wordpress.yaml创建资源[wordpress]
+**创建 wordpress.yaml**（注意修改 MySQL 的 IP 地址或使用 Service 名称）：
 
 ```shell
-kubectl apply -f wordpress.yaml    #修改其中mysql的ip地址,其实也可以使用service的name:mysql
-kubectl get pods -n wordpress 
-kubectl get svc -n wordpress   # 获取到转发后的端口，如30063
+kubectl apply -f wordpress.yaml
+kubectl get pods -n wordpress
+kubectl get svc -n wordpress
 ```
 
-> (6)访问测试
+### 4. 访问测试
 
-win上访问集群中任意宿主机节点的IP:30063
+在 Windows 上访问集群中任意宿主机节点的 IP:端口（如 30063）
 
-## 部署Spring Boot项目
+---
 
-> `流程`：确定服务-->编写Dockerfile制作镜像-->上传镜像到仓库-->编写K8S文件-->创建
->
-> `网盘/Kubernetes实战走起/课堂源码/springboot-demo`
+## 🌱 部署 Spring Boot 项目
 
-> (1)准备Spring Boot项目springboot-demo
+### 流程概览
+
+```
+确定服务 → 编写 Dockerfile 制作镜像 → 上传镜像到仓库 → 编写 K8s 文件 → 创建
+```
+
+### 1. 准备 Spring Boot 项目
 
 ```java
 @RestController
@@ -51,19 +59,23 @@ public class K8SController {
 }
 ```
 
-> (2)生成xxx.jar，并且上传到springboot-demo目录
+### 2. 打包项目
 
-```
-mvn clean pakcage
+```shell
+mvn clean package
 ```
 
-> (3)编写Dockerfile文件
->
-> mkdir springboot-demo
->
-> cd springboot-demo
->
-> vi Dockerfile
+### 3. 编写 Dockerfile
+
+**目录结构**：
+
+```shell
+mkdir springboot-demo
+cd springboot-demo
+vi Dockerfile
+```
+
+**Dockerfile 内容**：
 
 ```dockerfile
 FROM openjdk:8-jre-alpine
@@ -71,44 +83,39 @@ COPY springboot-demo-0.0.1-SNAPSHOT.jar /springboot-demo.jar
 ENTRYPOINT ["java","-jar","/springboot-demo.jar"]
 ```
 
-> (4)根据Dockerfile创建image
+### 4. 构建镜像
 
-```xshell
+```shell
 docker build -t springboot-demo-image .
 ```
 
-> (5)使用docker run创建container
+### 5. 测试容器
 
-```
+```shell
 docker run -d --name s1 springboot-demo-image
-```
-
-> (6)访问测试
-
-```
 docker inspect s1
 curl ip:8080/k8s
 ```
 
-> (7)将镜像推送到镜像仓库
+### 6. 推送镜像到阿里云
 
 ```shell
 # 登录阿里云镜像仓库
 docker login --username=itcrazy2016@163.com registry.cn-hangzhou.aliyuncs.com
 
+# 打标签
 docker tag springboot-demo-image registry.cn-hangzhou.aliyuncs.com/itcrazy2016/springboot-demo-image:v1.0
 
+# 推送
 docker push registry.cn-hangzhou.aliyuncs.com/itcrazy2016/springboot-demo-image:v1.0
 ```
 
-> (8)编写Kubernetes配置文件
->
-> vi springboot-demo.yaml
->
-> kubectl apply -f springboot-demo.yaml
+### 7. 编写 Kubernetes 配置文件
+
+**springboot-demo.yaml**：
 
 ```yaml
-# 以Deployment部署Pod
+# 以 Deployment 部署 Pod
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
@@ -129,7 +136,7 @@ spec:
         ports: 
         - containerPort: 8080
 ---
-# 创建Pod的Service
+# 创建 Pod 的 Service
 apiVersion: v1
 kind: Service
 metadata: 
@@ -142,7 +149,7 @@ spec:
   selector: 
     app: springboot-demo
 ---
-# 创建Ingress，定义访问规则，一定要记得提前创建好nginx ingress controller
+# 创建 Ingress，定义访问规则
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata: 
@@ -158,87 +165,87 @@ spec:
           servicePort: 80
 ```
 
-> (9)查看资源
-
+```shell
+kubectl apply -f springboot-demo.yaml
 ```
+
+### 8. 查看资源
+
+```shell
 kubectl get pods
 kubectl get pods -o wide
-curl pod_id:8080/k8s
+curl pod_ip:8080/k8s
 kubectl get svc
 kubectl scale deploy springboot-demo --replicas=5
 ```
 
-> (10)win配置hosts文件[一定要记得提前创建好nginx ingress controller]
+### 9. 配置 Hosts 并访问
+
+**Windows hosts 文件**：
 
 ```
 192.168.0.61 springboot.jack.com
 ```
 
-> (11)win浏览器访问
+**浏览器访问**：
 
 ```
 http://springboot.jack.com/k8s
 ```
 
-## 部署Nacos项目
+---
 
-### 传统方式
+## 🏢 部署 Nacos 项目
 
-> (1)准备两个Spring Boot项目，名称为user和order，表示两个服务
->
-> `网盘/Kubernetes实战走起/课堂源码/user`
->
-> `网盘/Kubernetes实战走起/课堂源码/order`
+### 传统方式部署
 
-> (2)下载部署nacos server1.0.0
->
-> `github`：<https://github.com/alibaba/nacos/releases>
->
-> ·网盘/Kubernetes实战走起/课堂源码/nacos-server-1.0.0.tar.gz·
+#### 1. 准备 Spring Boot 项目
 
-```
-01  上传nacos-server-1.0.0.tar.gz到阿里云服务器39:/usr/local/nacos
+- **user 服务**：表示用户服务
+- **order 服务**：表示订单服务
 
-02  解压：tar -zxvf
+#### 2. 部署 Nacos Server
 
-03  进入到bin目录执行：sh startup.sh -m standalone  [需要有java环境的支持]
+```shell
+# 01 上传 nacos-server-1.0.0.tar.gz 到阿里云服务器
+# 02 解压
+tar -zxvf nacos-server-1.0.0.tar.gz
 
-04  浏览器访问：39.100.39.63:8848/nacos
+# 03 启动（需要 Java 环境）
+cd bin
+sh startup.sh -m standalone
 
-05  用户名和密码：nacos
-```
+# 04 浏览器访问
+http://39.100.39.63:8848/nacos
 
-> (3)将应用注册到nacos，记得修改Spring Boot项目中application.yml文件
-
-```
-01 将user/order服务注册到nacos
-
-02 user服务能够找到order服务
+# 05 登录（用户名和密码都是 nacos）
 ```
 
-> (4)启动两个Spring Boot项目，然后查看nacos server的服务列表
+#### 3. 注册服务到 Nacos
 
-> (5)为了验证user能够发现order的地址
->
-> 访问localhost:8080/user/test，查看日志输出，从而测试是否可以ping通order地址
+修改 Spring Boot 项目中的 `application.yml` 文件，将 user/order 服务注册到 Nacos。
 
-### K8s方式
+#### 4. 测试服务发现
 
-#### user和order是K8s中的Pod
+访问 `localhost:8080/user/test`，查看日志输出，测试 user 是否可以发现 order 服务。
 
-> `思考`：如果将user和order都迁移到K8s中，那服务注册与发现会有问题吗？
+---
 
-> (1)生成xxx.jar，并且分别上传到master节点的user和order目录
->
-> resources/nacos/jar/xxx.jar
+### K8s 方式部署
 
+#### 场景一：User 和 Order 都是 K8s 中的 Pod
+
+**思考**：如果将 user 和 order 都迁移到 K8s 中，服务注册与发现会有问题吗？
+
+##### 1. 打包项目
+
+```shell
+mvn clean package
 ```
-mvn clean pakcage
-```
 
-> (2)来到对应的目录，编写Dockerfile文件
->
-> vi Dockerfile
+##### 2. 编写 Dockerfile
+
+**user/Dockerfile**：
 
 ```dockerfile
 FROM openjdk:8-jre-alpine
@@ -246,38 +253,38 @@ COPY user-0.0.1-SNAPSHOT.jar /user.jar
 ENTRYPOINT ["java","-jar","/user.jar"]
 ```
 
+**order/Dockerfile**：
+
 ```dockerfile
 FROM openjdk:8-jre-alpine
 COPY order-0.0.1-SNAPSHOT.jar /order.jar
 ENTRYPOINT ["java","-jar","/order.jar"]
 ```
 
-> (3)根据Dockerfile创建image
+##### 3. 构建镜像
 
-```xshell
+```shell
 docker build -t user-image:v1.0 .
 docker build -t order-image:v1.0 .
 ```
 
-> (4)将镜像推送到镜像仓库
+##### 4. 推送镜像
 
 ```shell
-# 登录阿里云镜像仓库
+# 登录阿里云
 docker login --username=itcrazy2016@163.com registry.cn-hangzhou.aliyuncs.com
 
+# 推送 user 镜像
 docker tag user-image:v1.0 registry.cn-hangzhou.aliyuncs.com/itcrazy2016/user-image:v1.0
-
 docker push registry.cn-hangzhou.aliyuncs.com/itcrazy2016/user-image:v1.0
 ```
 
-> (5)编写Kubernetes配置文件
->
-> vi user.yaml/order.yaml
->
-> kubectl apply -f user.yaml/order.yaml
+##### 5. 编写 Kubernetes 配置文件
+
+**user.yaml**：
 
 ```yaml
-# 以Deployment部署Pod
+# 以 Deployment 部署 Pod
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
@@ -298,7 +305,7 @@ spec:
         ports: 
         - containerPort: 8080
 ---
-# 创建Pod的Service
+# 创建 Pod 的 Service
 apiVersion: v1
 kind: Service
 metadata: 
@@ -311,7 +318,7 @@ spec:
   selector: 
     app: user
 ---
-# 创建Ingress，定义访问规则，一定要记得提前创建好nginx ingress controller
+# 创建 Ingress
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata: 
@@ -327,8 +334,10 @@ spec:
           servicePort: 80
 ```
 
+**order.yaml**：
+
 ```yaml
-# 以Deployment部署Pod
+# 以 Deployment 部署 Pod
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
@@ -349,7 +358,7 @@ spec:
         ports: 
         - containerPort: 9090
 ---
-# 创建Pod的Service
+# 创建 Pod 的 Service
 apiVersion: v1
 kind: Service
 metadata: 
@@ -363,7 +372,12 @@ spec:
     app: order
 ```
 
-> (6)查看资源
+```shell
+kubectl apply -f user.yaml
+kubectl apply -f order.yaml
+```
+
+##### 6. 查看资源
 
 ```shell
 kubectl get pods
@@ -372,72 +386,101 @@ kubectl get svc
 kubectl get ingress
 ```
 
-> (7)查看nacos server上的服务信息
->
-> 可以发现，注册到nacos server上的服务ip地址为pod的ip，比如192.168.80.206/192.168.190.82
+##### 7. 查看 Nacos 服务列表
 
-> (8)访问测试
+注册到 Nacos Server 上的服务 IP 地址为 Pod 的 IP（如 192.168.80.206 / 192.168.190.82）。
+
+##### 8. 访问测试
+
+**集群内访问**：
 
 ```shell
-# 01 集群内
-curl user-pod-ip:8080/user/test
-kubectl logs -f <pod-name> -c <container-name>   [主要是为了看日志输出，证明user能否访问order]
+curl user_pod_ip:8080/user/test
 
-# 02 集群外，比如win的浏览器，可以把集群中原来的ingress删除掉
+# 查看日志（证明 user 能否访问 order）
+kubectl logs -f <pod-name> -c <container-name>
+```
+
+**集群外访问**：
+
+```
 http://k8s.demo.gper.club/user/test
 ```
 
-**结论**：如果服务都是在K8s集群中，最终将pod ip注册到了nacos server，那么最终服务通过pod ip发现so easy。
+> ✅ **结论**：如果服务都在 K8s 集群中，最终将 Pod IP 注册到了 Nacos Server，服务通过 Pod IP 发现非常简单。
 
-#### user传统和order迁移K8s
+---
 
-> 假如user现在不在K8s集群中，order在K8s集群中
->
-> 比如user使用本地idea中的，order使用上面K8s中的
+#### 场景二：User 传统部署 + Order 迁移到 K8s
 
-> (1)启动本地idea中的user服务
+**场景说明**：User 在本地 IDEA 中运行，Order 在 K8s 集群中。
 
-> (2)查看nacos server中的user服务列表
+##### 1. 启动本地 User 服务
 
-> (3)访问本地的localhost:8080/user/test，并且观察idea中的日志打印，发现访问的是order的pod id，此时肯定是不能进行服务调用的，怎么解决呢？
+在 IDEA 中启动 User 服务。
 
-> (4)解决思路
->
-> ```
-> 之所以访问不了，是因为order的pod ip在外界访问不了，怎么解决呢？
-> 01 可以将pod启动时所在的宿主机的ip写到容器中，也就是pod id和宿主机ip有一个对应关系
-> 02 pod和宿主机使用host网络模式，也就是pod直接用宿主机的ip，但是如果服务高可用会有端口冲突问题[可以使用pod的调度策略，尽可能在高可用的情况下，不会将pod调度在同一个worker中]
-> ```
+##### 2. 查看 Nacos 服务列表
 
-> (5)我们来演示一个host网络模式的方式，修改order.yaml文件
->
-> 修改之后apply之前可以看一下各个节点的9090端口是否被占用
->
-> lsof -i tcp:9090
+确认 User 服务已注册到 Nacos。
+
+##### 3. 测试访问
+
+访问 `localhost:8080/user/test`，观察 IDEA 中的日志打印。
+
+**问题**：访问的是 Order 的 Pod IP，此时肯定不能进行服务调用。
+
+##### 4. 解决思路
+
+**方案一**：Pod IP 与宿主机 IP 映射
+
+将 Pod 启动时所在的宿主机 IP 写到容器中，建立 Pod IP 和宿主机 IP 的对应关系。
+
+**方案二**：使用 Host 网络模式（✅ 推荐）
+
+Pod 和宿主机使用 Host 网络模式，Pod 直接使用宿主机的 IP。
+
+> ⚠️ **注意**：如果服务高可用会有端口冲突问题。可以使用 Pod 调度策略，尽可能在高可用的情况下，不会将 Pod 调度在同一个 Worker 中。
+
+##### 5. 修改 Order.yaml
 
 ```yaml
- ...
- metadata:
-      labels: 
-        app: order
-    spec: 
-    # 主要是加上这句话，注意在order.yaml的位置
-      hostNetwork: true
-      containers: 
-      - name: order
-        image: registry.cn-hangzhou
+...
+metadata:
+  labels: 
+    app: order
+spec: 
+  # 主要是加上这句话，注意在 order.yaml 的位置
+  hostNetwork: true
+  containers: 
+  - name: order
+    image: registry.cn-hangzhou...
 ...
 ```
 
-> (6)kubectl apply -f order.yaml 
->
-> - kubectl get pods -o wide   --->找到pod运行在哪个机器上，比如w2
-> - 查看w2上的9090端口是否启动
+##### 6. 应用配置
 
-> (7)查看nacos server上order服务
->
-> 可以发现此时用的是w2宿主机的9090端口
+```shell
+# 应用前检查各节点的 9090 端口是否被占用
+lsof -i tcp:9090
 
-> (8)本地idea访问测试
->
-> localhost:8080/user/test
+# 应用配置
+kubectl apply -f order.yaml
+
+# 查看 Pod 运行在哪个机器上
+kubectl get pods -o wide
+
+# 查看对应节点上的 9090 端口是否启动
+lsof -i tcp:9090
+```
+
+##### 7. 查看 Nacos 服务列表
+
+此时 Order 服务使用的是宿主机的 9090 端口。
+
+##### 8. 本地测试
+
+访问 `localhost:8080/user/test`，验证服务调用是否成功。
+
+---
+
+> 💡 **提示**：K8s 中的服务注册与发现，关键在于 Pod IP 的可达性！
