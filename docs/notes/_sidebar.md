@@ -32,7 +32,7 @@
   - [⚡ 百万级 Excel 导出优化](notes/百万级Excel导出优化.md)
   - [📄 Java-PDF 导出](notes/Java-PDF导出.md)
   - [📄 NodeJs-PDF 导出](notes/NodeJs-PDF导出.md)
-  - [🔄 Spring Boot 整合 Canal + RabbitMQ 监听数据变更](notes/Spring Boot 整合 Canal + RabbitMQ 监听数据变更.md)
+  - [🔄 Spring Boot 整合 Canal + RabbitMQ 监听数据变更](notes/SpringBoot整合Canal+RabbitMQ监听数据变更.md)
   - [📅 201809 笔记](notes/201809笔记.md)
   - [📅 201810 笔记](notes/201810笔记.md)
 
