@@ -1,99 +1,115 @@
-# Spring Boot 整合 Canal + RabbitMQ 监听数据变更
+# 🔄 Spring Boot 整合 Canal + RabbitMQ 监听数据变更
 
-原文链接: https://blog.csdn.net/m0_71777195/article/details/129946021
+> 💡 MySQL binlog 监听 | 数据变更捕获 | 消息队列异步处理 | 原文链接：[CSDN](https://blog.csdn.net/m0_71777195/article/details/129946021)
 
-> 需求
+---
 
-我想要在SpringBoot中采用一种与业务代码解耦合的方式，来实现数据的变更记录，记录的内容是新数据，如果是更新操作还得有旧数据内容。
+## 📖 需求背景
 
-经过调研发现，使用Canal来监听MySQL的binlog变化可以实现这个需求，可是在监听到变化后需要马上保存变更记录，除非再做一些逻辑处理，于是我又结合了RabbitMQ来处理保存变更记录的操作。
+我想要在 SpringBoot 中采用一种与业务代码解耦合的方式，来实现数据的变更记录，记录的内容是新数据，如果是更新操作还得有旧数据内容。
 
-> 步骤
+经过调研发现，使用 Canal 监听 MySQL 的 binlog 变化可以实现这个需求，可是在监听到变化后需要马上保存变更记录，除非再做一些逻辑处理，于是我又结合了 RabbitMQ 来处理保存变更记录的操作。
 
-- 启动MySQL环境，并开启binlog
-- 启动Canal环境，为其创建一个MySQL账号，然后以Slave的形式连接MySQL
-- Canal服务模式设为TCP，用Java编写客户端代码，监听MySQL的binlog修改
-- Canal服务模式设为RabbitMQ，启动RabbitMQ环境，配置Canal和RabbitMQ的连接，用消息队列去接收binlog修改事件
+---
 
-> 环境搭建
+## 📋 实现步骤
 
-环境搭建基于docker-compose：
+1. **启动 MySQL 环境**，并开启 binlog
+2. **启动 Canal 环境**，为其创建一个 MySQL 账号，然后以 Slave 的形式连接 MySQL
+3. **Canal 服务模式设为 TCP**，用 Java 编写客户端代码，监听 MySQL 的 binlog 修改
+4. **Canal 服务模式设为 RabbitMQ**，启动 RabbitMQ 环境，配置 Canal 和 RabbitMQ 的连接，用消息队列去接收 binlog 修改事件
+
+---
+
+## 🛠️ 环境搭建
+
+---
+
+### 📦 Docker Compose 配置
+
+环境搭建基于 Docker Compose：
 
 ```yaml
-version: "3"  
-services:  
-    mysql:  
-        network_mode: mynetwork  
-        container_name: mymysql  
-        ports:  
-            - 3306:3306  
-        restart: always  
-        volumes:  
-            - /etc/localtime:/etc/localtime  
-            - /home/mycontainers/mymysql/data:/data  
-            - /home/mycontainers/mymysql/mysql:/var/lib/mysql  
-            - /home/mycontainers/mymysql/conf:/etc/mysql  
-        environment:  
-            - MYSQL_ROOT_PASSWORD=root  
-        command:   
-            --character-set-server=utf8mb4  
-            --collation-server=utf8mb4_unicode_ci  
-            --log-bin=/var/lib/mysql/mysql-bin  
-            --server-id=1  
-            --binlog-format=ROW  
-            --expire_logs_days=7  
-            --max_binlog_size=500M  
-        image: mysql:5.7.20  
-    rabbitmq:     
-        container_name: myrabbit  
-        ports:  
-            - 15672:15672  
-            - 5672:5672  
-        restart: always  
-        volumes:  
-            - /etc/localtime:/etc/localtime  
-            - /home/mycontainers/myrabbit/rabbitmq:/var/lib/rabbitmq  
-        network_mode: mynetwork  
-        environment:  
-            - RABBITMQ_DEFAULT_USER=admin  
-            - RABBITMQ_DEFAULT_PASS=123456  
-        image: rabbitmq:3.8-management  
-    canal-server:  
-        container_name: canal-server  
-        restart: always  
-        ports:  
-            - 11110:11110  
-            - 11111:11111  
-            - 11112:11112  
-        volumes:  
-            - /home/mycontainers/canal-server/conf/canal.properties:/home/admin/canal-server/conf/canal.properties  
-            - /home/mycontainers/canal-server/conf/instance.properties:/home/admin/canal-server/conf/example/instance.properties  
-            - /home/mycontainers/canal-server/logs:/home/admin/canal-server/logs  
-        network_mode: mynetwork  
-        depends_on:  
-            - mysql  
-            - rabbitmq  
-            # - canal-admin  
-        image: canal/canal-server:v1.1.5
+version: "3"
+services:
+  mysql:
+    network_mode: mynetwork
+    container_name: mymysql
+    ports:
+      - 3306:3306
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /home/mycontainers/mymysql/data:/data
+      - /home/mycontainers/mymysql/mysql:/var/lib/mysql
+      - /home/mycontainers/mymysql/conf:/etc/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --log-bin=/var/lib/mysql/mysql-bin
+      --server-id=1
+      --binlog-format=ROW
+      --expire_logs_days=7
+      --max_binlog_size=500M
+    image: mysql:5.7.20
+  rabbitmq:
+    container_name: myrabbit
+    ports:
+      - 15672:15672
+      - 5672:5672
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /home/mycontainers/myrabbit/rabbitmq:/var/lib/rabbitmq
+    network_mode: mynetwork
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=123456
+    image: rabbitmq:3.8-management
+  canal-server:
+    container_name: canal-server
+    restart: always
+    ports:
+      - 11110:11110
+      - 11111:11111
+      - 11112:11112
+    volumes:
+      - /home/mycontainers/canal-server/conf/canal.properties:/home/admin/canal-server/conf/canal.properties
+      - /home/mycontainers/canal-server/conf/instance.properties:/home/admin/canal-server/conf/example/instance.properties
+      - /home/mycontainers/canal-server/logs:/home/admin/canal-server/logs
+    network_mode: mynetwork
+    depends_on:
+      - mysql
+      - rabbitmq
+    image: canal/canal-server:v1.1.5
 ```
 
-我们需要修改下Canal环境的配置文件：`canal.properties`和`instance.properties`，映射Canal中的以下两个路径：
+> ⚠️ **注意**：`network_mode: mynetwork` 需要删除或修改，具体取决于您的网络配置。
+
+---
+
+### ⚙️ 配置文件说明
+
+我们需要修改 Canal 环境的配置文件：`canal.properties` 和 `instance.properties`，映射 Canal 中的以下两个路径：
 
 - `/home/admin/canal-server/conf/canal.properties`
-
-配置文件中，`canal.destinations`意思是server上部署的instance列表，
-
 - `/home/admin/canal-server/conf/example/instance.properties`
 
-这里的/example是指instance即实例名，要和上面`canal.properties`内instance配置对应(`canal-exchange`,==需要改成`/canal-exchange/instance.properties`==)，canal会为实例创建对应的文件夹，一个Client对应一个实例
+> 💡 **配置说明**：
+> - `canal.destinations`：server 上部署的 instance 列表
+> - `/example` 是指 instance 即实例名，要和上面 `canal.properties` 内 instance 配置对应
+> - Canal 会为实例创建对应的文件夹，一个 Client 对应一个实例
 
-==注意:==
+> ⚠️ **重要提示**：
+> - 默认路径是 `/example/instance.properties`
+> - 根据配置文件需要改成 `/canal-exchange/instance.properties`
+> - `network_mode: mynetwork` 配置可以删除，默认都在同一个网络下
 
-==并没有给出`network_mode: mynetwork`,删掉该行配置`network_mode: mynetwork `==
+---
 
-以下是我们需要准备的两个配置文件具体内容：
-
-### canal.properties
+### 📄 canal.properties
 
 ```properties
 ################################################  
@@ -247,11 +263,20 @@ rabbitmq.password = RabbitMQ密码
 rabbitmq.deliveryMode =  
 ```
 
-此时`canal.serverMode = tcp`，即TCP直连，我们先开启这个服务，然后手写Java客户端代码去连接它，等下再改为RabbitMQ。
+---
 
-通过注释可以看到，canal支持的服务模式有：tcp, kafka, rocketMQ, rabbitMQ, pulsarMQ，即主流的消息队列都支持。
+> 💡 此时 `canal.serverMode = tcp`，即 TCP 直连模式。通过注释可以看到，Canal 支持的服务模式有：
+> - TCP
+> - Kafka
+> - RocketMQ
+> - RabbitMQ
+> - PulsarMQ
 
-### instance.properties
+我们先开启 TCP 服务，然后手写 Java 客户端代码去连接它，稍后再改为 RabbitMQ 模式。
+
+---
+
+### 📄 instance.properties
 
 ```properties
 ################################################  
@@ -309,26 +334,32 @@ canal.mq.topic=canal-routing-key
 canal.mq.partition=0
 ```
 
-把这两个配置文件映射好，再次提醒，注意实例的路径名，默认是：`/example/instance.properties`(根据上面的配置文件要改成/canal-exchange/instance.properties)
+---
 
-### 修改canal配置文件
+> 💡 **配置提醒**：把这两个配置文件映射好，注意实例的路径名，默认是：`/example/instance.properties`（根据上面的配置文件要改成 `/canal-exchange/instance.properties`）
 
-我们需要修改这个实例配置文件，去连接MySQL，确保以下的配置正确：
+---
+
+### 🔧 修改 Canal 配置文件
+
+我们需要修改实例配置文件，去连接 MySQL，确保以下配置正确：
 
 ```properties
-canal.instance.master.address=mymysql:3306  
-canal.instance.dbUsername=canal  
-canal.instance.dbPassword=canal  
+canal.instance.master.address=mymysql:3306
+canal.instance.dbUsername=canal
+canal.instance.dbPassword=canal
 ```
 
-mymysql是同为docker容器的MySQL环境，端口3306是指内部端口。
+> 💡 **配置说明**：
+> - `mymysql` 是同为 Docker 容器的 MySQL 环境
+> - 端口 `3306` 是指内部端口（不是对外端口 13306）
+> - Canal 连接 MySQL 需要满足：
+>   - 处于同一网段（docker-compose.yml 中的 mynetwork）
+>   - 访问内部端口（即 3306，而非 13306）
 
-这里多说明一下，docker端口配置时假设为：13306:3306，那么容器对外的端口就是13306，内部是3306，在本示例中，MySQL和Canal都是容器环境，所以Canal连接MySQL需要满足以下条件：
+> 💡 **数据库账号**：dbUsername 和 dbPassword 为 MySQL 账号密码，为了开发方便可以使用 root/root，但仍建议自行创建用户并分配访问权限
 
-- 处于同一网段（docker-compose.yml中的mynetwork）
-- 访问内部端口（即3306，而非13306）
-
-dbUsername和dbPassword为MySQL账号密码，为了开发方便可以使用root/root，但是我仍建议自行创建用户并分配访问权限：
+#### 📝 创建 Canal 用户
 
 ```shell
 # 进入docker中的mysql容器  
@@ -352,27 +383,37 @@ flush privileges;
 drop user 'canal'@'%';  
 ```
 
-用navicat或者shell去登录canal这个用户，可以访问即创建成功
+---
 
-> 整合SpringBoot Canal实现客户端
+用 Navicat 或者 Shell 去登录 canal 这个用户，可以访问即创建成功
 
-```pom
-<canal.version>1.1.5</canal.version>  
-  
-<!--canal-->  
-<dependency>  
-  <groupId>com.alibaba.otter</groupId>  
-  <artifactId>canal.client</artifactId>  
-  <version>${canal.version}</version>  
-</dependency>  
-<dependency>  
-  <groupId>com.alibaba.otter</groupId>  
-  <artifactId>canal.protocol</artifactId>  
-  <version>${canal.version}</version>  
-</dependency>   
+---
+
+## 🚀 整合 SpringBoot + Canal 实现客户端
+
+---
+
+#### 📦 添加依赖
+
+```xml
+<canal.version>1.1.5</canal.version>
+
+<!-- Canal -->
+<dependency>
+  <groupId>com.alibaba.otter</groupId>
+  <artifactId>canal.client</artifactId>
+  <version>${canal.version}</version>
+</dependency>
+<dependency>
+  <groupId>com.alibaba.otter</groupId>
+  <artifactId>canal.protocol</artifactId>
+  <version>${canal.version}</version>
+</dependency>
 ```
 
-新增组件并启动：
+---
+
+#### 💻 Canal 客户端代码
 
 ```java
 import com.alibaba.otter.canal.client.CanalConnector;  
@@ -486,7 +527,9 @@ public class CanalClient {
 } 
 ```
 
-启动类Application：
+---
+
+#### 🎯 启动类配置
 
 ```java
 @SpringBootApplication  
@@ -501,63 +544,81 @@ public class BaseApplication implements CommandLineRunner {
 }  
 ```
 
-启动程序，此时新增或修改数据库中的数据，我们就能从客户端中监听到
+---
 
-不过我建议监听的信息放到消息队列中，在空闲的时候去处理，所以直接配置Canal整合RabbitMQ更好。
+启动程序，此时新增或修改数据库中的数据，我们就能从客户端中监听到。
 
-> Canal整合RabbitMQ
+> 💡 **建议**：监听的信息放到消息队列中，在空闲的时候去处理，所以直接配置 Canal 整合 RabbitMQ 更好。
 
-修改canal.properties中的serverMode：
+---
 
-```properties
-canal.serverMode = rabbitMQ  
-```
+## 🐇 Canal 整合 RabbitMQ
 
-修改instance.properties中的topic：
+修改 canal.properties 中的 serverMode：
 
 ```properties
-canal.mq.topic=canal-routing-key  
+canal.serverMode = rabbitMQ
 ```
 
-然后找到关于RabbitMQ的配置：
+修改 instance.properties 中的 topic：
 
 ```properties
-#################################################  
-########         RabbitMQ       ############  
-#################################################  
-# 连接rabbit，写IP，因为同个网络下，所以可以写容器名  
-rabbitmq.host = myrabbit  
-rabbitmq.virtual.host = /  
-# 交换器名称，等等我们要去手动创建  
-rabbitmq.exchange = canal-exchange  
-# 账密  
-rabbitmq.username = admin  
-rabbitmq.password = 123456  
-# 暂不支持指定端口，使用的是默认的5762，好在在本示例中适用  
+canal.mq.topic=canal-routing-key
 ```
 
-重新启动容器，进入RabbitMQ管理页面创建exchange交换器和队列queue：
+然后找到关于 RabbitMQ 的配置：
 
-- 新建exchange，命名为：`canal-exchange`
-- 新建queue，命名为：`canal-queue`
-- 绑定exchange和queue，routing-key设置为：`canal-routing-key`，这里对应上面`instance.properties`的`canal.mq.topic`
-
-顺带一提，上面这段可以忽略，因为在SpringBoot的RabbitMQ配置中，会自动创建交换器exchange和队列queue，不过手动创建的话，可以在忽略SpringBoot的基础上，直接在RabbitMQ的管理页面上看到修改记录的消息。
-
-> SpringBoot整合RabbitMQ
-
-```pom
-<amqp.version>2.3.4.RELEASE</amqp.version>  
-  
-<!--消息队列-->  
-<dependency>  
-  <groupId>org.springframework.boot</groupId>  
-  <artifactId>spring-boot-starter-amqp</artifactId>  
-  <version>${amqp.version}</version>  
-</dependency>  
+```properties
+#################################################
+########         RabbitMQ       ############
+#################################################
+# 连接rabbit，写IP，因为同个网络下，所以可以写容器名
+rabbitmq.host = myrabbit
+rabbitmq.virtual.host = /
+# 交换器名称，等等我们要去手动创建
+rabbitmq.exchange = canal-exchange
+# 账密
+rabbitmq.username = admin
+rabbitmq.password = 123456
+# 暂不支持指定端口，使用的是默认的5762，好在在本示例中适用
 ```
 
-#### application.yml ：
+---
+
+### 📋 RabbitMQ 配置步骤
+
+重新启动容器，进入 RabbitMQ 管理页面创建 Exchange 交换器和 Queue 队列：
+
+1. **新建 Exchange**，命名为：`canal-exchange`
+2. **新建 Queue**，命名为：`canal-queue`
+3. **绑定 Exchange 和 Queue**，routing-key 设置为：`canal-routing-key`
+
+> 💡 **提示**：对应上面 `instance.properties` 的 `canal.mq.topic`
+
+> 💡 **自动创建**：在 SpringBoot 的 RabbitMQ 配置中，会自动创建交换器 Exchange 和队列 Queue。不过手动创建的话，可以在忽略 SpringBoot 的基础上，直接在 RabbitMQ 的管理页面上看到修改记录的消息。
+
+---
+
+## 🔄 SpringBoot 整合 RabbitMQ
+
+---
+
+#### 📦 添加依赖
+
+```xml
+<amqp.version>2.3.4.RELEASE</amqp.version>
+
+<!-- 消息队列 -->
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-amqp</artifactId>
+  <version>${amqp.version}</version>
+</dependency>
+```
+
+---
+
+#### ⚙️ application.yml 配置
 
 ```yaml
 spring:  
@@ -574,7 +635,9 @@ spring:
     publisher-returns: true  
 ```
 
-RabbitMQ配置类：
+---
+
+#### 🔧 RabbitMQ 配置类
 
 ```java
 @Configuration  
@@ -602,7 +665,9 @@ public class RabbitConfig {
 } 
 ```
 
-Canal消息生产者：
+---
+
+#### 📤 Canal 消息生产者
 
 ```java
 public static final String CanalQueue = "canal-queue";  
@@ -645,7 +710,9 @@ public class CanalProvider {
 }  
 ```
 
-Canal消息消费者：
+---
+
+#### 📥 Canal 消息消费者
 
 ```java
 /**  
@@ -700,12 +767,18 @@ public class CanalComsumer {
 } 
 ```
 
-测试一下，修改MySQL中的一条消息，Canal就会发送信息到RabbitMQ，我们就能从监听的RabbitMQ队列中得到该条消息。
+---
 
-==注意点:==
+## ✅ 测试验证
 
-1.一个是docker-compose.yaml中的网关设置,链接中并没有给出`network_mode: mynetwork`,可以直接删掉`network_mode: mynetwork  `,默认都是一个网关的
+测试一下，修改 MySQL 中的一条消息，Canal 就会发送信息到 RabbitMQ，我们就能从监听的 RabbitMQ 队列中得到该条消息。
 
-2.`/example/instance.properties`中是默认路径,根据文档中的配置需要改成`/canal-exchange/instance.properties`
+---
 
-3.改成了rabbitMQ的模式后,原TCP的测试代码就可以不用了,否则会一直报错
+## ⚠️ 注意点
+
+1. **Docker Compose 网络配置**：docker-compose.yaml 中的网关设置，链接中并没有给出 `network_mode: mynetwork`，可以直接删掉 `network_mode: mynetwork`，默认都是一个网关的
+
+2. **实例路径配置**：`/example/instance.properties` 中是默认路径，根据文档中的配置需要改成 `/canal-exchange/instance.properties`
+
+3. **模式切换**：改成了 RabbitMQ 的模式后，原 TCP 的测试代码就可以不用了，否则会一直报错
