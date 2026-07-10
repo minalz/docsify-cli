@@ -1,3 +1,4 @@
-+ [JVM](notes/jvm/jvm.md)
-+ [JVM内存图解](notes/jvm/jvm_memory.md)
-+ [进制转换](notes/jvm/base_conversion.md)
+- ☕ **JVM 学习笔记**
+  - [📖 JVM](notes/jvm/jvm.md)
+  - [🧠 JVM 内存图解](notes/jvm/jvm_memory.md)
+  - 🔢 [进制转换](notes/jvm/base_conversion.md)

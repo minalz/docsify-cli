@@ -1,1 +1,2 @@
-+ [MyBatis插件原理](notes/mybatis/MyBatis插件原理.md)
+- 🔌 **MyBatis 框架**
+  - [🔧 MyBatis 插件原理](notes/mybatis/MyBatis插件原理.md)
