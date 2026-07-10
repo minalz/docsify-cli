@@ -1,6 +1,12 @@
-## 1.Java中的内存分配：
+# 🧠 JVM 内存图解
 
-### 1.1目前有三大Java虚拟机：HotSpot，oracle JRockit，IBM J9。
+> 💡 Java 内存分配 | 堆栈解析 | 对象内存管理
+
+---
+
+## 📖 一、Java 中的内存分配
+
+### 1️⃣ 三大 Java 虚拟机
 
 JRockit是oracle发明的，用于其WebLogic服务器，IBM JVM是IBM发明的用于其Websphere服务器（所以在某行开发的时候，他们用的是IBM的JDK，因为他们使用的IBM的应用程序服务器Websphere，使用其他JDK可能存在兼容性问题）。JRockit和J9不存在永久代这种说法。这里只讨论HotSpot虚拟机，这也是目前使用的最多的JVM。Sun JDK7 HotSpot虚拟机的内存模型如下图所示：
 

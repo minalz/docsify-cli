@@ -1,10 +1,10 @@
-# Git指令
+# 📋 Git 指令
 
-参考链接:
+> 💡 Git 常用操作命令 | 版本控制 | 提交指南
 
-https://blog.csdn.net/Capgras/article/details/100540501
+---
 
-## 1.git第一次提交:
+## 🔧 一、Git 第一次提交
 
 + git init     //初始化git
 + git add      //添加文件到本地仓库( .为添加整个文件夹，也可以换成某个文件)

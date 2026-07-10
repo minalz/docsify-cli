@@ -1,6 +1,10 @@
-# Kafka常用命令
+# 📋 Kafka 常用命令
 
-## 1.创建topic
+> 💡 Kafka 消息队列操作指南 | Topic 管理 | 消费监控
+
+---
+
+## 🔧 一、创建 Topic
 
 ```sh
 sh kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic first

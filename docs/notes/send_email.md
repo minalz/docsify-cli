@@ -1,6 +1,10 @@
-# Java发送邮件
+# 📧 Java 发送邮件
 
-## 代码:
+> 💡 JavaMail 邮件发送实践 | QQ 邮箱 | 163 邮箱
+
+---
+
+## 💻 一、代码实现
 
 ```java
 public class SendEmailUtil {
