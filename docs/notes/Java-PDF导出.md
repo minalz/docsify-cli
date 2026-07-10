@@ -1,6 +1,10 @@
-# Java-PDF导出
+# 📄 Java PDF 导出
 
-### 1.pom.xml引入palywright依赖包
+> 💡 Java PDF 生成方案 | Playwright | Chromium | 前端截图分页
+
+---
+
+## 📦 一、POM.xml 引入 Playwright 依赖包
 
 ```xml
 <dependency>
@@ -24,7 +28,7 @@ public class PdfOptions {
 }
 ```
 
-#### 2.2 PdfRequest.java
+### 2️⃣ PdfRequest.java
 
 ```java
 @Data
@@ -35,7 +39,7 @@ public class PdfRequest {
 }
 ```
 
-#### 2.3 PdfService.java
+### 3️⃣ PdfService.java
 
 ```java
 @Service
