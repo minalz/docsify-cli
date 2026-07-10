@@ -1,15 +1,21 @@
-NodeJs-PDF导出
+# 📄 NodeJs-PDF导出
 
-### 1.tsconfig.json新增配置
+> 💡 NestJS + Puppeteer PDF 导出方案 | 前端截图分页 | 跨域配置
+
+---
+
+## 🔧 一、tsconfig.json新增配置
 
 ```json
 "types": ["node"],      // 显式引入
 "lib": ["ES2022"],      // 或 ESNext
 ```
 
-### 2.核心代码
+---
 
-#### 2.1 pdf.module.ts
+## 💻 二、核心代码
+
+### 2.1 pdf.module.ts
 
 ```typescript
 import { Module } from '@nestjs/common';
@@ -23,7 +29,7 @@ import { PdfService } from './pdf.service';
 export class PdfModule {}
 ```
 
-#### 2.2 pdf.service.ts
+### 2.2 pdf.service.ts
 
 ```typescript
 import { Injectable, Logger } from '@nestjs/common';
@@ -79,7 +85,7 @@ export class PdfService {
 }
 ```
 
-#### 2.3 pdf.controller.ts
+### 2.3 pdf.controller.ts
 
 ```typescript
 import { Controller, Post, Body, Res, StreamableFile } from '@nestjs/common';
@@ -106,7 +112,7 @@ export class PdfController {
 }
 ```
 
-#### 2.4 pdf-request.dto.ts
+### 2.4 pdf-request.dto.ts
 
 放在/dto包下
 
@@ -119,7 +125,7 @@ export interface PdfRequest {
 }
 ```
 
-#### 2.5 pdf.options.json
+### 2.5 pdf.options.json
 
 ```json
 {
@@ -134,7 +140,9 @@ export interface PdfRequest {
 }
 ```
 
-### 3.前端代码
+---
+
+## 🌐 三、前端代码
 
 放在项目page-pdf.html下
 
@@ -285,7 +293,9 @@ export interface PdfRequest {
 </html>
 ```
 
-### 3.需要新增静态目录的配置和module的配置PdfModule
+---
+
+## ⚙️ 四、需要新增静态目录的配置和module的配置PdfModule
 
 ```typescript
 import { Module } from '@nestjs/common';
@@ -307,10 +317,13 @@ import { PdfModule } from './pdf/pdf.module';
 export class AppModule {}
 ```
 
-### 4.请求page-pdf.html页面，点击导出即可
+---
 
+## 🚀 五、请求page-pdf.html页面，点击导出即可
 
-### 5.如果涉及跨域，需要配置CORS
+---
+
+## 🔗 六、如果涉及跨域，需要配置CORS
 
 main.ts里新增CORS的配置
 
