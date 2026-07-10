@@ -1,6 +1,12 @@
-# 校验值为什么类型的
+# 🔍 校验值为什么类型的
 
-## 校验值为Double型
+> 💡 Java 数据类型校验 | 正则表达式 | Double 和 Integer 类型验证
+
+---
+
+## 🔢 一、校验值为 Double 型
+
+### 1️⃣ 校验方法
 
 ```java
 /**
@@ -16,7 +22,7 @@ public boolean verifyDouble(String val){
 }
 ```
 
-测试：
+### 2️⃣ 测试代码
 
 ```java
 public static void main(String[] args) {
@@ -26,7 +32,11 @@ public static void main(String[] args) {
     System.out.println(verifyDouble("2"));
     System.out.println(verifyDouble("aa"));
 }
+```
 
+### 3️⃣ 测试结果
+
+```
 true
 true
 false
@@ -34,7 +44,11 @@ true
 false
 ```
 
-## 校验值为整型
+---
+
+## 🔢 二、校验值为整型
+
+### 1️⃣ 校验方法
 
 ```java
 /**
@@ -43,14 +57,14 @@ false
  * @return
  */
 public static boolean verifyInteger(String val){
-    String regex = "^[+\-]?[0-9]\d*$";
+    String regex = "^[+\\-]?[0-9]\\d*$";
     Pattern INTEGER_PATTERN = Pattern.compile(regex);
     boolean matches = INTEGER_PATTERN.matcher(val).matches();
     return matches;
 }
 ```
 
-测试：
+### 2️⃣ 测试代码
 
 ```java
 public static void main(String[] args) {
@@ -60,7 +74,11 @@ public static void main(String[] args) {
     System.out.println(verifyInteger("2"));
     System.out.println(verifyInteger("aa"));
 }
+```
 
+### 3️⃣ 测试结果
+
+```
 true
 true
 false

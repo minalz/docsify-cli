@@ -86,19 +86,26 @@ scp -r local_folder remote_username@remote_ip:remote_folder
 
   显示个别环境变量的值
 
-## 3.端口被占用
+---
 
-```
+## 🔌 三、端口被占用
+
+### 查看端口占用
+
+```bash
+# 查看端口 -> 找到pid
 netstat -anlp/anpt | grep port
 
-查看端口->找到pid
+# 查看是哪个服务
+ps -ef | grep pid
 
-ps -ef |grep pid -> 找到是哪个服务
-
-netstat -ntpl | grep :端口号 可以直接查看pid
+# 直接查看pid
+netstat -ntpl | grep :端口号
 ```
 
-## 4.文件操作
+---
+
+## 📁 四、文件操作（Vim 命令）
 
 + `:$`
 
