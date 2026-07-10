@@ -1,14 +1,26 @@
-# Idea使用过程中出现的问题
+# 💡 IDEA 使用技巧
 
-## Tomcat的console乱码问题
+> 🔧 IntelliJ IDEA 使用技巧与问题解决 | 开发效率提升
 
-1. 找到tomcat 安装目录下的 conf /logging.properties 文件打开
+---
 
-2. 将java.util.logging.ConsoleHandler.encoding = UTF-8修改为java.util.logging.ConsoleHandler.encoding = GBK
+## 📖 Tomcat 的 Console 乱码问题
 
-3. 保存后 重启idea
+**解决步骤：**
 
-## IDEA2020.1启动SpringBoot项目出现java程序包:xxx不存在
+1. 找到 Tomcat 安装目录下的 `conf/logging.properties` 文件打开
+2. 将 `java.util.logging.ConsoleHandler.encoding = UTF-8` 修改为 `java.util.logging.ConsoleHandler.encoding = GBK`
+3. 保存后，重启 IDEA
 
-例如：Error:(3, 46) java: 程序包org.springframework.context.annotation不存在
-参考链接：https://blog.csdn.net/lzzdhhhh/article/details/105907772
+---
+
+## ⚠️ IDEA 2020.1 启动 SpringBoot 项目出现 java 程序包:xxx 不存在
+
+**错误示例：**
+
+```
+Error:(3, 46) java: 程序包org.springframework.context.annotation不存在
+```
+
+**参考链接：**
+- [解决方案](https://blog.csdn.net/lzzdhhhh/article/details/105907772)

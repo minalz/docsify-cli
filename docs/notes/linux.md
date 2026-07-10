@@ -1,52 +1,54 @@
-# Linux 命令
+# 🐧 Linux 常用命令
 
-## 1.传输文件
+> 💡 Linux 服务器操作指南 | 文件管理 | 系统运维
 
-+ scp [参数] [原路径] [目标路径]
+---
 
-  `scp -P(端口号) 文件名 username@IP:文件路径`
+## 📤 一、传输文件
 
-+ 从本地服务器复制到远程服务器
+### SCP 命令
 
-  + 复制文件
+**语法：** `scp [参数] [原路径] [目标路径]`
 
-  ```shell
-  scp local_file remote_username@remote_ip:remote_folder
-  ```
-  
-  + 复制目录  
-  
-  ```shell
-  scp -r local_folder remote_ip:remote_folder
-  ```
-  
-  
-  
-+ 从远程服务器复制到本地服务器
+```bash
+scp -P[端口号] 文件名 username@IP:文件路径
+```
 
-  ```shell
-  scp remote_username@remote_ip: remote_file local_folder
-  ```
+### 从本地服务器复制到远程服务器
 
-  
+**复制文件：**
 
-+ 上传本地文件到远程机器指定目录
+```bash
+scp local_file remote_username@remote_ip:remote_folder
+```
 
-  ```
-  scp local_file remote_username@remote_ip: remote_folder
-  ```
+**复制目录：**
 
-  
+```bash
+scp -r local_folder remote_ip:remote_folder
+```
 
-+ 上传本地目录到远程机器指定目录
+### 从远程服务器复制到本地服务器
 
-  ```
-  scp -r local_folder remote_username@remote_ip: remote_folder
-  ```
+```bash
+scp remote_username@remote_ip:remote_file local_folder
+```
 
-  
+### 上传本地文件到远程机器指定目录
 
-## 2.常用vim命令
+```bash
+scp local_file remote_username@remote_ip:remote_folder
+```
+
+### 上传本地目录到远程机器指定目录
+
+```bash
+scp -r local_folder remote_username@remote_ip:remote_folder
+```
+
+---
+
+## 🔧 二、常用命令
 
 + `pwd`
 
