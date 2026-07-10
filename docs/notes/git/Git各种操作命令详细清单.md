@@ -1,21 +1,21 @@
-# Git各种操作命令详细清单
+# 📚 Git 各种操作命令详细清单
 
-转载链接：
+> 💡 Git 常用命令参考手册 | 版本控制 | 操作指南
 
-https://blog.csdn.net/zjhred/article/details/104951936
+---
 
-## 1.新建代码库
+## 📖 专业名词解释
 
-[![图片](http://img.minalz.cn/typora/640.jpg)](https://mp.weixin.qq.com/s?__biz=MzUzMTA2NTU2Ng==&mid=2247487551&idx=1&sn=18f64ba49f3f0f9d8be9d1fdef8857d9&scene=21#wechat_redirect)
+下面是常用的 Git 命令清单。几个专用名词的译名如下：
 
-下面是常用 的Git 命令清单。几个专用名词的译名如下：
+- **Workspace**：工作区
+- **Index / Stage**：暂存区
+- **Repository**：仓库区（或本地仓库）
+- **Remote**：远程仓库
 
-- Workspace：工作区
-- Index / Stage：暂存区
-- Repository：仓库区（或本地仓库）
-- Remote：远程仓库
+---
 
-## 一、新建代码库
+## 🔧 一、新建代码库
 
 ```shell
 # 在当前目录新建一个Git代码库
