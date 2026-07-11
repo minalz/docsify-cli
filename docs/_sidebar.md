@@ -1,4 +1,5 @@
-  + [简介](README.md)
-  + [Blog搭建CICD的步骤](blog搭建CICD的步骤.md)
-  + [Blog搭建CICD的步骤-gitee](blog搭建CICD的步骤-gitee.md)
-  + [github和gitee配置ssh key冲突解决](github和gitee配置sshkey冲突解决.md)
+- 📖 **快速开始**
+  - [📝 博客简介](README.md)
+  - 🚀 [Blog 搭建 CI/CD 的步骤（GitHub）](blog搭建CICD的步骤.md)
+  - 🚀 [Blog 搭建 CI/CD 的步骤（Gitee）](blog搭建CICD的步骤-gitee.md)
+  - 🔧 [GitHub 和 Gitee 配置 SSH Key 冲突解决](github和gitee配置sshkey冲突解决.md)

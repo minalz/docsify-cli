@@ -1,9 +1,8 @@
-# MINALZ
+# 🚀 MINALZ 技术博客
 
+> 💡 Stay Hungry, Stay Foolish | 技术探索与实践分享
 
-> Stay Hungry，Stay Foolish
-
-[GitHub](https://github.com/minalz/docsify-cli.git)
-[Start](README.md)
+[🔗 GitHub](https://github.com/minalz/docsify-cli.git)
+[📖 开始阅读](README.md)
 
 
