@@ -20,9 +20,9 @@
 
 ## 📚 更多资源
 
-- Redis 官方文档
-- Redis 实战教程
-- Redis 性能优化
+- [Redis 官方文档](https://redis.io/docs/)
+- [Redis 实战教程 - 菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
+- [Redis 性能优化指南](https://developer.aliyun.com/article/779627)
 
 ---
 
