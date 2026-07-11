@@ -137,8 +137,8 @@
 
 | 场景 | 推荐方案 |
 |------|---------|
-| 纯国内用户访问 | 🚫 Gitee Pages 已不可用，建议 Vercel 或自托管 |
+| 纯国内用户访问 | 🚫 Gitee Pages 已不可用，建议自托管 |
 | 国际用户为主 | ✅ GitHub Pages |
 | 需要 CDN 加速 | ✅ Cloudflare Pages |
 | 追求国内访问速度 | ✅ 腾讯云国外 EdgeOne（免实名）/ 腾讯云国内 EdgeOne（需备案） |
-| 追求简单免费 | ✅ GitHub Pages / Vercel |
+| 追求简单免费 | ✅ GitHub Pages |
