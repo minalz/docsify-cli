@@ -106,8 +106,8 @@
 
 ## 📌 快速导航
 
-- 💻 [查看代码片段](codes/README.md)
-- 📚 [浏览学习笔记](notes/README.md)
-- 🛠️ [软件环境配置](soft/README.md)
-- 🐳 [Docker 实践](docker/README.md)
-- 🧮 [算法题解](algorithm/README.md)
+- [💻 查看代码片段](codes/README.md)
+- [📚 浏览学习笔记](notes/README.md)
+- [🛠️ 软件环境配置](soft/README.md)
+- [🐳 Docker 实践](docker/README.md)
+- [🧮 算法题解](algorithm/README.md)
