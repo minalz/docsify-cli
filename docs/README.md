@@ -68,20 +68,7 @@
 
 > 🏆 访问速度最快，国内域名已备案可直接配置
 
-```mermaid
-graph LR
-    A[🖥️ 阿里云服务器 CICD] --> B[🖥️ 腾讯云服务器 CICD]
-    B --> C[🐙 GitHub Pages]
-    C --> D[🚀 Gitee Pages]
-    D --> E[☁️ CloudFlare Pages]
-    E --> F[🌍 腾讯云国外 EdgeOne]
-    F --> G[🏠 腾讯云国内 EdgeOne]
-
-    style A fill:#ffcccc
-    style B fill:#ffcccc
-    style D fill:#ffeb99
-    style G fill:#ccffcc
-```
+![image-20260712001114060](http://img.minalz.cn/typora/image-20260712001114060.png)
 
 ## 📚 参考文档
 
