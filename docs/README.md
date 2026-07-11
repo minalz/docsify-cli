@@ -68,7 +68,7 @@
 
 > 🏆 访问速度最快，国内域名已备案可直接配置
 
-![image-20260712001114060](http://img.minalz.cn/typora/image-20260712001114060.png)
+![image-20260712001430385](http://img.minalz.cn/typora/image-20260712001430385.png)
 
 ## 📚 参考文档
 
