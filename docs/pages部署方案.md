@@ -11,6 +11,8 @@
 | Gitee Pages | ❌ | ⚡ 快 | **2024年5月后已下线** |
 | GitHub Pages | ✅ | 🐢 慢 | 国际访问快，国内需优化 |
 | Cloudflare Pages | ✅ | 🐢 慢 | 需绑定 GitHub 仓库部署 |
+| 腾讯云国外 EdgeOne | ❌ | ⚡ 快 | 无需实名，速度优秀 |
+| 腾讯云国内 EdgeOne | ✅ | ⚡ 快 | 需域名备案 |
 
 ---
 
@@ -25,6 +27,8 @@
 - ✅ 支持自定义域名
 - 🐢 国内访问速度较慢（可通过 CDN 优化）
 
+![](http://img.minalz.cn/typora/image-20260711224823662.png)
+
 ---
 
 ## 3️⃣ Cloudflare Pages
@@ -32,6 +36,30 @@
 - ✅ 支持自定义域名
 - 🐢 国内访问速度一般
 > 💡 **自定义域名建议**: 想配置DNS，要把腾讯云的DNS解析换成Cloudflare的DNS解析，对于我来说是本末倒置，所以后续没有配置自定义域名了，另外对于GitHub Pages的访问来说，速度反而更慢一点
+
+---
+
+## 4️⃣ 腾讯云国外 EdgeOne Makers
+
+📋 **控制台**: [https://console.tencentcloud.com/edgeone/makers/project/makers-tu74zqdqkaas/setting](https://console.tencentcloud.com/edgeone/makers/project/makers-tu74zqdqkaas/setting)
+
+> ⚠️ **注意**: 只能使用默认域名，想自定义域名需要实名认证，因为这是用于大陆外的地址注册的，没有外面的身份证和护照等是无法完成实名认证的
+
+![腾讯云国外 EdgeOne](http://img.minalz.cn/typora/image-20260711223839198.png)
+
+> 💡 **速度优势**: 速度比 GitHub Pages 和 Cloudflare Pages 快很多
+
+---
+
+## 5️⃣ 腾讯云国内 EdgeOne Makers
+
+📋 **控制台**: [https://console.cloud.tencent.com/edgeone/makers](https://console.cloud.tencent.com/edgeone/makers)
+
+![腾讯云国内 EdgeOne 1](http://img.minalz.cn/typora/image-20260711225248283.png)
+
+![腾讯云国内 EdgeOne 2](http://img.minalz.cn/typora/image-20260711224450593.png)
+
+> 💡 **自定义域名**: 因为国内我的域名是实名和备案过的，所以可以直接配置
 
 ---
 
@@ -112,26 +140,5 @@
 | 纯国内用户访问 | 🚫 Gitee Pages 已不可用，建议 Vercel 或自托管 |
 | 国际用户为主 | ✅ GitHub Pages |
 | 需要 CDN 加速 | ✅ Cloudflare Pages |
+| 追求国内访问速度 | ✅ 腾讯云国外 EdgeOne（免实名）/ 腾讯云国内 EdgeOne（需备案） |
 | 追求简单免费 | ✅ GitHub Pages / Vercel |
-
-
-
-4. 腾讯云国外EdgeOne Makers
-   https://console.tencentcloud.com/edgeone/makers/project/makers-tu74zqdqkaas/setting
-
-注意点: 只能使用默认域名，想自定义域名需要实名认证，因为这是用于大陆外的地址注册的，没有外面的身份证和护照等是无法完成实名认证的
-
-![image-20260711223839198](http://img.minalz.cn/typora/image-20260711223839198.png)
-
-速度比GitHub Pages和CloudFlare Pages快很多
-
-
-
-5.腾讯云国内EdgeOne Makers
-
-https://link.wtturl.cn/?target=https%3A%2F%2Fconsole.cloud.tencent.com%2Fedgeone%2Fmakers&scene=im&aid=497858&lang=zh
-
-![image-20260711224450593](http://img.minalz.cn/typora/image-20260711224450593.png)
-
-因为国内我的域名是实名和备案过的，所以可以直接配置
-
