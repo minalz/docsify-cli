@@ -18,6 +18,7 @@
 - 🚀 **服务部署实战**
   - [🗄️ Docker 搭建 MySQL](docker/docker搭建MySQL.md)
   - [🐇 Docker 搭建 RabbitMQ](docker/docker搭建RabbitMQ.md)
+  - [🔍 Docker 安装 Elasticsearch](docker/docker安装elasticsearch.md)
   - [🌐 Docker Nginx 安装](docker/docker_nginx安装.md)
 
 ---
