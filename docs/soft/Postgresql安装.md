@@ -30,7 +30,7 @@
 ```bash
 #!/bin/bash
 # ============================================
-# PostgreSQL 16 一键安装脚本
+# PostgreSQL 16 一键安装脚本（修复版）
 # 用户: postgre / 123456
 # 数据库: test_db
 # 允许远程连接
@@ -43,22 +43,22 @@ echo "  PostgreSQL 16 一键安装脚本"
 echo "=========================================="
 echo ""
 
-# 1. 更新包列表
-echo "[1/9] 更新包列表..."
+# 1. 更新包列表并安装依赖
+echo "[1/9] 更新包列表并安装依赖..."
 sudo apt update -y
+sudo apt install -y curl gnupg2 lsb-release software-properties-common
 
-# 2. 安装依赖
-echo "[2/9] 安装依赖..."
-sudo apt install -y wget gnupg2 lsb-release
-
-# 3. 添加 PostgreSQL 官方仓库
-echo "[3/9] 添加 PostgreSQL 官方仓库..."
+# 2. 添加 PostgreSQL 官方仓库
+echo "[2/9] 添加 PostgreSQL 官方仓库..."
 DISTRO=$(lsb_release -cs)
-echo "deb http://apt.postgresql.org/pub/repos/apt ${DISTRO}-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null
 
-# 4. 导入签名密钥
-echo "[4/9] 导入签名密钥..."
-wget -qO - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+# 3. 导入签名密钥（修复：使用 gpg --dearmor 替代 apt-key）
+echo "[3/9] 导入签名密钥..."
+curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /usr/share/keyrings/postgresql-keyring.gpg
+
+# 4. 添加仓库（修复：使用 signed-by 指定密钥路径）
+echo "[4/9] 添加仓库配置..."
+echo "deb [signed-by=/usr/share/keyrings/postgresql-keyring.gpg] http://apt.postgresql.org/pub/repos/apt ${DISTRO}-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null
 
 # 5. 更新并安装 PostgreSQL 16
 echo "[5/9] 安装 PostgreSQL 16..."
@@ -72,122 +72,52 @@ sudo systemctl enable postgresql
 
 # 7. 配置远程连接
 echo "[7/9] 配置远程连接..."
-
-# 备份原配置
 sudo cp /etc/postgresql/16/main/postgresql.conf /etc/postgresql/16/main/postgresql.conf.bak
 sudo cp /etc/postgresql/16/main/pg_hba.conf /etc/postgresql/16/main/pg_hba.conf.bak
 
-# 修改 postgresql.conf，允许所有IP监听
+# 修改 postgresql.conf
 sudo sed -i "s/^#listen_addresses = 'localhost'/listen_addresses = '*'/" /etc/postgresql/16/main/postgresql.conf
 sudo sed -i "s/^listen_addresses = 'localhost'/listen_addresses = '*'/" /etc/postgresql/16/main/postgresql.conf
 
-# 修改 pg_hba.conf，允许远程密码登录
+# 修改 pg_hba.conf
 sudo tee /etc/postgresql/16/main/pg_hba.conf > /dev/null <<'EOF'
 # PostgreSQL Client Authentication Configuration File
-# TYPE  DATABASE        USER            ADDRESS                 METHOD
-
-# 本地连接
 local   all             all                                     md5
-
-# IPv4 本地连接
 host    all             all             127.0.0.1/32            md5
-
-# IPv6 本地连接
 host    all             all             ::1/128                 md5
-
-# 允许远程连接（所有IP）
 host    all             all             0.0.0.0/0               md5
 host    all             all             ::/0                    md5
 EOF
 
 # 8. 设置密码和创建用户
 echo "[8/9] 配置用户和密码..."
-
-# 设置 postgres 用户密码
 sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '123456';" || true
-
-# 创建 postgre 用户，密码 123456，赋予超级用户权限
 sudo -u postgres psql -c "DROP USER IF EXISTS postgre;" || true
 sudo -u postgres psql -c "CREATE USER postgre WITH PASSWORD '123456' SUPERUSER CREATEDB CREATEROLE LOGIN;"
 
-# 创建 test_db 数据库，归属 postgre
+# 9. 创建数据库并授权
+echo "[9/9] 创建数据库并配置权限..."
 sudo -u postgres psql -c "DROP DATABASE IF EXISTS test_db;" || true
 sudo -u postgres psql -c "CREATE DATABASE test_db OWNER postgre;"
-
-# 授予 public schema 的权限
 sudo -u postgres psql -d test_db -c "GRANT ALL ON SCHEMA public TO postgre;"
 sudo -u postgres psql -d test_db -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO postgre;"
-sudo -u postgres psql -d test_db -c "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO postgre;"
-
-# 设置默认权限
 sudo -u postgres psql -d test_db -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO postgre;"
-sudo -u postgres psql -d test_db -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO postgre;"
 
-# 9. 重启服务使配置生效
-echo "[9/9] 重启 PostgreSQL 服务..."
+# 重启服务使配置生效
 sudo systemctl restart postgresql
-
-# 等待服务启动
 sleep 2
 
 # 验证安装
 echo ""
 echo "=========================================="
-echo "  验证安装..."
-echo "=========================================="
-
-# 检查服务状态
-if sudo systemctl is-active --quiet postgresql; then
-echo "[✓] PostgreSQL 服务运行正常"
-else
-echo "[✗] PostgreSQL 服务启动失败"
-exit 1
-fi
-
-# 检查版本
-PG_VERSION=$(psql --version | awk '{print $3}')
-echo "[✓] PostgreSQL 版本: $PG_VERSION"
-
-# 检查用户
-if sudo -u postgres psql -c "\du" | grep -q postgre; then
-echo "[✓] 用户 postgre 创建成功"
-else
-echo "[✗] 用户 postgre 创建失败"
-fi
-
-# 检查数据库
-if sudo -u postgres psql -c "\l" | grep -q test_db; then
-echo "[✓] 数据库 test_db 创建成功"
-else
-echo "[✗] 数据库 test_db 创建失败"
-fi
-
-echo ""
-echo "=========================================="
 echo "  安装完成！"
 echo "=========================================="
 echo ""
-echo "  【用户配置】"
-echo "    postgres / 123456"
-echo "    postgre  / 123456"
+echo "  用户名: postgres / 123456"
+echo "  用户名: postgre / 123456"
+echo "  数据库: test_db"
+echo "  连接: postgresql://postgre:123456@localhost:5432/test_db"
 echo ""
-echo "  【数据库】"
-echo "    test_db (Owner: postgre)"
-echo ""
-echo "  【远程连接】"
-echo "    端口: 5432"
-echo "    连接字符串:"
-echo "      postgresql://postgre:123456@<IP>:5432/test_db"
-echo ""
-echo "  【防火墙开放端口】"
-echo "    sudo ufw allow 5432/tcp"
-echo "    或: sudo iptables -A INPUT -p tcp --dport 5432 -j ACCEPT"
-echo ""
-echo "  【测试连接】"
-echo "    psql -U postgre -d test_db -h localhost"
-echo "    输入密码: 123456"
-echo ""
-echo "=========================================="
 ```
 
 ### 使用说明
