@@ -24,6 +24,3 @@
 - [Redis 实战教程 - 菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
 - [Redis 性能优化指南](https://developer.aliyun.com/article/779627)
 
----
-
-> 💡 **提示**：本文档汇总 Redis 相关学习资源，持续更新中！
