@@ -1,38 +1,38 @@
 * [🏠 首页](/)
 
+* [📚 笔记](/notes/)
+
+  * [🌱 Spring](/notes/spring/)
+
+  * [⚡ Redis](/notes/redis/)
+
+  * [🗄️ MySQL](/notes/mysql/)
+
+  * [📨 Kafka](/notes/kafka/)
+
+  * [☕ JVM](/notes/jvm/)
+
+  * [🔗 MyBatis](/notes/mybatis/)
+
+  * [🐧 Linux](/notes/linux/)
+
+  * [📦 Git](/notes/git/)
+
+  * [🔍 ELK](/notes/elk/)
+
+* [🤖 AI](/ai/)
+
 * [💻 代码片段](/codes/)
 
-* [🛠️ 软件环境](/soft/)
+* [🧮 算法](/algorithm/)
 
 * [🐳 Docker](/docker/)
 
 * [☸️ K8s](/k8s/)
 
-* [🧮 算法](/algorithm/)
-
-* [📚 笔记](/notes/)
-
-  * [📦 Git](/notes/git/)
-
-  * [🗄️ MySQL](/notes/mysql/)
-
-  * [🔗 MyBatis](/notes/mybatis/)
-
-  * [🌱 Spring](/notes/spring/)
-
-  * [📨 Kafka](/notes/kafka/)
-
-  * [🐧 Linux](/notes/linux/)
-
-  * [☕ JVM](/notes/jvm/)
-    
-  * [🔍 ELK](/notes/elk/)
-    
-  * [⚡ Redis](/notes/redis/)
+* [🛠️ 软件环境](/soft/)
 
 * [🎨 图表](/draw/)
-  
-* [🔗 链接](/links/)
 
-* [🤖 AI](/ai/)
+* [🔗 链接](/links/)
 
