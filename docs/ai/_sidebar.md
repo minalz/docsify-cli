@@ -5,8 +5,8 @@
   - [3️⃣ LangChain 工作流编排](ai/AI大模型/3.LangChain工作流编排.md)
   - [4️⃣ LangChain 服务部署与链路监控](ai/AI大模型/4.LangChain服务部署与链路监控.md)
   - [5️⃣ LangChain 消息管理与聊天历史存储](ai/AI大模型/5.LangChain消息管理与聊天历史存储.md)
-  - [🆚 GPT vs LLama 全方位对比](ai/GPT_vs_LLama全方位对比.md)
-  - [🛠️ Tool 对比](ai/tool对比.md)
+  - [6️⃣ GPT vs LLama 全方位对比](ai/GPT_vs_LLama全方位对比.md)
+  - [7️⃣ Tool 对比](ai/tool对比.md)
 
 ---
 
