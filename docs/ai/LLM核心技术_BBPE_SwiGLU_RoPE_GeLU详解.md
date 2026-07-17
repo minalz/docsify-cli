@@ -1,10 +1,10 @@
-# LLM 核心技术详解：BBPE / RoPE / GeLU / SwiGLU
+# ⚙️ LLM 核心技术详解：BBPE / RoPE / GeLU / SwiGLU
 
-> 这四项技术分属 Transformer 的不同层次，共同构成现代大语言模型的技术基础。
+> 🔧 这四项技术分属 Transformer 的不同层次，共同构成现代大语言模型的技术基础。
 
 ---
 
-## 一、四者在模型中的位置
+## 📍 一、四者在模型中的位置
 
 ```
 原始文本
@@ -43,7 +43,7 @@
 
 ---
 
-## 二、BBPE（Byte-level Byte Pair Encoding）
+## 🔤 二、BBPE（Byte-level Byte Pair Encoding）
 
 ### 2.1 是什么
 
@@ -144,7 +144,7 @@ print(f"token 数: {len(tokens)}")    # 约 7 个 token
 
 ---
 
-## 三、RoPE（Rotary Position Embedding，旋转位置编码）
+## 🔄 三、RoPE（Rotary Position Embedding，旋转位置编码）
 
 ### 3.1 是什么
 
@@ -280,7 +280,7 @@ def rotate_half(x):
 
 ---
 
-## 四、GeLU（Gaussian Error Linear Unit，高斯误差线性单元）
+## ⚡ 四、GeLU（Gaussian Error Linear Unit，高斯误差线性单元）
 
 ### 4.1 是什么
 
@@ -396,7 +396,7 @@ print(F.gelu(x))
 
 ---
 
-## 五、SwiGLU（Swish-Gated Linear Unit）
+## 🚪 五、SwiGLU（Swish-Gated Linear Unit）
 
 ### 5.1 是什么
 
@@ -548,7 +548,7 @@ print(gelu_ffn(x).shape)    # [2, 10, 512]
 
 ---
 
-## 六、四者综合对比
+## 📊 六、四者综合对比
 
 ### 6.1 定位对比
 
@@ -629,7 +629,7 @@ Attention：Multi-Head Attention / GQA
 
 ---
 
-## 七、总结
+## 📝 七、总结
 
 ```
 技术选型的历史趋势：
