@@ -1,4 +1,4 @@
-c# 🤖 AI 学习笔记
+# 🤖 AI 学习笔记
 
 > 💡 AI技术探索与实践 | Python编程 | LangChain框架 | 大模型应用
 
