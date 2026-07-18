@@ -7,6 +7,11 @@
   - [5️⃣ LangChain 消息管理与聊天历史存储](ai/AI大模型/5.LangChain消息管理与聊天历史存储.md)
   - [6️⃣ GPT vs LLama 全方位对比](ai/GPT_vs_LLama全方位对比.md)
   - [7️⃣ Tool 对比](ai/tool对比.md)
+  - [8️⃣ BERT vs BART 对比详解](ai/BERT_vs_BART对比详解.md)
+  - [9️⃣ GPT vs LLaMA vs 国产模型 全方位对比](ai/GPT_vs_LLaMA_vs_国产模型全方位对比.md)
+  - [🔟 LLM 核心技术详解](ai/LLM核心技术_BBPE_SwiGLU_RoPE_GeLU详解.md)
+  - [1️⃣1️⃣ MCP、Function Calling、Agent Skill 三者关系与演进](ai/MCP_FunctionCalling_AgentSkill三者关系与演进.md)
+  - [1️⃣2️⃣ Tokenizer 分词器详解](ai/tokenizer分词器详解.md)
 
 ---
 
@@ -16,6 +21,7 @@
   - [☁️ 阿里云百炼平台对接步骤](ai/阿里云百炼平台对接步骤.md)
   - [🔌 Apifox 对接接口](ai/apifox对接接口.md)
   - [🧪 LangChain4j Demo](ai/langchain4j-demo.md)
+  - [🐛 LangChain4j 连接 Redis Search 宕机问题](ai/langchain4j连接redis-search的时候莫名宕机.md)
 
 ---
 

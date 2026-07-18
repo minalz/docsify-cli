@@ -1,4 +1,4 @@
-# Tokenizer 分词器详解
+# 🔤 Tokenizer 分词器详解
 
 > Tokenizer 是 NLP 和 LLM 的第一道关卡，负责将原始文本转换为模型能处理的 token 序列。分词粒度和策略直接影响模型的词表大小、处理效率和多语言能力。
 
