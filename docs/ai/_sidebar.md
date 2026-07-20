@@ -12,6 +12,7 @@
   - [🔟 LLM 核心技术详解](ai/LLM核心技术_BBPE_SwiGLU_RoPE_GeLU详解.md)
   - [1️⃣1️⃣ MCP、Function Calling、Agent Skill 三者关系与演进](ai/MCP_FunctionCalling_AgentSkill三者关系与演进.md)
   - [1️⃣2️⃣ Tokenizer 分词器详解](ai/tokenizer分词器详解.md)
+  - [1️⃣3️⃣ AI Agent 架构详解](ai/一些概念描述.md)
 
 ---
 
