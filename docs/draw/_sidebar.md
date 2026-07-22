@@ -7,3 +7,4 @@
   - [🧵 线程生命周期](draw/线程生命周期.md)
   - [📋 秒杀架构](draw/秒杀架构.md)
   - [📋 消息投递.](draw/消息投递.md)
+  - [🧩 PgVector 架构](draw/pgvector架构.md)
