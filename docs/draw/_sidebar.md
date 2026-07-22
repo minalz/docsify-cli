@@ -8,3 +8,4 @@
   - [📋 秒杀架构](draw/秒杀架构.md)
   - [📋 消息投递.](draw/消息投递.md)
   - [🧩 PgVector 架构](draw/pgvector架构.md)
+  - [⏰ 订单超时自动关闭架构图](draw/订单超时自动关闭架构图.md)
