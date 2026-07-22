@@ -1,25 +1,25 @@
-# Feign 原理与限流策略深度笔记
+# 🌊 Feign 原理与限流策略深度笔记
 
-> 记录时间：2026-07-22  
-> 适用版本：Spring Cloud OpenFeign 4.x / Spring Cloud 2023+  
-> 用途：个人学习笔记，涵盖 Feign 核心原理、工作流程、限流方案及架构设计
-
----
-
-## 目录
-
-1. [Feign 核心原理](#一feign-核心原理)
-2. [Feign 工作流程详解](#二feign-工作流程详解)
-3. [Feign 与 Ribbon 的协作](#三feign-与-ribbon-的协作)
-4. [Feign 限流方案](#四feign-限流方案)
-5. [Sentinel 整合 Feign 限流实战](#五sentinel-整合-feign-限流实战)
-6. [Resilience4j 整合 Feign 限流实战](#六resilience4j-整合-feign-限流实战)
-7. [限流方案对比与选型](#七限流方案对比与选型)
-8. [生产环境最佳实践](#八生产环境最佳实践)
+> 📋 涵盖 Feign 核心原理、工作流程、限流方案及架构设计  
+> 🕐 记录时间：2026-07-22 | 适用版本：Spring Cloud OpenFeign 4.x / Spring Cloud 2023+
 
 ---
 
-## 一、Feign 核心原理
+## 📑 目录
+
+1. [🔍 Feign 核心原理](#一feign-核心原理)
+2. [🔄 Feign 工作流程详解](#二feign-工作流程详解)
+3. [⚖️ Feign 与 Ribbon 的协作](#三feign-与-ribbon-的协作)
+4. [🛡️ Feign 限流方案](#四feign-限流方案)
+5. [🔥 Sentinel 整合 Feign 限流实战](#五sentinel-整合-feign-限流实战)
+6. [🧩 Resilience4j 整合 Feign 限流实战](#六resilience4j-整合-feign-限流实战)
+7. [📊 限流方案对比与选型](#七限流方案对比与选型)
+8. [⚙️ 生产环境最佳实践](#八生产环境最佳实践)
+9. [📚 参考与延伸阅读](#九参考与延伸阅读)
+
+---
+
+## 🔍 一、Feign 核心原理
 
 ### 1.1 什么是 Feign
 
@@ -107,7 +107,7 @@ Feign 使用 **JDK 动态代理** 为接口生成代理对象：
 
 ---
 
-## 二、Feign 工作流程详解
+## 🔄 二、Feign 工作流程详解
 
 ### 2.1 完整调用链路
 
@@ -216,7 +216,7 @@ LoadBalancerFeignClient.execute()
 
 ---
 
-## 三、Feign 与 Ribbon 的协作
+## ⚖️ 三、Feign 与 Ribbon 的协作
 
 ### 3.1 负载均衡调用流程
 
@@ -279,7 +279,7 @@ LoadBalancerFeignClient.execute()
 
 ---
 
-## 四、Feign 限流方案
+## 🛡️ 四、Feign 限流方案
 
 ### 4.1 为什么 Feign 需要限流
 
@@ -332,7 +332,7 @@ LoadBalancerFeignClient.execute()
 
 ---
 
-## 五、Sentinel 整合 Feign 限流实战
+## 🔥 五、Sentinel 整合 Feign 限流实战
 
 ### 5.1 Sentinel 简介
 
@@ -455,7 +455,7 @@ Sentinel 的熔断降级基于三种策略：
 
 ---
 
-## 六、Resilience4j 整合 Feign 限流实战
+## 🧩 六、Resilience4j 整合 Feign 限流实战
 
 ### 6.1 Resilience4j 简介
 
@@ -636,7 +636,7 @@ Resilience4j 的 CircuitBreaker 采用有限状态机：
 
 ---
 
-## 七、限流方案对比与选型
+## 📊 七、限流方案对比与选型
 
 ### 7.1 Sentinel vs Resilience4j 对比
 
@@ -704,7 +704,7 @@ Resilience4j 的 CircuitBreaker 采用有限状态机：
 
 ---
 
-## 八、生产环境最佳实践
+## ⚙️ 八、生产环境最佳实践
 
 ### 8.1 Feign 配置优化
 
@@ -782,7 +782,7 @@ spring:
 
 ---
 
-## 九、参考与延伸阅读
+## 📚 九、参考与延伸阅读
 
 - [Spring Cloud OpenFeign 官方文档](https://docs.spring.io/spring-cloud-openfeign/docs/current/reference/html/)
 - [Sentinel 官方文档](https://sentinelguard.io/zh-cn/)
@@ -793,4 +793,4 @@ spring:
 
 ---
 
-> 📝 **笔记说明**：本文档持续更新，后续可补充 Feign 与 Spring Cloud LoadBalancer 的整合、Feign 异步调用、以及自定义 Feign 扩展点等内容。
+> 💡 **提示**：本文档持续更新，后续可补充 Feign 与 Spring Cloud LoadBalancer 的整合、Feign 异步调用、以及自定义 Feign 扩展点等内容。

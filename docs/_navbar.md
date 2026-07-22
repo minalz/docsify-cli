@@ -20,6 +20,10 @@
 
   * [🔍 ELK](/notes/elk/)
 
+  * [🌊 Feign](/notes/Feign_原理与限流策略笔记.md)
+
+  * [⚡ Redis 持久化](/notes/Redis_RDB_AOF_持久化笔记.md)
+
 * [🤖 AI](/ai/)
 
 * [💻 代码片段](/codes/)

@@ -34,6 +34,8 @@
   - [📄 NodeJs-PDF 导出](notes/NodeJs-PDF导出.md)
   - [🔄 Spring Boot 整合 Canal + RabbitMQ 监听数据变更](notes/SpringBoot整合Canal+RabbitMQ监听数据变更.md)
   - [⏰ 订单超时自动关闭的通用解决](notes/订单超时自动关闭的通用解决.md)
+  - [🌊 Feign 原理与限流策略笔记](notes/Feign_原理与限流策略笔记.md)
+  - [⚡ Redis RDB/AOF 持久化笔记](notes/Redis_RDB_AOF_持久化笔记.md)
   - [📅 201809 笔记](notes/201809笔记.md)
   - [📅 201810 笔记](notes/201810笔记.md)
 
