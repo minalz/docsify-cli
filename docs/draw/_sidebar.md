@@ -9,3 +9,5 @@
   - [📋 消息投递.](draw/消息投递.md)
   - [🧩 PgVector 架构](draw/pgvector架构.md)
   - [⏰ 订单超时自动关闭架构图](draw/订单超时自动关闭架构图.md)
+  - [🏥 HIS 系统架构](draw/HIS系统架构.md)
+  - [🔄 TCC 分布式事务原理](draw/TCC分布式事务原理.md)
