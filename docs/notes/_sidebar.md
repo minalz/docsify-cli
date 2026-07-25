@@ -39,6 +39,7 @@
   - [💊 TCC 简单案例](notes/TCC简单案例.md)
   - [📅 201809 笔记](notes/201809笔记.md)
   - [📅 201810 笔记](notes/201810笔记.md)
+  - [⚖️ Kafka vs RocketMQ 核心机制深度对比](notes/kafka_rocketmq_对比.md)
 
 ---
 
