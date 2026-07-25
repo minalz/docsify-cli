@@ -4,8 +4,6 @@
 
   * [🌱 Spring](/notes/spring/)
 
-  * [⚡ Redis](/notes/redis/)
-
   * [🗄️ MySQL](/notes/mysql/)
 
   * [📨 Kafka](/notes/kafka/)
