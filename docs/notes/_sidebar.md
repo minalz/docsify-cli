@@ -37,9 +37,9 @@
   - [🌊 Feign 原理与限流策略笔记](notes/Feign_原理与限流策略笔记.md)
   - [⚡ Redis RDB/AOF 持久化笔记](notes/Redis_RDB_AOF_持久化笔记.md)
   - [💊 TCC 简单案例](notes/TCC简单案例.md)
+  - [🗺️ HashMap / ConcurrentHashMap / LinkedHashMap 详解](notes/HashMap对比详解.md)
   - [📅 201809 笔记](notes/201809笔记.md)
   - [📅 201810 笔记](notes/201810笔记.md)
-  - [⚖️ Kafka vs RocketMQ 核心机制深度对比](notes/kafka_rocketmq_对比.md)
 
 ---
 

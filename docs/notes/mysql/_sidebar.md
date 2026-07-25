@@ -6,3 +6,4 @@
   - [📊 MySQL 查询最大表列数、行数、占用表空间](notes/mysql/MySQL查询最大表列数、行数、占用表空间.md)
   - [🔧 MySQL 对表结构进行增删改操作](notes/mysql/MySQL对表结构进行增删改操作.md)
   - [✏️ MySQL 字段值更新](notes/mysql/MySQL字段值更新.md)
+  - [MySQL日志Binlog和RedoLog的对比](notes/mysql/MySQL日志Binlog和RedoLog的对比.md)
