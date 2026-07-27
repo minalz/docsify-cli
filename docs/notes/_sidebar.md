@@ -10,6 +10,7 @@
   - [🔑 实现两台服务器之间的免密登录](notes/实现两台服务器之间的免密登录.md)
   - [🌸 SakuraFrp 使用手册](notes/SakuraFrp使用手册.md)
   - [🔧 WSL 中开启代理](notes/WSL中开启代理.md)
+  - [🤖 Skills vs Superpowers vs ECC 对比](notes/spring/Skills和Superpowers和ECC对比.md)
 
 ---
 
