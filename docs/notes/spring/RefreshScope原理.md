@@ -1,11 +1,19 @@
-# @RefreshScope 原理详解：为什么 YAML 配置变更后 Config 类能感知到？
+# 🔄 @RefreshScope 原理详解：为什么 YAML 配置变更后 Config 类能感知到？
 
-> 深入理解 Spring Cloud `@RefreshScope` 的底层实现机制。
-> 更新日期：2026-07-28
+> 💡 深入理解 Spring Cloud `@RefreshScope` 的底层实现机制。
+
+## 📑 目录
+
+- [一、核心问题：为什么 Config 类能"感知"到配置变化？](#一核心问题为什么-config-类能感知到配置变化)
+- [二、底层原理：五步拆解](#二底层原理五步拆解)
+- [三、为什么普通单例 Bean 做不到？](#三为什么普通单例-bean-做不到)
+- [四、关键源码类速查](#四关键源码类速查)
+- [五、使用示例](#五使用示例)
+- [六、注意事项](#六注意事项)
 
 ---
 
-## 一、核心问题：为什么 Config 类能"感知"到配置变化？
+## 🎯 一、核心问题：为什么 Config 类能"感知"到配置变化？
 
 **一句话回答：它不是"感知"到配置变了然后修改字段，而是直接销毁旧 Bean，下次调用时重新创建一个新 Bean，让 Spring 在创建过程中从最新的 `Environment` 注入新值。**
 
@@ -13,17 +21,17 @@
 
 而加了 `@RefreshScope` 的 Bean 走的是另一条路：
 
-```
+```text
 配置变更 → 清空缓存 → 下次调用时重新创建 Bean → 从最新 Environment 注入新值
 ```
 
-所以你的 Config 类不是"感知"到了变化，而是**被销毁后重生了一次**，重生时读到的就是新配置。
+> 💡 **核心思想**：Config 类不是"感知"到了变化，而是**被销毁后重生了一次**，重生时读到的就是新配置。
 
 ---
 
-## 二、底层原理：五步拆解
+## 🔧 二、底层原理：五步拆解
 
-### Step 1：@RefreshScope 的本质是自定义 Scope
+### 1. Step 1：@RefreshScope 的本质是自定义 Scope
 
 ```java
 @Target({ElementType.TYPE, ElementType.METHOD})
@@ -47,12 +55,12 @@ beanFactory.registerScope("refresh", this);  // 把 "refresh" 作用域注册到
 
 ---
 
-### Step 2：Spring 不会给你真实 Bean，而是给你一个代理
+### 2. Step 2：Spring 不会给你真实 Bean，而是给你一个代理
 
 被 `@RefreshScope` 标注的类，Spring 在扫描时会生成 **两个 BeanDefinition**：
 
 | BeanDefinition | 类型 | 作用 |
-|---------------|------|------|
+|:---|:---|:---|
 | `scopedTarget.xxx` | 你的真实类 | 用来创建真实实例 |
 | `xxx` | `LockedScopedProxyFactoryBean` | 用来创建代理对象 |
 
@@ -62,7 +70,7 @@ beanFactory.registerScope("refresh", this);  // 把 "refresh" 作用域注册到
 
 ---
 
-### Step 3：真实 Bean 被缓存在 GenericScope 中
+### 3. Step 3：真实 Bean 被缓存在 GenericScope 中
 
 `GenericScope` 内部维护了一个缓存（`BeanLifecycleWrapperCache`）：
 
@@ -84,7 +92,7 @@ public Object get(String name, ObjectFactory<?> objectFactory) {
 
 ---
 
-### Step 4：配置变更时，触发刷新链路
+### 4. Step 4：配置变更时，触发刷新链路
 
 当 Nacos/Apollo/ConfigServer 检测到配置变更，或你手动调用 `/actuator/refresh` 时，最终都会走到：
 
@@ -102,6 +110,7 @@ public synchronized Set<String> refresh() {
 ```
 
 `refreshEnvironment()` 做了三件事：
+
 1. 重新读取 YAML/Properties 文件，生成新的 `PropertySource`
 2. 替换 `Environment` 中的旧 `PropertySource`
 3. 发布 `EnvironmentChangeEvent`（通知 `@ConfigurationProperties` 重新绑定）
@@ -116,15 +125,15 @@ public void refreshAll() {
 }
 ```
 
-**注意**：这里只是清空缓存，并没有立即创建新 Bean。旧 Bean 实例被销毁（如果有 `DisposableBean` 会触发 `destroy()` 方法）。
+> ⚠️ **注意**：这里只是清空缓存，并没有立即创建新 Bean。旧 Bean 实例被销毁（如果有 `DisposableBean` 会触发 `destroy()` 方法）。
 
 ---
 
-### Step 5：下次调用时，代理触发 Bean 重建
+### 5. Step 5：下次调用时，代理触发 Bean 重建
 
 缓存被清空后，你的代码再次调用 Config 类的方法：
 
-```
+```text
 你的代码 → 调用代理对象.method()
               ↓
         代理对象检查 TargetSource
@@ -140,14 +149,14 @@ public void refreshAll() {
         新实例放入缓存，方法正常执行
 ```
 
-这就是**"懒重建"**——不是刷新时立即重建所有 Bean，而是等到真正用到时才创建，避免不必要的开销。
+> 💡 **懒重建**：不是刷新时立即重建所有 Bean，而是等到真正用到时才创建，避免不必要的开销。
 
 ---
 
-## 三、为什么普通单例 Bean 做不到？
+## 📊 三、为什么普通单例 Bean 做不到？
 
 | 对比 | 普通单例 Bean | @RefreshScope Bean |
-|------|-------------|-------------------|
+|:---|:---|:---|
 | **创建时机** | 启动时一次 | 启动时创建代理，真实 Bean 延迟创建 |
 | **@Value 注入** | 启动时从 Environment 注入，字段值固化 | 每次重建时从最新 Environment 注入 |
 | **配置变更后** | 字段值不变 | 旧实例销毁，下次调用重建新实例 |
@@ -157,10 +166,10 @@ public void refreshAll() {
 
 ---
 
-## 四、关键源码类速查
+## 📖 四、关键源码类速查
 
 | 类名 | 职责 |
-|------|------|
+|:---|:---|
 | `RefreshScope` | 自定义 Scope 实现，继承 `GenericScope` |
 | `GenericScope` | 核心：缓存管理、Bean 生命周期包装、代理创建 |
 | `LockedScopedProxyFactoryBean` | 生成 CGLIB 代理，拦截方法调用，加锁保证线程安全 |
@@ -170,13 +179,7 @@ public void refreshAll() {
 
 ---
 
-## 五、一句话总结
-
-> `@RefreshScope` 不是让 Bean"感知"配置变化，而是让 Bean 变成一个**"可丢弃、可重建"**的代理对象。配置变更时清空缓存，下次调用时 Spring 重新创建 Bean 实例，自然就从最新的 `Environment` 中注入了最新配置值。
-
----
-
-## 六、使用示例
+## 💻 五、使用示例
 
 ### 1. 引入依赖
 
@@ -235,7 +238,7 @@ public class AppProperties {
 
 ```bash
 # 手动触发
- curl -X POST http://localhost:8080/actuator/refresh
+curl -X POST http://localhost:8080/actuator/refresh
 
 # 返回变更的 key 列表
 # ["app.timeout", "app.feature-flag"]
@@ -243,10 +246,16 @@ public class AppProperties {
 
 ---
 
-## 七、注意事项
+## ⚠️ 六、注意事项
 
 1. **@RefreshScope 只对代理 Bean 生效**：静态变量、普通单例 Bean 中的 `@Value` 不会自动更新
 2. **数据库连接池等基础设施不能热刷新**：如 DataSource 配置变更后，需要自定义 `RefreshScope` 的 `destroy()` 逻辑来重建连接池
 3. **懒重建机制**：刷新时不会立即重建 Bean，而是等到下次调用时才创建，避免不必要的开销
 4. **线程安全**：`LockedScopedProxyFactoryBean` 内部加了锁，保证并发场景下 Bean 创建的安全性
 5. **生产环境建议**：微服务场景下配合 Spring Cloud Bus + 消息队列实现"一处修改，全局刷新"
+
+---
+
+## 📝 总结
+
+> 💡 **提示**：`@RefreshScope` 不是让 Bean"感知"配置变化，而是让 Bean 变成一个**"可丢弃、可重建"**的代理对象。配置变更时清空缓存，下次调用时 Spring 重新创建 Bean 实例，自然就从最新的 `Environment` 中注入了最新配置值。

@@ -14,6 +14,11 @@
 
 ---
 
+- 🌱 **Spring**
+  - [🔄 @RefreshScope 原理详解](notes/spring/RefreshScope原理.md)
+
+---
+
 - 📱 **小程序**
   - [🚀 小程序开发流程](notes/miniprogram/小程序开发流程.md)
   - [📸 微信小程序自定义拍照的笔记](notes/miniprogram/微信小程序自定义拍照的笔记.md)
@@ -47,4 +52,3 @@
 - 🛠️ **开发规范**
   - [📐 开发规范](notes/开发规范.md)
   - [🔢 如何设计 API 返回码（错误码）](notes/如何设计API返回码（错误码）.md)
-
