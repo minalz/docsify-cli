@@ -8,6 +8,7 @@
   - [🔧 Jenkins 安装](soft/jenkins安装.md)
   - [📋 YApi 使用](soft/Yapi使用.md)
   - [🔍 Arthas 快速入门与使用](soft/Arthas快速入门与使用文档.md)
+  - [🚀 Windows 设置开机启动笔记](soft/Windows_设置开机启动笔记.md)
   - [📚 其他软件安装](soft/env_install.md)
 
 ---
