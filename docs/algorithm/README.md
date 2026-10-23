@@ -7,23 +7,23 @@
 ## 📚 学习内容
 
 ### 🔍 基础算法
-- 🌊 [BFS 宽度优先搜索](algorithm/bfs/)
-- 🔎 [DFS 深度优先搜索](algorithm/dfs/)
-- 🔢 [二分查找法](algorithm/binarySearch/)
-- 📊 [动态规划](algorithm/dp/)
+- 🌊 [BFS 宽度优先搜索](algorithm/bfs/岛屿数量.md)
+- 🔎 [DFS 深度优先搜索](algorithm/dfs/全排列.md)
+- 🔢 [二分查找法](algorithm/binarySearch/二分查找法.md)
+- 📊 [动态规划](algorithm/dp/爬楼梯.md)
 
 ### 🏗️ 数据结构
-- 📋 [线性表](algorithm/linearList/)
-- 🥞 [栈](algorithm/stack/)
-- 🔀 [堆](algorithm/heap/)
-- #️⃣ [散列表](algorithm/hash/)
-- 🌳 [树](algorithm/tree/)
-- 🔤 [前缀树](algorithm/trie/)
+- 📋 [线性表](algorithm/linearList/链表设计实现.md)
+- 🥞 [栈](algorithm/stack/栈的练习.md)
+- 🔀 [堆](algorithm/heap/第K个最大的元素.md)
+- #️⃣ [散列表](algorithm/hash/和为K的子数组.md)
+- 🌳 [树](algorithm/tree/二叉树的序列化与反序列化.md)
+- 🔤 [前缀树](algorithm/trie/实现Trie(前缀树).md)
 
 ### 🔄 常用算法
-- 📈 [排序算法](algorithm/sort/)
-- 🔤 [字符串](algorithm/string/)
-- 💾 [LRU 缓存](algorithm/lru/)
+- 📈 [排序算法](algorithm/sort/冒泡排序.md)
+- 🔤 [字符串](algorithm/string/单词反转.md)
+- 💾 [LRU 缓存](algorithm/lru/LRU缓存机制.md)
 
 ---
 

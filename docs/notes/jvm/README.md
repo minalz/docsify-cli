@@ -14,6 +14,6 @@
 
 ## 🚀 快速开始
 
-- 📖 [JVM 基础](jvm/jvm.md)
-- 🧠 [JVM 内存图解](jvm/jvm_memory.md)
-- 🔢 [进制转换](jvm/base_conversion.md)
+- 📖 [JVM 基础](notes/jvm/jvm.md)
+- 🧠 [JVM 内存图解](notes/jvm/jvm_memory.md)
+- 🔢 [进制转换](notes/jvm/base_conversion.md)

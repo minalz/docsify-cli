@@ -28,7 +28,7 @@
 
 ## 🚀 快速开始
 
-- 📖 [Docker 安装指南](elk/docker安装.md)
-- 🔧 [Docker Compose 安装](elk/docker-compose的安装.md)
-- 🏗️ [ELK 搭建](elk/ELK搭建.md)
-- 📈 [SpringBoot 项目集成](elk/SpringBoot项目集成ELK.md)
+- 📖 [Docker 安装指南](notes/elk/docker安装.md)
+- 🔧 [Docker Compose 安装](notes/elk/docker-compose的安装.md)
+- 🏗️ [ELK 搭建](notes/elk/ELK搭建.md)
+- 📈 [SpringBoot 项目集成](notes/elk/SpringBoot项目集成ELK.md)

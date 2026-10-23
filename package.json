@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
   "dependencies": {
     "@sujaykumarh/docsify-plugin-footer": "^1.2.0"
   }

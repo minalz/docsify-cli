@@ -14,5 +14,5 @@
 
 ## 🚀 快速开始
 
-- 📖 [Kafka 常用命令](kafka/Kafka常用命令.md)
-- 🗳️ [Kafka 选举机制](kafka/Kafka选举机制.md)
+- 📖 [Kafka 常用命令](notes/kafka/Kafka常用命令.md)
+- 🗳️ [Kafka 选举机制](notes/kafka/Kafka选举机制.md)

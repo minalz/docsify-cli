@@ -111,7 +111,7 @@ f0094c48-e338-11ea-bf63-fa163e5d631f:1-42
 SHOW BINLOG EVENTS in 'binlog.000007' from 211256634;
 ```
 
-![image-20210401151408238](images\image-20210401151408238.png)
+![image-20210401151408238](http://img.minalz.cn/typora/image-20210401151408238.png)
 
 和上面分析的gtid进行比较，结果一致
 

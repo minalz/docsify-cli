@@ -15,6 +15,6 @@
 
 ## 🚀 快速开始
 
-- 📖 [Git 指令大全](git/git_operation.md)
-- 🔧 [SSH 配置冲突解决](git/github和gitee配置sshkey冲突解决.md)
-- ❓ [常见问题排查](git/GitHub上看不到提交记录.md)
+- 📖 [Git 指令大全](notes/git/git_operation.md)
+- 🔧 [SSH 配置冲突解决](notes/git/github和gitee配置sshkey冲突解决.md)
+- ❓ [常见问题排查](notes/git/GitHub上看不到提交记录.md)

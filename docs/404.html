@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>页面未找到 | MINALZ</title>
 </head>
 <body>
-  <div id="app"></div>
+  <main>
+    <h1>🔍 页面未找到</h1>
+    <p>页面可能已移动，或访问地址有误。</p>
+    <p><a id="home-link" href="./">🏠 返回首页</a></p>
+  </main>
+  <script>
+    // GitHub Pages 项目站点需要保留仓库路径。
+    const repository = 'docsify-cli';
+    if (location.hostname.endsWith('.github.io') &&
+        location.pathname.startsWith('/' + repository + '/')) {
+      document.getElementById('home-link').href = '/' + repository + '/';
+    } else {
+      document.getElementById('home-link').href = '/';
+    }
+  </script>
 </body>
-<script src="//unpkg.com/docsify/lib/docsify.min.js" data-repo="https://github.com/oldmanadvancing/docsify-cli.git"></script>
 </html>

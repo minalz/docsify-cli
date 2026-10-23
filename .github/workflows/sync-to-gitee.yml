@@ -22,4 +22,3 @@ jobs:
         with:
           source-repo: https://github.com/minalz/docsify-cli.git
           destination-repo: git@gitee.com:minalz/docsify-cli-gitee.git
-          args: --force

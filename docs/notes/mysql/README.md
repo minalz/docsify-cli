@@ -18,6 +18,6 @@
 
 ## 🚀 快速开始
 
-- 📦 [MySQL 之 mysqldump 的使用](mysql/MySQL之mysqldump的使用.md)
-- 🔑 [MySQL 修改用户密码](mysql/MySQL修改用户密码.md)
-- 📊 [MySQL 查询最大表列数、行数、占用表空间](mysql/MySQL查询最大表列数、行数、占用表空间.md)
+- 📦 [MySQL 之 mysqldump 的使用](notes/mysql/MySQL之mysqldump的使用.md)
+- 🔑 [MySQL 修改用户密码](notes/mysql/MySQL修改用户密码.md)
+- 📊 [MySQL 查询最大表列数、行数、占用表空间](notes/mysql/MySQL查询最大表列数、行数、占用表空间.md)

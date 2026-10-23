@@ -12,7 +12,7 @@
 
   * [🔗 MyBatis](/notes/mybatis/)
 
-  * [🐧 Linux](/notes/linux/)
+  * [🐧 Linux](/notes/linux.md)
 
   * [📦 Git](/notes/git/)
 
